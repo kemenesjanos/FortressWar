@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Logic", "Fortre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Tests", "FortressWar.Tests\FortressWar.Tests.csproj", "{A28F703D-E619-4313-8A31-5991E5DB5F97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Control", "FortressWar.Control\FortressWar.Control.csproj", "{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
