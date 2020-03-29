@@ -9,6 +9,9 @@ namespace FortressWar.Tests
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Tests for the game.
+    /// </summary>
     public class Tests
     {
     }
