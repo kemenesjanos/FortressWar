@@ -1,4 +1,4 @@
-﻿// <copyright file="Model.cs" company="PlaceholderCompany">
+﻿// <copyright file="Fortress.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Model
@@ -10,9 +10,9 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The base class.
+    /// Describing the fortresses.
     /// </summary>
-    public class Model
+    public class Fortress : Character
     {
     }
 }

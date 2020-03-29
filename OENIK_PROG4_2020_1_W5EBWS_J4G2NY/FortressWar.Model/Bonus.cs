@@ -1,6 +1,7 @@
-﻿// <copyright file="Model.cs" company="PlaceholderCompany">
+﻿// <copyright file="Bonus.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
+
 namespace FortressWar.Model
 {
     using System;
@@ -10,9 +11,9 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The base class.
+    /// Describing the star and the potion.
     /// </summary>
-    public class Model
+    public class Bonus : MyShape
     {
     }
 }

@@ -10,9 +10,9 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The base class.
+    /// Describing the general shape.
     /// </summary>
-    public class Model
+    public class MyShape
     {
     }
 }

@@ -1,38 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// <copyright file="ILogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 namespace FortressWar.Logic
 {
-    interface ILogic
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using FortressWar.Model;
+
+    /// <summary>
+    /// Interface of the logic.
+    /// </summary>
+    public interface ILogic
     {
-        enum characters { Infantry, Rider, Barricade, Fortress }
-        enum players { player1, player2 }
+        enum Characters { Warrior, Rider, Barricade, Fortress }
+
+        enum Players { player1, player2 }
 
         event EventHandler RefreshScreen;
 
-        //movement
+        /// <summary> LEIRAS.</summary>
         void MoveSoldier(Soldier soldier);
+
+        /// <summary> LEIRAS.</summary>
         bool Attack(Character AttackedCharacter, int Damage);
+
+        /// <summary> LEIRAS.</summary>
         void MoveSelector(int y);
 
-        //Create Character
-        void NewCharacter(characters character, players player, int y);
+        /// <summary> LEIRAS.</summary>
+        void NewCharacter(Characters character, Players player, int y);
+
+        /// <summary> LEIRAS.</summary>
         void Die(Character character);
 
-        //Window things
+        /// <summary> LEIRAS.</summary>
         void StartGame();
+
+        /// <summary> LEIRAS.</summary>
         void EndGame();
 
-        //extras
+        /// <summary> LEIRAS.</summary>
         void GetExtra(Soldier soldier);
 
-        //Money
-        void GetCoin(players player);
+        /// <summary> LEIRAS.</summary>
+        void GetCoin(Players player);
 
-        //Update
-        void UpdateCharacter(characters character);
+        /// <summary> LEIRAS.</summary>
+        void UpdateCharacter(Characters character);
     }
 }
