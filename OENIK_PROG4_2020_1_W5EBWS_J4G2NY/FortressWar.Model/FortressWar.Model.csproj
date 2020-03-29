@@ -46,6 +46,7 @@
     <Compile Include="Barricade.cs" />
     <Compile Include="Bonus.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Fortress.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="MyShape.cs" />
