@@ -14,5 +14,9 @@ namespace FortressWar.Model
     /// </summary>
     public interface IModel
     {
+        /// <summary>
+        /// Build the map.
+        /// </summary>
+        void MapBuild();
     }
 }
