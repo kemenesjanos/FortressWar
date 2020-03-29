@@ -3,12 +3,12 @@
 // </copyright>
 namespace FortressWar.Repository
 {
-    using FortressWar.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using FortressWar.Model;
 
     /// <summary>
     /// Interface of the Repository.
@@ -22,7 +22,7 @@ namespace FortressWar.Repository
         IList<MyShape> LoadSavedGame();
 
         /// <summary>
-        /// Save the current game. 
+        /// Save the current game.
         /// </summary>
         /// <param name="models">The models to be saved.</param>
         void SaveCurrentGame(IList<MyShape> models);
