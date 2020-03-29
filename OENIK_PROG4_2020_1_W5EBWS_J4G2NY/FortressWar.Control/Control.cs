@@ -9,6 +9,9 @@ namespace FortressWar.Control
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Controls of the game.
+    /// </summary>
     public class Control
     {
     }
