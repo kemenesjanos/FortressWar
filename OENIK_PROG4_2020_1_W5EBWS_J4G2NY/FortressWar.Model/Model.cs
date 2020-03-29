@@ -9,6 +9,9 @@ namespace FortressWar.Model
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// The base class.
+    /// </summary>
     public class Model
     {
     }
