@@ -9,6 +9,9 @@ namespace FortressWar.Logic
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Logic.
+    /// </summary>
     public class Logic
     {
     }
