@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar", "FortressWar\FortressWar.csproj", "{5D725DE3-98FB-418C-9AB4-069E5D002597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Logic", "FortressWar.Logic\FortressWar.Logic.csproj", "{B29BFB1C-77C8-4A7F-843E-4C998C4A5F0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Tests", "FortressWar.Tests\FortressWar.Tests.csproj", "{A28F703D-E619-4313-8A31-5991E5DB5F97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Control", "FortressWar.Control\FortressWar.Control.csproj", "{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Model", "FortressWar.Model\FortressWar.Model.csproj", "{63487F7D-D60B-4A68-BDC6-F59B1EBCC1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortressWar.Repository", "FortressWar.Repository\FortressWar.Repository.csproj", "{F5244D32-7519-4162-8963-02CB89462866}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D725DE3-98FB-418C-9AB4-069E5D002597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D725DE3-98FB-418C-9AB4-069E5D002597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D725DE3-98FB-418C-9AB4-069E5D002597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D725DE3-98FB-418C-9AB4-069E5D002597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B29BFB1C-77C8-4A7F-843E-4C998C4A5F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B29BFB1C-77C8-4A7F-843E-4C998C4A5F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B29BFB1C-77C8-4A7F-843E-4C998C4A5F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B29BFB1C-77C8-4A7F-843E-4C998C4A5F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28F703D-E619-4313-8A31-5991E5DB5F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F4C6EF-1D69-47F9-AC82-3BED2464AE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63487F7D-D60B-4A68-BDC6-F59B1EBCC1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63487F7D-D60B-4A68-BDC6-F59B1EBCC1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63487F7D-D60B-4A68-BDC6-F59B1EBCC1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63487F7D-D60B-4A68-BDC6-F59B1EBCC1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5244D32-7519-4162-8963-02CB89462866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5244D32-7519-4162-8963-02CB89462866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5244D32-7519-4162-8963-02CB89462866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5244D32-7519-4162-8963-02CB89462866}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1FDAC04-1D3F-4277-84E2-1F1DE073E333}
+	EndGlobalSection
+EndGlobal
