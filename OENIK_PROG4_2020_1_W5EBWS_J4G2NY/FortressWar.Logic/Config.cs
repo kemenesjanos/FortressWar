@@ -16,7 +16,7 @@ namespace FortressWar.Logic
     public static class Config
     {
         private static Brush textLineColour;
-        private static Brush shadowTextLineColour;
+        private static Brush darkTextLineColour;
         private static Brush goldTextLineColour;
         private static Brush backTextColour;
 
@@ -51,7 +51,7 @@ namespace FortressWar.Logic
         /// <summary>
         /// Gets or sets darker text colour.
         /// </summary>
-        public static Brush ShadowTextLineColour { get => shadowTextLineColour; set => shadowTextLineColour = Brushes.Sienna; }
+        public static Brush DarkTextLineColour { get => darkTextLineColour; set => darkTextLineColour = Brushes.Sienna; }
 
         /// <summary>
         /// Gets or sets gold text colour.
