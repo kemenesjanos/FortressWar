@@ -1,4 +1,4 @@
-﻿// <copyright file="MyShape.cs" company="PlaceholderCompany">
+﻿// <copyright file="IModel.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Model
@@ -10,9 +10,13 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Describing the general shape.
+    /// Interface of the Model.
     /// </summary>
-    public class MyShape
+    public interface IModel
     {
+        /// <summary>
+        /// Build the map.
+        /// </summary>
+        void MapBuild();
     }
 }
