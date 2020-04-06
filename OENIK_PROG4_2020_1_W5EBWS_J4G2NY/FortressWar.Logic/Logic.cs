@@ -15,7 +15,14 @@ namespace FortressWar.Logic
     /// </summary>
     public class Logic : ILogic
     {
-        public event EventHandler RefreshScreen;
+
+        Model model;
+        Random rnd = new Random();
+
+        public Logic(Model model)
+        {
+            this.model = model;
+        }
 
         public bool Attack(Character attackedCharacter, int damage)
         {
@@ -37,9 +44,21 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Add random money to a player.
+        /// </summary>
+        /// <param name="player">The player who gets the money.</param>
         public void GetCoin(Players player)
         {
-            throw new NotImplementedException();
+            int c = this.rnd.Next(Config.MinCoin, Config.MaxCoin + 1);
+            if (player == Players.Player1)
+            {
+                this.model.Money_1 += c;
+            }
+            else
+            {
+                this.model.Money_2 += c;
+            }
         }
 
         public void LoadGameState()
@@ -72,7 +91,7 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
-        public void UpdateCharacter(Characters character)
+        public void UpdateCharacter(Characters character, Players players)
         {
             throw new NotImplementedException();
         }

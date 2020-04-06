@@ -15,6 +15,9 @@ namespace FortressWar.Logic
     /// </summary>
     public static class Config
     {
+        public const int MinCoin = 10;
+        public const int MaxCoin = 500;
+
         private static Brush textLineColour;
         private static Brush darkTextLineColour;
         private static Brush goldTextLineColour;
