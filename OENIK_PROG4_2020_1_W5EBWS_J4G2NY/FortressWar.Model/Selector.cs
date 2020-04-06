@@ -12,7 +12,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the selector.
     /// </summary>
-    public class Selector : MyShape
+    public class Selector : GameItem
     {
     }
 }

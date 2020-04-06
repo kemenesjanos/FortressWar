@@ -12,7 +12,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the Money.
     /// </summary>
-    public class Money : MyShape
+    public class Money : GameItem
     {
     }
 }

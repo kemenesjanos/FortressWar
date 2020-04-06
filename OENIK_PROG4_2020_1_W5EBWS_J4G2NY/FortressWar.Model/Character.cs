@@ -12,7 +12,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the general characters.
     /// </summary>
-    public class Character : MyShape
+    public class Character : GameItem
     {
     }
 }

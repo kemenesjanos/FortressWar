@@ -13,7 +13,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the star and the potion.
     /// </summary>
-    public class Bonus : MyShape
+    public class Bonus : GameItem
     {
     }
 }
