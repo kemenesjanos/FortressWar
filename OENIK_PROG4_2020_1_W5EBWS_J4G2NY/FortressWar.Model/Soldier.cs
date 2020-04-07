@@ -12,7 +12,33 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the Soldiers.
     /// </summary>
-    public class Soldier : Character
+    public abstract class Soldier : Character
     {
+        /// <summary>
+        /// Gets level of the soldier.
+        /// </summary>
+        public int LVL { get; private set; }
+
+        /// <summary>
+        /// Gets power of the soldier.
+        /// </summary>
+        public int Power { get; private set; }
+
+        /// <summary>
+        /// Gets or sets life of the soldier.
+        /// </summary>
+        public int Life { get; set; }
+
+        /// <summary>
+        /// Gets speed of the soldier.
+        /// </summary>
+        public int Speed { get; private set; }
+
+        /// <summary>
+        /// Level up method.
+        /// </summary>
+        public void LVLUp()
+        {
+        }
     }
 }

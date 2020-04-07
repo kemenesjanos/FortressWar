@@ -48,6 +48,7 @@
     <Compile Include="Barricade.cs" />
     <Compile Include="Bonus.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Fortress.cs" />
     <Compile Include="GameItem.cs" />
     <Compile Include="IModel.cs" />
