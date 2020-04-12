@@ -26,7 +26,7 @@ namespace FortressWar.Logic
 
         public bool Attack(Character attackedCharacter, int damage)
         {
-            throw new NotImplementedException();
+            throw new Exception();
         }
 
         public void Die(Character character)

@@ -14,5 +14,6 @@ namespace FortressWar.Model
     /// </summary>
     public class Character : GameItem
     {
+
     }
 }
