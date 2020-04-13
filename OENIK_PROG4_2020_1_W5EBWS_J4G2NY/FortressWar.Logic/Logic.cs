@@ -53,11 +53,11 @@ namespace FortressWar.Logic
             int c = this.rnd.Next(Config.MinCoin, Config.MaxCoin + 1);
             if (player == Players.Player1)
             {
-                this.model.Money_1 += c;
+                this.model.Player_1.Money += c;
             }
             else
             {
-                this.model.Money_2 += c;
+                this.model.Player_2.Money += c;
             }
         }
 

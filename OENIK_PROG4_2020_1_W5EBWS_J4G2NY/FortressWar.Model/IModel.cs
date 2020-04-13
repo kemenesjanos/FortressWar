@@ -15,11 +15,6 @@ namespace FortressWar.Model
     public interface IModel
     {
         /// <summary>
-        /// Build the map.
-        /// </summary>
-        void MapBuild();
-
-        /// <summary>
         /// Gets or sets the Width of the game in pixels.
         /// </summary>
         double GameWidth { get; set; }
@@ -38,26 +33,6 @@ namespace FortressWar.Model
         /// Gets or sets the tile height in pixels.
         /// </summary>
         double TileHeight { get; set; }
-
-        /// <summary>
-        /// Gets or sets the first player's name.
-        /// </summary>
-        string Player_1_name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the second player's name.
-        /// </summary>
-        string Player_2_name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the first player's money.
-        /// </summary>
-        int Money_1 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the second player's money.
-        /// </summary>
-        int Money_2 { get; set; }
 
         /// <summary>
         /// Gets or sets a list of barricades in the game.
@@ -80,43 +55,18 @@ namespace FortressWar.Model
         List<Money> Monies { get; set; }
 
         /// <summary>
-        /// Gets or sets the first player's fortress.
+        /// Gets or sets the first player.
         /// </summary>
-        Fortress Fortress_1 { get; set; }
+        Player Player_1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the second player's fortress.
+        /// Gets or sets the second player.
         /// </summary>
-        Fortress Fortress_2 { get; set; }
+        Player Player_2 { get; set; }
 
         /// <summary>
-        /// Gets or sets the first player's rider level.
+        /// Build the map.
         /// </summary>
-        int RiderLVL_1 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the second player's rider level.
-        /// </summary>
-        int RiderLVL_2 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the first player's knight level.
-        /// </summary>
-        int KnightLVL_1 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the second player's knight level.
-        /// </summary>
-        int KnightLVL_2 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the first player's barricade level.
-        /// </summary>
-        int BarricadeLVL_1 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the second player's barricade level.
-        /// </summary>
-        int BarricadeLVL_2 { get; set; }
+        void MapBuild();
     }
 }

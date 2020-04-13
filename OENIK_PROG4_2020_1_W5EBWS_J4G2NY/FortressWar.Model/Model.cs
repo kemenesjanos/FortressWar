@@ -18,22 +18,14 @@ namespace FortressWar.Model
         public double GameHeight { get; set; }
         public double TileWidth { get; set; }
         public double TileHeight { get; set; }
-        public string Player_1_name { get; set; }
-        public string Player_2_name { get; set; }
-        public int Money_1 { get; set; }
-        public int Money_2 { get; set; }
         public List<Barricade> Barricades { get; set; }
         public List<Soldier> Soldiers { get; set; }
         public List<Bonus> Bonuses { get; set; }
         public List<Money> Monies { get; set; }
-        public Fortress Fortress_1 { get; set; }
-        public Fortress Fortress_2 { get; set; }
-        public int RiderLVL_1 { get; set; }
-        public int RiderLVL_2 { get; set; }
-        public int KnightLVL_1 { get; set; }
-        public int KnightLVL_2 { get; set; }
-        public int BarricadeLVL_1 { get; set; }
-        public int BarricadeLVL_2 { get; set; }
+        public Player Player_1 { get; set; }
+        public Player Player_2 { get; set; }
+
+        //TODO: player a modelben
 
         public void MapBuild()
         {
