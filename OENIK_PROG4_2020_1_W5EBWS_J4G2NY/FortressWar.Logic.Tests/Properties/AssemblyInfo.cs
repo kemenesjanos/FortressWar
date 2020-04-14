@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FortressWar.Tests")]
+[assembly: AssemblyTitle("FortressWar.Logic.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FortressWar.Tests")]
+[assembly: AssemblyProduct("FortressWar.Logic.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a28f703d-e619-4313-8a31-5991e5db5f97")]
+[assembly: Guid("40359ecd-80b4-4763-981d-f043e948cb24")]
 
 // Version information for an assembly consists of the following four values:
 //
