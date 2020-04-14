@@ -57,6 +57,7 @@
     <Compile Include="Coin.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rider.cs" />
     <Compile Include="Selector.cs" />
     <Compile Include="Soldier.cs" />
   </ItemGroup>

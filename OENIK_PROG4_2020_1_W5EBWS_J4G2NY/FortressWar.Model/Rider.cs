@@ -1,6 +1,7 @@
-﻿// <copyright file="Fortress.cs" company="PlaceholderCompany">
+﻿// <copyright file="Rider.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
+
 namespace FortressWar.Model
 {
     using System;
@@ -10,9 +11,9 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Describing the fortresses.
+    /// Rider qualities.
     /// </summary>
-    public class Fortress : Character
+    public class Rider : Character
     {
         /// <summary>
         /// Calling if the character is dead.
