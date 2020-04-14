@@ -71,6 +71,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Gifs\1deffortress.gif" />
+    <Content Include="Gifs\1fortress.gif" />
+    <Content Include="Gifs\1halffortress.gif" />
+    <Content Include="Gifs\1Horse.gif" />
+    <Content Include="Gifs\1Soldier.gif" />
+    <Content Include="Gifs\2deffortress.gif" />
+    <Content Include="Gifs\2fortress.gif" />
+    <Content Include="Gifs\2halffortress.gif" />
+    <Content Include="Gifs\2Horse.gif" />
+    <Content Include="Gifs\2Soldier.gif" />
+    <Content Include="Gifs\coin.gif" />
+    <Content Include="Gifs\potion.gif" />
     <Content Include="Images\1barricade.png" />
     <Content Include="Images\1deffortress1.png" />
     <Content Include="Images\1deffortress2.png" />
