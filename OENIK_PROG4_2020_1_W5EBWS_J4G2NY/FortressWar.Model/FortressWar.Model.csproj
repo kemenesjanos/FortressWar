@@ -52,6 +52,7 @@
     <Compile Include="Fortress.cs" />
     <Compile Include="GameItem.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="Knight.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="Player.cs" />
