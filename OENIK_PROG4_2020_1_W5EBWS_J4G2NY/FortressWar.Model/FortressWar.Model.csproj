@@ -107,6 +107,7 @@
     <Content Include="Images\2walk2.png" />
     <Content Include="Images\coin1.png" />
     <Content Include="Images\coin2.png" />
+    <Content Include="Images\grass.png" />
     <Content Include="Images\potion1.png" />
     <Content Include="Images\potion2.png" />
   </ItemGroup>
