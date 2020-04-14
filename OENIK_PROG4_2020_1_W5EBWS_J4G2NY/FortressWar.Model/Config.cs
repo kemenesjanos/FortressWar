@@ -15,134 +15,103 @@ namespace FortressWar.Model
     /// </summary>
     public static class Config
     {
+        /// <summary>
+        /// Minimum coin for the random bonus.
+        /// </summary>
         public const int MinCoin = 10;
+
+        /// <summary>
+        /// Maximum coin for the random bonus.
+        /// </summary>
         public const int MaxCoin = 500;
 
         public const int KnightBasePower = 10;
         public const int KnightLVLPower = 5;
         //TODO: Power,speed, life...
 
-        private static Brush textLineColour;
-        private static Brush darkTextLineColour;
-        private static Brush goldTextLineColour;
-        private static Brush backTextColour;
-
-        private static Brush baseBrownBg;
-
-        private static Brush roadBg;
-        private static Brush roadChooseIconBg;
-        private static Brush backIconBg;
-
-        private static Brush characterIconBg;
-        private static Brush characterIconLine;
-
-        private static Brush activeBg;
-
-        private static int fullWidht;
-        private static int fullHeight;
-
-        private static int topWidth;
-        private static int topHeight;
-
-        private static int fieldWidht;
-        private static int fieldHeight;
-
-        private static int sideWidht;
-        private static int sideHeight;
+        /// <summary>
+        /// Main text colour.
+        /// </summary>
+        public static Brush textLineColour = Brushes.White;
 
         /// <summary>
-        /// Gets or sets base text colour.
+        /// Darker text colour.
         /// </summary>
-        public static Brush TextLineColour { get => textLineColour; set => textLineColour = Brushes.White; }
+        public static Brush darkTextLineColour = Brushes.Sienna;
 
         /// <summary>
-        /// Gets or sets darker text colour.
+        /// Gold text colour.
         /// </summary>
-        public static Brush DarkTextLineColour { get => darkTextLineColour; set => darkTextLineColour = Brushes.Sienna; }
+        public static Brush goldTextLineColour = Brushes.Gold;
 
         /// <summary>
-        /// Gets or sets gold text colour.
+        /// Base background colour.
         /// </summary>
-        public static Brush GoldTextLineColour { get => goldTextLineColour; set => goldTextLineColour = Brushes.Gold; }
+        public static Brush baseBrownBg = Brushes.SaddleBrown;
 
         /// <summary>
-        /// Gets or sets back icon text colour.
+        /// Road background colour.
         /// </summary>
-        public static Brush BackTextColour { get => backTextColour; set => backTextColour = Brushes.IndianRed; }
+        public static Brush roadBg = Brushes.AntiqueWhite;
 
         /// <summary>
-        /// Gets or sets base backgound colour.
+        /// Road chooser icon background colour.
         /// </summary>
-        public static Brush BaseBrownBg { get => baseBrownBg; set => baseBrownBg = Brushes.SaddleBrown; }
+        public static Brush roadChooseIconBg = Brushes.DarkSalmon;
 
         /// <summary>
-        /// Gets or sets road backgound colour.
+        /// Character chooser icon background colour.
         /// </summary>
-        public static Brush RoadBg { get => roadBg; set => roadBg = Brushes.AntiqueWhite; }
+        public static Brush characterIconBg = Brushes.Sienna;
 
         /// <summary>
-        /// Gets or sets road choose icon backgound colour.
+        /// Character chooser icon line colour.
         /// </summary>
-        public static Brush RoadChooseIconBg { get => roadChooseIconBg; set => roadChooseIconBg = Brushes.DarkSalmon; }
+        public static Brush characterIconLine = Brushes.SandyBrown;
 
         /// <summary>
-        /// Gets or sets back icon backgound colour.
+        /// Active icon background colour.
         /// </summary>
-        public static Brush BackIconBg { get => backIconBg; set => backIconBg = Brushes.DarkSalmon; }
+        public static Brush activeBg = Brushes.LightCoral;
 
         /// <summary>
-        /// Gets or sets character icon backgound colour.
+        /// Full width of the game.
         /// </summary>
-        public static Brush CharacterIconBg { get => characterIconBg; set => characterIconBg = Brushes.Sienna; }
+        public const int fullWidht = 1600;
 
         /// <summary>
-        /// Gets or sets character icon line colour.
+        /// Full height of the game.
         /// </summary>
-        public static Brush CharacterIconLine { get => characterIconLine; set => characterIconLine = Brushes.SandyBrown; }
+        public static int fullHeight = 900;
 
         /// <summary>
-        /// Gets or sets active status backgound colour.
+        /// Top area width of the game.
         /// </summary>
-        public static Brush ActiveBg { get => activeBg; set => activeBg = Brushes.LightCoral; }
+        public static int topWidth = 1600;
 
         /// <summary>
-        /// Gets or sets whole console width.
+        /// Top area height of the game.
         /// </summary>
-        public static int FullWidht { get => fullWidht; set => fullWidht = 1600; }
+        public static int topHeight = 200;
 
         /// <summary>
-        /// Gets or sets whole console height.
+        /// Field area width of the game.
         /// </summary>
-        public static int FullHeight { get => fullHeight; set => fullHeight = 900; }
+        public static int fieldWidht = 800;
 
         /// <summary>
-        /// Gets or sets top section width.
+        /// Field area height of the game.
         /// </summary>
-        public static int TopWidth { get => topWidth; set => topWidth = 1600; }
+        public static int fieldHeight = 700;
 
         /// <summary>
-        /// Gets or sets top section height.
+        /// Side areas width of the game.
         /// </summary>
-        public static int TopHeight { get => topHeight; set => topHeight = 200; }
+        public static int sideWidht = 400;
 
         /// <summary>
-        /// Gets or sets the flied width.
+        /// Side area height of the game.
         /// </summary>
-        public static int FieldWidht { get => fieldWidht; set => fieldWidht = 800; }
-
-        /// <summary>
-        /// Gets or sets the flied height.
-        /// </summary>
-        public static int FieldHeight { get => fieldHeight; set => fieldHeight = 700; }
-
-        /// <summary>
-        /// Gets or sets sides width.
-        /// </summary>
-        public static int SideWidht { get => sideWidht; set => sideWidht = 400; }
-
-        /// <summary>
-        /// Gets or sets sides height.
-        /// </summary>
-        public static int SideHeight { get => sideHeight; set => sideHeight = 700; }
+        public static int sideHeight = 700;
     }
 }
