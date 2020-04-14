@@ -1,7 +1,7 @@
 ﻿// <copyright file="Config.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-namespace FortressWar.Logic
+namespace FortressWar.Model
 {
     using System;
     using System.Collections.Generic;
@@ -15,6 +15,13 @@ namespace FortressWar.Logic
     /// </summary>
     public static class Config
     {
+        public const int MinCoin = 10;
+        public const int MaxCoin = 500;
+
+        public const int KnightBasePower = 10;
+        public const int KnightLVLPower = 5;
+        //TODO: Power,speed, life...
+
         private static Brush textLineColour;
         private static Brush darkTextLineColour;
         private static Brush goldTextLineColour;

@@ -12,7 +12,16 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the general characters.
     /// </summary>
-    public class Character : MyShape
+    public abstract class Character : GameItem
     {
+        /// <summary>
+        /// Gets or sets the life of the character.
+        /// </summary>
+        public int Life { get; set; }
+
+        /// <summary>
+        /// Calling if the character is dead.
+        /// </summary>
+        public abstract void Dead();
     }
 }

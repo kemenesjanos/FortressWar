@@ -57,10 +57,6 @@ namespace FortressWar.Logic
     /// </summary>
     public interface ILogic
     {
-        /// <summary>
-        /// RefreshScreen
-        /// </summary>
-        event EventHandler RefreshScreen;
 
         /// <summary>
         /// Move Soldier ahead.
@@ -116,13 +112,15 @@ namespace FortressWar.Logic
         /// The player get a coin.
         /// </summary>
         /// <param name="player">The player who get the coin.</param>
-        void GetCoin(Players player);
+        /// <param name="coin">The coin who the player get.</param>
+        void GetCoin(Players player, Coin coin);
 
         /// <summary>
         /// Update a character type.
         /// </summary>
         /// <param name="character">The character type to update.</param>
-        void UpdateCharacter(Characters character);
+        /// <param name="player">The player.</param>
+        void UpdateCharacter(Characters character, Players player);
 
         /// <summary>
         /// Save the current state of the game.

@@ -12,7 +12,24 @@ namespace FortressWar.Model
     /// <summary>
     /// The base class.
     /// </summary>
-    public class Model
+    public class Model : IModel
     {
+        public double GameWidth { get; set; }
+        public double GameHeight { get; set; }
+        public double TileWidth { get; set; }
+        public double TileHeight { get; set; }
+        public List<Barricade> Barricades { get; set; }
+        public List<Soldier> Soldiers { get; set; }
+        public List<Bonus> Bonuses { get; set; }
+        public List<Coin> Monies { get; set; }
+        public Player Player_1 { get; set; }
+        public Player Player_2 { get; set; }
+
+        //TODO: player a modelben
+
+        public void MapBuild()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

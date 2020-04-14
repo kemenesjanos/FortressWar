@@ -14,5 +14,9 @@ namespace FortressWar.Model
     /// </summary>
     public class Barricade : Character
     {
+        public override void Dead()
+        {
+            
+        }
     }
 }
