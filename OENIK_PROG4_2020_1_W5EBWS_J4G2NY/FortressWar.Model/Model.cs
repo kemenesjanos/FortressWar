@@ -21,7 +21,7 @@ namespace FortressWar.Model
         public List<Barricade> Barricades { get; set; }
         public List<Soldier> Soldiers { get; set; }
         public List<Bonus> Bonuses { get; set; }
-        public List<Money> Monies { get; set; }
+        public List<Coin> Monies { get; set; }
         public Player Player_1 { get; set; }
         public Player Player_2 { get; set; }
 

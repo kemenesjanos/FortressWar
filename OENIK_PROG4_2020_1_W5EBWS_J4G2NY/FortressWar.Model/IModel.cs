@@ -52,7 +52,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Gets or sets a list of monies in the game.
         /// </summary>
-        List<Money> Monies { get; set; }
+        List<Coin> Monies { get; set; }
 
         /// <summary>
         /// Gets or sets the first player.

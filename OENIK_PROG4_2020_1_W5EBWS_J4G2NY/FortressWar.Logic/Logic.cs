@@ -15,9 +15,11 @@ namespace FortressWar.Logic
     /// </summary>
     public class Logic : ILogic
     {
-
-        Model model;
-        Random rnd = new Random();
+        /// <summary>
+        /// The model.
+        /// </summary>
+        private Model model;
+        private Random rnd = new Random();
 
         public Logic(Model model)
         {
@@ -26,7 +28,16 @@ namespace FortressWar.Logic
 
         public bool Attack(Character attackedCharacter, int damage)
         {
-            throw new Exception();
+            if (attackedCharacter.Life - damage <= 0)
+            {
+                attackedCharacter.Dead();
+                return true;
+            }
+            else
+            {
+                attackedCharacter.Life -= damage;
+                return false;
+            }
         }
 
         public void Die(Character character)
@@ -48,16 +59,16 @@ namespace FortressWar.Logic
         /// Add random money to a player.
         /// </summary>
         /// <param name="player">The player who gets the money.</param>
-        public void GetCoin(Players player)
+        /// <param name="money">The money the character get.</param>
+        public void GetCoin(Players player, Coin money)
         {
-            int c = this.rnd.Next(Config.MinCoin, Config.MaxCoin + 1);
             if (player == Players.Player1)
             {
-                this.model.Player_1.Money += c;
+                this.model.Player_1.Money += money.Value;
             }
             else
             {
-                this.model.Player_2.Money += c;
+                this.model.Player_2.Money += money.Value;
             }
         }
 

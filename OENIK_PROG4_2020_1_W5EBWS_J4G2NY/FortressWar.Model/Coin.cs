@@ -12,13 +12,13 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the Money.
     /// </summary>
-    public class Money : GameItem
+    public class Coin : GameItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Money"/> class.
+        /// Initializes a new instance of the <see cref="Coin"/> class.
         /// Set a random value to value.
         /// </summary>
-        public Money()
+        public Coin()
         {
             Random r = new Random();
             this.Value = r.Next(Config.MinCoin, Config.MaxCoin + 1);
