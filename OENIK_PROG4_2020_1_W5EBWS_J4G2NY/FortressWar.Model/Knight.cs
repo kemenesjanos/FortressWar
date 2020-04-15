@@ -14,12 +14,5 @@ namespace FortressWar.Model
     /// </summary>
     public class Knight : Soldier
     {
-        /// <summary>
-        /// Calling if the character is dead.
-        /// </summary>
-        public override void Dead()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

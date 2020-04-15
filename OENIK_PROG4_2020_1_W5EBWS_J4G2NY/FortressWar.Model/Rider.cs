@@ -15,12 +15,5 @@ namespace FortressWar.Model
     /// </summary>
     public class Rider : Character
     {
-        /// <summary>
-        /// Calling if the character is dead.
-        /// </summary>
-        public override void Dead()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

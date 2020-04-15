@@ -21,16 +21,27 @@ namespace FortressWar.Logic
         private Model model;
         private Random rnd = new Random();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Logic"/> class.
+        /// Ctor.
+        /// </summary>
+        /// <param name="model">A model instance.</param>
         public Logic(Model model)
         {
             this.model = model;
         }
 
+        /// <summary>
+        /// Decrease the attacked character's life.
+        /// </summary>
+        /// <param name="attackedCharacter">The attacked character.</param>
+        /// <param name="damage">The attacker's power.</param>
+        /// <returns>Is the attacked character is dead.</returns>
         public bool Attack(Character attackedCharacter, int damage)
         {
             if (attackedCharacter.Life - damage <= 0)
             {
-                attackedCharacter.Dead();
+                this.Die(attackedCharacter);
                 return true;
             }
             else
@@ -40,9 +51,38 @@ namespace FortressWar.Logic
             }
         }
 
+        /// <summary>
+        /// Called if a character is dead.
+        /// </summary>
+        /// <param name="character">The killed character.</param>
         public void Die(Character character)
         {
-            throw new NotImplementedException();
+            if (character is Fortress)
+            {
+                this.EndGame();
+            }
+            else if (character is Barricade)
+            {
+                this.model.Barricades.Remove(character as Barricade);
+                this.GetBountry(character);
+            }
+            else if (character is Soldier)
+            {
+                this.model.Soldiers.Remove(character as Soldier);
+                this.GetBountry(character);
+            }
+        }
+
+        private void GetBountry(Character character)
+        {
+            if (character.Owner == this.model.Player_1)
+            {
+                this.model.Player_2.Money += character.Bounty;
+            }
+            else
+            {
+                this.model.Player_1.Money += character.Bounty;
+            }
         }
 
         public void EndGame()

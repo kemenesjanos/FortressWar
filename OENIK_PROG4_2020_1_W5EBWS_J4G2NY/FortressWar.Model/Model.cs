@@ -25,8 +25,6 @@ namespace FortressWar.Model
         public Player Player_1 { get; set; }
         public Player Player_2 { get; set; }
 
-        //TODO: player a modelben
-
         public void MapBuild()
         {
             throw new NotImplementedException();
