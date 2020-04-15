@@ -16,6 +16,11 @@ namespace FortressWar.Model
     public static class Config
     {
         /// <summary>
+        /// The movement distance.
+        /// </summary>
+        public const double StepDistance = 5;
+
+        /// <summary>
         /// Minimum coin for the random bonus.
         /// </summary>
         public const int MinCoin = 10;

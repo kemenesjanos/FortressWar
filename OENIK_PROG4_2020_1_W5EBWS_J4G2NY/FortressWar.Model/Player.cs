@@ -14,5 +14,7 @@ namespace FortressWar.Model
         public int RiderLVL { get; set; }
         public int KnightLVL { get; set; }
         public int BarricadeLVL { get; set; }
+        public List<Barricade> Barricades { get; set; }
+        public List<Soldier> Soldiers { get; set; }
     }
 }

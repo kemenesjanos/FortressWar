@@ -109,13 +109,6 @@ namespace FortressWar.Logic
         void GetBonus(Soldier soldier);
 
         /// <summary>
-        /// The player get a coin.
-        /// </summary>
-        /// <param name="player">The player who get the coin.</param>
-        /// <param name="coin">The coin who the player get.</param>
-        void GetCoin(Players player, Coin coin);
-
-        /// <summary>
         /// Update a character type.
         /// </summary>
         /// <param name="character">The character type to update.</param>

@@ -30,6 +30,11 @@ namespace FortressWar.Model
         public int Speed { get; private set; }
 
         /// <summary>
+        /// Gets or sets the enemy to attack.
+        /// </summary>
+        public Character Enemy { get; set; }
+
+        /// <summary>
         /// Level up method.
         /// </summary>
         public virtual void LVLUp()

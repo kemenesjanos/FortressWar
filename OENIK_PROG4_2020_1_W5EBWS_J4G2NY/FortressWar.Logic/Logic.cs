@@ -63,13 +63,33 @@ namespace FortressWar.Logic
             }
             else if (character is Barricade)
             {
-                this.model.Barricades.Remove(character as Barricade);
                 this.GetBountry(character);
+
+                if (character.Owner == this.model.Player_1)
+                {
+                    this.model.Player_1.Barricades.Remove(character as Barricade);
+                }
+                else
+                {
+                    this.model.Player_2.Barricades.Remove(character as Barricade);
+                }
             }
             else if (character is Soldier)
             {
-                this.model.Soldiers.Remove(character as Soldier);
                 this.GetBountry(character);
+                if (character.Owner == this.model.Player_1)
+                {
+                    this.model.Player_1.Soldiers.Remove(character as Soldier);
+                }
+                else
+                {
+                    this.model.Player_2.Soldiers.Remove(character as Soldier);
+                }
+            }
+            else if (character is Coin)
+            {
+                this.GetBountry(character);
+                this.model.Coins.Remove(character as Coin);
             }
         }
 
@@ -90,26 +110,13 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// A soldier get a bonus.
+        /// </summary>
+        /// <param name="soldier">The soldier who gets the bonus.</param>
         public void GetBonus(Soldier soldier)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Add random money to a player.
-        /// </summary>
-        /// <param name="player">The player who gets the money.</param>
-        /// <param name="money">The money the character get.</param>
-        public void GetCoin(Players player, Coin money)
-        {
-            if (player == Players.Player1)
-            {
-                this.model.Player_1.Money += money.Value;
-            }
-            else
-            {
-                this.model.Player_2.Money += money.Value;
-            }
+            soldier.LVLUp();
         }
 
         public void LoadGameState()
@@ -124,7 +131,42 @@ namespace FortressWar.Logic
 
         public void MoveSoldier(Soldier soldier)
         {
-            throw new NotImplementedException();
+            if (soldier.Enemy != null)
+            {
+                if (soldier.Enemy is Soldier)
+                {
+                    (soldier.Enemy as Soldier).Enemy = soldier;
+                }
+
+                if (this.Attack(soldier.Enemy, soldier.Power))
+                {
+                    soldier.Enemy = null;
+                }
+            }
+            else
+            {
+                soldier.CX += soldier.Speed * Config.StepDistance;
+                foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
+                    .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
+                    .Concat(this.model.Bonuses.Cast<Character>())
+                    .Concat(this.model.Coins.Cast<Character>()))
+                {
+                    if (soldier.IsCollision(item))
+                    {
+                        soldier.Enemy = item;
+                    }
+                }
+
+                if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
+                {
+                    soldier.Enemy = this.OtherPlayer(soldier).Fortress;
+                }
+            }
+        }
+
+        private Player OtherPlayer(Soldier soldier)
+        {
+            return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
         }
 
         public void NewCharacter(Characters character, Players player, int y)
