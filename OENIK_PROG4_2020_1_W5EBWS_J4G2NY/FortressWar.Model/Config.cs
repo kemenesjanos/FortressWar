@@ -25,9 +25,80 @@ namespace FortressWar.Model
         /// </summary>
         public const int MaxCoin = 500;
 
-        public const int KnightBasePower = 10;
+        /// <summary>
+        /// The base power of the knight.
+        /// </summary>
+        public const int KnightBasePower = 20;
+
+        /// <summary>
+        /// The knight get that much power when do a level up.
+        /// </summary>
         public const int KnightLVLPower = 5;
-        //TODO: Power,speed, life...
+
+        /// <summary>
+        /// The base power of the rider.
+        /// </summary>
+        public const int RiderBasePower = 50;
+
+        /// <summary>
+        /// The rider get that much power when do a level up.
+        /// </summary>
+        public const int RiderLVLPower = 6;
+
+        /// <summary>
+        /// The base Speed of the knight.
+        /// </summary>
+        public const int KnightBaseSpeed = 1;
+
+        /// <summary>
+        /// The knight get that much Speed when do a level up.
+        /// </summary>
+        public const int KnightLVLSpeed = 0;
+
+        /// <summary>
+        /// The base Speed of the rider.
+        /// </summary>
+        public const int RiderBaseSpeed = 2;
+
+        /// <summary>
+        /// The rider get that much Speed when do a level up.
+        /// </summary>
+        public const int RiderLVLSpeed = 0;
+
+        /// <summary>
+        /// The base Life of the knight.
+        /// </summary>
+        public const int KnightBaseLife = 100;
+
+        /// <summary>
+        /// The knight get that much Life when do a level up.
+        /// </summary>
+        public const int KnightLVLLife = 10;
+
+        /// <summary>
+        /// The base Life of the rider.
+        /// </summary>
+        public const int RiderBaseLife = 150;
+
+        /// <summary>
+        /// The rider get that much Life when do a level up.
+        /// </summary>
+        public const int RiderLVLLife = 15;
+
+        /// <summary>
+        /// The base Life of the Barricade.
+        /// </summary>
+        public const int BarricadeBaseLife = 150;
+
+        /// <summary>
+        /// The Barricade get that much Life when do a level up.
+        /// </summary>
+        public const int BarricadeLVLLife = 10;
+
+        /// <summary>
+        /// The base Life of the Castle.
+        /// </summary>
+        public const int CastleBaseLife = 1000;
 
         /// <summary>
         /// Main text colour.

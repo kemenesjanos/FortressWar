@@ -25,11 +25,6 @@ namespace FortressWar.Model
         public int Power { get; private set; }
 
         /// <summary>
-        /// Gets or sets life of the soldier.
-        /// </summary>
-        public int Life { get; set; }
-
-        /// <summary>
         /// Gets speed of the soldier.
         /// </summary>
         public int Speed { get; private set; }
@@ -37,7 +32,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Level up method.
         /// </summary>
-        public void LVLUp()
+        public virtual void LVLUp()
         {
         }
     }
