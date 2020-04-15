@@ -1,7 +1,8 @@
 ﻿// <copyright file="Tests.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-namespace FortressWar.Tests
+
+namespace FortressWar.Logic.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace FortressWar.Tests
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Tests for the game.
+    /// Tests for the logic.
     /// </summary>
     public class Tests
     {

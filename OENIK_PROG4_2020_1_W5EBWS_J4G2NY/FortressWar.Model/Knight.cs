@@ -1,4 +1,4 @@
-﻿// <copyright file="Fortress.cs" company="PlaceholderCompany">
+﻿// <copyright file="Knight.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Model
@@ -10,9 +10,9 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Describing the fortresses.
+    /// Knight qualities.
     /// </summary>
-    public class Fortress : Character
+    public class Knight : Soldier
     {
         /// <summary>
         /// Calling if the character is dead.
