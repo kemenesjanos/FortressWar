@@ -166,90 +166,116 @@ namespace FortressWar.Model
         public const int BarricadeBaseBounty = 0;
 
         /// <summary>
-        /// Main text colour.
+        /// The characters tile width.
         /// </summary>
-        public static Brush textLineColour = Brushes.White;
+        public const int CharacterTileWidth = 50;
 
         /// <summary>
-        /// Darker text colour.
+        /// The characters tile height.
         /// </summary>
-        public static Brush darkTextLineColour = Brushes.Sienna;
-
-        /// <summary>
-        /// Gold text colour.
-        /// </summary>
-        public static Brush goldTextLineColour = Brushes.Gold;
-
-        /// <summary>
-        /// Base background colour.
-        /// </summary>
-        public static Brush baseBrownBg = Brushes.SaddleBrown;
-
-        /// <summary>
-        /// Road background colour.
-        /// </summary>
-        public static Brush roadBg = Brushes.AntiqueWhite;
-
-        /// <summary>
-        /// Road chooser icon background colour.
-        /// </summary>
-        public static Brush roadChooseIconBg = Brushes.DarkSalmon;
-
-        /// <summary>
-        /// Character chooser icon background colour.
-        /// </summary>
-        public static Brush characterIconBg = Brushes.Sienna;
-
-        /// <summary>
-        /// Character chooser icon line colour.
-        /// </summary>
-        public static Brush characterIconLine = Brushes.SandyBrown;
-
-        /// <summary>
-        /// Active icon background colour.
-        /// </summary>
-        public static Brush activeBg = Brushes.LightCoral;
-
-        //TODO: StyleCop helyesség, átgondolni, hogy mi kell egyáltalán, várnak + láthatatlan méret (h a soldier megtudja támadni)
+        public const int CharacterTileHeight = 50;
 
         /// <summary>
         /// Full width of the game.
         /// </summary>
-        public const int fullWidht = 1600;
+        public const int FullWidht = 1600;
 
         /// <summary>
         /// Full height of the game.
         /// </summary>
-        public const int fullHeight = 900;
+        public const int FullHeight = 900;
 
         /// <summary>
         /// Top area width of the game.
         /// </summary>
-        public static int topWidth = 1600;
+        public const int TopWidth = 1600;
 
         /// <summary>
         /// Top area height of the game.
         /// </summary>
-        public static int topHeight = 200;
+        public const int TopHeight = 200;
 
         /// <summary>
         /// Field area width of the game.
         /// </summary>
-        public static int fieldWidht = 800;
+        public const int FieldWidht = 800;
 
         /// <summary>
         /// Field area height of the game.
         /// </summary>
-        public static int fieldHeight = 700;
+        public const int FieldHeight = 700;
 
         /// <summary>
-        /// Side areas width of the game.
+        /// A side icon width of the game.
         /// </summary>
-        public static int sideWidht = 400;
+        public const int SideWidht = 150;
 
         /// <summary>
-        /// Side area height of the game.
+        /// Side icons height of the game. Should use with /4!.
         /// </summary>
-        public static int sideHeight = 700;
+        public const int SideHeight = 700;
+
+        private static Brush textLineColour = Brushes.White;
+
+        private static Brush darkTextLineColour = Brushes.Sienna;
+
+        private static Brush goldTextLineColour = Brushes.Gold;
+
+        private static Brush baseBrownBg = Brushes.SaddleBrown;
+
+        private static Brush roadBg = Brushes.AntiqueWhite;
+
+        private static Brush roadChooseIconBg = Brushes.DarkSalmon;
+
+        private static Brush characterIconBg = Brushes.Sienna;
+
+        private static Brush characterIconLine = Brushes.SandyBrown;
+
+        private static Brush activeBg = Brushes.LightCoral;
+
+        /// <summary>
+        /// Gets or sets main text colour.
+        /// </summary>
+        public static Brush TextLineColour { get => textLineColour; set => textLineColour = value; }
+
+        /// <summary>
+        /// Gets or sets darker text colour.
+        /// </summary>
+        public static Brush DarkTextLineColour { get => darkTextLineColour; set => darkTextLineColour = value; }
+
+        /// <summary>
+        /// Gets or sets gold text colour.
+        /// </summary>
+        public static Brush GoldTextLineColour { get => goldTextLineColour; set => goldTextLineColour = value; }
+
+        /// <summary>
+        /// Gets or sets base background colour.
+        /// </summary>
+        public static Brush BaseBrownBg { get => baseBrownBg; set => baseBrownBg = value; }
+
+        /// <summary>
+        /// Gets or sets road background colour.
+        /// </summary>
+        public static Brush RoadBg { get => roadBg; set => roadBg = value; }
+
+        /// <summary>
+        /// Gets or sets road chooser icon background colour.
+        /// </summary>
+        public static Brush RoadChooseIconBg { get => roadChooseIconBg; set => roadChooseIconBg = value; }
+
+        /// <summary>
+        /// Gets or sets character chooser icon background colour.
+        /// </summary>
+        public static Brush CharacterIconBg { get => characterIconBg; set => characterIconBg = value; }
+
+        /// <summary>
+        /// Gets or sets character chooser icon line colour.
+        /// </summary>
+        public static Brush CharacterIconLine { get => characterIconLine; set => characterIconLine = value; }
+
+        /// <summary>
+        /// Gets or sets active icon background colour.
+        /// </summary>
+        public static Brush ActiveBg { get => activeBg; set => activeBg = value; }
     }
 }

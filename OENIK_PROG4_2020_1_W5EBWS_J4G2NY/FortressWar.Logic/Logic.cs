@@ -192,7 +192,7 @@ namespace FortressWar.Logic
                     player.Soldiers.Add(
                         new Knight(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fieldWidht / 2 : Config.fieldWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
                         });
                     break;
@@ -200,7 +200,7 @@ namespace FortressWar.Logic
                     player.Soldiers.Add(
                         new Rider(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fieldWidht / 2 : Config.fieldWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
                         });
                     break;
@@ -208,7 +208,7 @@ namespace FortressWar.Logic
                     player.Barricades.Add(
                         new Barricade(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fieldWidht / 2 : Config.fieldWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
                         });
                     break;
@@ -216,7 +216,7 @@ namespace FortressWar.Logic
                     player.Fortress =
                         new Fortress(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fieldWidht / 2 : Config.fieldWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             CY = 0,
                         };
                     break;
