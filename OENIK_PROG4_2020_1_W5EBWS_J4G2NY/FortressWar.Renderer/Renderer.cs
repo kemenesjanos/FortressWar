@@ -53,7 +53,7 @@ namespace FortressWar.Renderer
                 if (isTiled)
                 {
                     ib.TileMode = TileMode.Tile;
-                    //TODO: ib.Viewport = new Rect(0,0, tile , tile); ?
+                    ib.Viewport = new Rect(0, 0, Config.CharacterTileWidth, Config.CharacterTileHeight);
                     ib.ViewportUnits = BrushMappingMode.Absolute;
                 }
 
@@ -64,9 +64,105 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
-        /// Gets make filed brush.
+        /// Gets make field brush.
         /// </summary>
-        private Brush FieldBrush { get { return this.GetBrush("FortressWar.Model.Images.grass.png", true); } }
+        Brush FieldBrush { get { return this.GetBrush("FortressWar.Model.Images.grass.png", true); } }
 
+        /// <summary>
+        /// Gets make Knight1 brush.
+        /// </summary>
+        Brush Knight1Brush { get { return this.GetBrush("FortressWar.Model.Images.1walk1.png", false); } }
+
+        /// <summary>
+        /// Gets make Knight2 brush.
+        /// </summary>
+        Brush Knight2Brush { get { return this.GetBrush("FortressWar.Model.Images.2walk1.png", false); } }
+
+        /// <summary>
+        /// Gets make Rider1 brush.
+        /// </summary>
+        Brush Rider1Brush { get { return this.GetBrush("FortressWar.Model.Images.1hwalk1.png", false); } }
+
+        /// <summary>
+        /// Gets make Rider2 brush.
+        /// </summary>
+        Brush Rider2Brush { get { return this.GetBrush("FortressWar.Model.Images.2hwalk1.png", false); } }
+
+        /// <summary>
+        /// Gets make Barricade1 brush.
+        /// </summary>
+        Brush Barricade1Brush { get { return this.GetBrush("FortressWar.Model.Images.1barricade.png", false); } }
+
+        /// <summary>
+        /// Gets make Barricade2 brush.
+        /// </summary>
+        Brush Barricade2Brush { get { return this.GetBrush("FortressWar.Model.Images.2barricade.png", false); } }
+
+        /// <summary>
+        /// Build of the drawing.
+        /// </summary>
+        /// <returns>The game elements.</returns>
+        public Drawing BuildDrawing()
+        {
+            DrawingGroup dg = new DrawingGroup();
+
+            dg.Children.Add(this.GetBackground());
+            dg.Children.Add(this.GetTopArea());
+            dg.Children.Add(this.GetRoad());
+            dg.Children.Add(this.GetRoadChoose());
+            dg.Children.Add(this.GetCharacterChoose());
+            dg.Children.Add(this.GetFortress());
+
+            dg.Children.Add(this.GetKnight());
+            dg.Children.Add(this.GetRider());
+            dg.Children.Add(this.GetBarricade());
+
+            return dg;
+        }
+
+        private Drawing GetBarricade()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetRider()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetKnight()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetTopArea()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetFortress()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetCharacterChoose()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetRoadChoose()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetRoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Drawing GetBackground()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
