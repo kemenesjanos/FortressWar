@@ -176,6 +176,16 @@ namespace FortressWar.Model
         public const int CharacterTileHeight = 50;
 
         /// <summary>
+        /// The fortress tile width.
+        /// </summary>
+        public const int FortressTileWidth = 250;
+
+        /// <summary>
+        /// The fortress tile height.
+        /// </summary>
+        public const int FortressTileHeight = 550;
+
+        /// <summary>
         /// Full width of the game.
         /// </summary>
         public const int FullWidht = 1600;
