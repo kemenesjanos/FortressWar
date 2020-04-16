@@ -101,9 +101,69 @@ namespace FortressWar.Model
         public const int BarricadeLVLLife = 10;
 
         /// <summary>
-        /// The base Life of the Castle.
+        /// The base Life of the Fortress.
         /// </summary>
-        public const int CastleBaseLife = 1000;
+        public const int FortressBaseLife = 1000;
+
+        /// <summary>
+        /// The base Price of the knight.
+        /// </summary>
+        public const int KnightBasePrice = 200;
+
+        /// <summary>
+        /// The knight costs that much Price when do a level up.
+        /// </summary>
+        public const int KnightLVLPrice = 50;
+
+        /// <summary>
+        /// The Upgrade Price of the knight.
+        /// </summary>
+        public const int KnightUpgradePrice = 200;
+
+        /// <summary>
+        /// The base Price of the rider.
+        /// </summary>
+        public const int RiderBasePrice = 400;
+
+        /// <summary>
+        /// The rider costs that much Price when do a level up.
+        /// </summary>
+        public const int RiderLVLPrice = 100;
+
+        /// <summary>
+        /// The Upgrade Price of the Rider.
+        /// </summary>
+        public const int RiderUpgradePrice = 400;
+
+        /// <summary>
+        /// The base Price of the Barricade.
+        /// </summary>
+        public const int BarricadeBasePrice = 100;
+
+        /// <summary>
+        /// The Barricade costs that much Price when do a level up.
+        /// </summary>
+        public const int BarricadeLVLPrice = 25;
+
+        /// <summary>
+        /// The Upgrade Price of the Barricade.
+        /// </summary>
+        public const int BarricadeUpgradePrice = 200;
+
+        /// <summary>
+        /// The base bounty of the Knight.
+        /// </summary>
+        public const int KnightBaseBounty = 20;
+
+        /// <summary>
+        /// The base bounty of the Rider.
+        /// </summary>
+        public const int RiderBaseBounty = 40;
+
+        /// <summary>
+        /// The base bounty of the Barricade.
+        /// </summary>
+        public const int BarricadeBaseBounty = 0;
 
         /// <summary>
         /// Main text colour.

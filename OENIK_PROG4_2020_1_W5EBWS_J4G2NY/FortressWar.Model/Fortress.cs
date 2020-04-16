@@ -14,5 +14,15 @@ namespace FortressWar.Model
     /// </summary>
     public class Fortress : Character
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fortress"/> class.
+        /// Ctor.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        public Fortress(Player owner)
+        {
+            this.Owner = owner;
+            this.Life = Config.FortressBaseLife;
+        }
     }
 }

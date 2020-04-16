@@ -14,5 +14,36 @@ namespace FortressWar.Model
     /// </summary>
     public class Barricade : Character
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Barricade"/> class.
+        /// Ctor.
+        /// </summary>
+        /// <param name="player">The owner.</param>
+        public Barricade(Player player)
+        {
+            this.LVL = player.BarricadeLVL;
+            this.Owner = player;
+            this.CountBasics();
+        }
+
+        /// <summary>
+        /// Gets or sets level.
+        /// </summary>
+        public int LVL { get; set; }
+
+        /// <summary>
+        /// LVLUp method.
+        /// </summary>
+        public void LVLUp()
+        {
+            this.LVL++;
+            this.CountBasics();
+        }
+
+        private void CountBasics()
+        {
+            this.Bounty = this.LVL * Config.BarricadeBaseBounty;
+            this.Life = Config.BarricadeBaseLife + (this.LVL * Config.BarricadeLVLLife);
+        }
     }
 }

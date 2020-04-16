@@ -16,9 +16,9 @@ namespace FortressWar.Logic
     public enum Characters
     {
         /// <summary>
-        /// Warrior.
+        /// Knight.
         /// </summary>
-        Warrior,
+        Knight,
 
         /// <summary>
         /// Rider.
@@ -34,22 +34,16 @@ namespace FortressWar.Logic
         /// Fortress.
         /// </summary>
         Fortress,
-    }
-
-    /// <summary>
-    /// The Players of the game.
-    /// </summary>
-    public enum Players
-    {
-        /// <summary>
-        /// Player1.
-        /// </summary>
-        Player1,
 
         /// <summary>
-        /// Player2.
+        /// Coin.
         /// </summary>
-        Player2,
+        Coin,
+
+        /// <summary>
+        /// Bonus.
+        /// </summary>
+        Bonus,
     }
 
     /// <summary>
@@ -84,7 +78,7 @@ namespace FortressWar.Logic
         /// <param name="character">The type of the character.</param>
         /// <param name="player">The owner of the new character.</param>
         /// <param name="y">The y coord.</param>
-        void NewCharacter(Characters character, Players player, int y);
+        void NewCharacter(Characters character, Player player, int y);
 
         /// <summary>
         /// If the character is dead.
@@ -113,7 +107,7 @@ namespace FortressWar.Logic
         /// </summary>
         /// <param name="character">The character type to update.</param>
         /// <param name="player">The player.</param>
-        void UpdateCharacter(Characters character, Players player);
+        void UpdateCharacter(Characters character, Player player);
 
         /// <summary>
         /// Save the current state of the game.

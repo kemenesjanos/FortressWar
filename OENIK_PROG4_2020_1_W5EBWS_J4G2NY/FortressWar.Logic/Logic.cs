@@ -148,12 +148,19 @@ namespace FortressWar.Logic
                 soldier.CX += soldier.Speed * Config.StepDistance;
                 foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
                     .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
-                    .Concat(this.model.Bonuses.Cast<Character>())
                     .Concat(this.model.Coins.Cast<Character>()))
                 {
                     if (soldier.IsCollision(item))
                     {
                         soldier.Enemy = item;
+                    }
+                }
+
+                foreach (Bonus item in this.model.Bonuses)
+                {
+                    if (soldier.IsCollision(item))
+                    {
+                        this.GetBonus(soldier);
                     }
                 }
 
@@ -169,9 +176,25 @@ namespace FortressWar.Logic
             return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
         }
 
-        public void NewCharacter(Characters character, Players player, int y)
+        public void NewCharacter(Characters character, Player player, int y)
         {
-            throw new NotImplementedException();
+            switch (character)
+            {
+                case Characters.Knight:
+                    break;
+                case Characters.Rider:
+                    break;
+                case Characters.Barricade:
+                    break;
+                case Characters.Fortress:
+                    break;
+                case Characters.Coin:
+                    break;
+                case Characters.Bonus:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void SaveGameState()
@@ -184,9 +207,10 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
-        public void UpdateCharacter(Characters character, Players players)
+        public void UpdateCharacter(Characters character, Player player)
         {
-            throw new NotImplementedException();
+           
+
         }
     }
 }

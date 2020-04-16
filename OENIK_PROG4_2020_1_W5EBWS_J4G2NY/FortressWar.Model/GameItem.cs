@@ -36,6 +36,11 @@ namespace FortressWar.Model
         public double CY { get; set; }
 
         /// <summary>
+        /// Gets or sets the Y coordinate in tile.
+        /// </summary>
+        public int Y_Tile { get; set; }
+
+        /// <summary>
         /// Gets or sets the game item's rotation in Rad.
         /// </summary>
         public double Rad

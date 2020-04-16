@@ -22,6 +22,7 @@ namespace FortressWar.Model
         {
             Random r = new Random();
             this.Bounty = r.Next(Config.MinCoin, Config.MaxCoin + 1);
+            this.Life = 1;
         }
     }
 }

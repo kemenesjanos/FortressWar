@@ -15,19 +15,19 @@ namespace FortressWar.Model
     public abstract class Soldier : Character
     {
         /// <summary>
-        /// Gets level of the soldier.
+        /// Gets or sets level of the soldier.
         /// </summary>
-        public int LVL { get; private set; }
+        public int LVL { get; set; }
 
         /// <summary>
-        /// Gets power of the soldier.
+        /// Gets or sets power of the soldier.
         /// </summary>
-        public int Power { get; private set; }
+        public int Power { get; set; }
 
         /// <summary>
-        /// Gets speed of the soldier.
+        /// Gets or sets speed of the soldier.
         /// </summary>
-        public int Speed { get; private set; }
+        public int Speed { get; set; }
 
         /// <summary>
         /// Gets or sets the enemy to attack.
