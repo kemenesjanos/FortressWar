@@ -34,7 +34,13 @@ namespace FortressWar.Logic
         /// Fortress.
         /// </summary>
         Fortress,
+    }
 
+    /// <summary>
+    /// Extras.
+    /// </summary>
+    public enum Extras
+    {
         /// <summary>
         /// Coin.
         /// </summary>
@@ -78,7 +84,14 @@ namespace FortressWar.Logic
         /// <param name="character">The type of the character.</param>
         /// <param name="player">The owner of the new character.</param>
         /// <param name="y">The y coord.</param>
-        void NewCharacter(Characters character, Player player, int y);
+        /// <param name="optional_x">The optional x coord.</param>
+        void NewCharacter(Characters character, Player player, int y, int optional_x = 0);
+
+        /// <summary>
+        /// Create new extra.
+        /// </summary>
+        /// <param name="extra">The type of the extra.</param>
+        void NewExtra(Extras extra);
 
         /// <summary>
         /// If the character is dead.

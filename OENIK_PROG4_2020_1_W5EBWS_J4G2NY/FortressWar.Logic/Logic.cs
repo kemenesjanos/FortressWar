@@ -171,26 +171,67 @@ namespace FortressWar.Logic
             }
         }
 
-        private Player OtherPlayer(Soldier soldier)
-        {
-            return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
-        }
-
-        public void NewCharacter(Characters character, Player player, int y)
+        /// <summary>
+        /// Add new character.
+        /// </summary>
+        /// <param name="character">Type of the character.</param>
+        /// <param name="player">The owner.</param>
+        /// <param name="y">The y coord.</param>
+        /// <param name="optional_x">Optional x coord in the barricade.</param>
+        public void NewCharacter(Characters character, Player player, int y, int optional_x = 0)
         {
             switch (character)
             {
                 case Characters.Knight:
+                    player.Soldiers.Add(
+                        new Knight(player)
+                        {
+                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            Y_Tile = y,
+                        });
                     break;
                 case Characters.Rider:
+                    player.Soldiers.Add(
+                        new Rider(player)
+                        {
+                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            Y_Tile = y,
+                        });
                     break;
                 case Characters.Barricade:
+                    player.Barricades.Add(
+                        new Barricade(player)
+                        {
+                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            Y_Tile = y,
+                        });
                     break;
                 case Characters.Fortress:
+                    player.Fortress =
+                        new Fortress(player)
+                        {
+                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            CY = 0,
+                        };
                     break;
-                case Characters.Coin:
+                default:
                     break;
-                case Characters.Bonus:
+            }
+        }
+
+        /// <summary>
+        /// Add new extras.
+        /// </summary>
+        /// <param name="extra">Type of extra.</param>
+        public void NewExtra(Extras extra)
+        {
+            switch (extra)
+            {
+                case Extras.Coin:
+                    this.model.Coins.Add(new Coin());
+                    break;
+                case Extras.Bonus:
+                    this.model.Bonuses.Add(new Bonus());
                     break;
                 default:
                     break;
@@ -209,8 +250,12 @@ namespace FortressWar.Logic
 
         public void UpdateCharacter(Characters character, Player player)
         {
-           
 
+        }
+
+        private Player OtherPlayer(Soldier soldier)
+        {
+            return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
         }
     }
 }

@@ -31,15 +31,6 @@ namespace FortressWar.Model
         /// </summary>
         public int LVL { get; set; }
 
-        /// <summary>
-        /// LVLUp method.
-        /// </summary>
-        public void LVLUp()
-        {
-            this.LVL++;
-            this.CountBasics();
-        }
-
         private void CountBasics()
         {
             this.Bounty = this.LVL * Config.BarricadeBaseBounty;

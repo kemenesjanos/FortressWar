@@ -218,7 +218,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Full height of the game.
         /// </summary>
-        public static int fullHeight = 900;
+        public const int fullHeight = 900;
 
         /// <summary>
         /// Top area width of the game.
