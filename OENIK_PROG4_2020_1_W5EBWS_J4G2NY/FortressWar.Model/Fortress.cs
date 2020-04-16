@@ -15,11 +15,14 @@ namespace FortressWar.Model
     public class Fortress : Character
     {
         /// <summary>
-        /// Calling if the character is dead.
+        /// Initializes a new instance of the <see cref="Fortress"/> class.
+        /// Ctor.
         /// </summary>
-        public override void Dead()
+        /// <param name="owner">The owner.</param>
+        public Fortress(Player owner)
         {
-            throw new NotImplementedException();
+            this.Owner = owner;
+            this.Life = Config.FortressBaseLife;
         }
     }
 }

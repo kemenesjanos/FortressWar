@@ -20,8 +20,14 @@ namespace FortressWar.Model
         public int Life { get; set; }
 
         /// <summary>
-        /// Calling if the character is dead.
+        /// Gets or sets the money what the enemy got if this character dies.
         /// </summary>
-        public abstract void Dead();
+        public int Bounty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player who owns this character.
+        /// </summary>
+        public Player Owner { get; set; }
+
     }
 }

@@ -13,14 +13,35 @@ namespace FortressWar.Model
     /// <summary>
     /// Rider qualities.
     /// </summary>
-    public class Rider : Character
+    public class Rider : Soldier
     {
         /// <summary>
-        /// Calling if the character is dead.
+        /// Initializes a new instance of the <see cref="Rider"/> class.
+        /// Ctor.
         /// </summary>
-        public override void Dead()
+        /// <param name="player">The owner.</param>
+        public Rider(Player player)
         {
-            throw new NotImplementedException();
+            this.LVL = player.RiderLVL;
+            this.Owner = player;
+            this.CountBasics();
+        }
+
+        /// <summary>
+        /// Override LVLUp method.
+        /// </summary>
+        public override void LVLUp()
+        {
+            this.LVL++;
+            this.CountBasics();
+        }
+
+        private void CountBasics()
+        {
+            this.Bounty = this.LVL * Config.RiderBaseBounty;
+            this.Life = Config.RiderBaseLife + (this.LVL * Config.RiderLVLLife);
+            this.Power = Config.RiderBasePower + (this.LVL * Config.RiderLVLPower);
+            this.Speed = Config.RiderBaseSpeed + (this.LVL * Config.RiderLVLSpeed);
         }
     }
 }

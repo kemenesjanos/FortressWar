@@ -16,9 +16,9 @@ namespace FortressWar.Logic
     public enum Characters
     {
         /// <summary>
-        /// Warrior.
+        /// Knight.
         /// </summary>
-        Warrior,
+        Knight,
 
         /// <summary>
         /// Rider.
@@ -37,19 +37,19 @@ namespace FortressWar.Logic
     }
 
     /// <summary>
-    /// The Players of the game.
+    /// Extras.
     /// </summary>
-    public enum Players
+    public enum Extras
     {
         /// <summary>
-        /// Player1.
+        /// Coin.
         /// </summary>
-        Player1,
+        Coin,
 
         /// <summary>
-        /// Player2.
+        /// Bonus.
         /// </summary>
-        Player2,
+        Bonus,
     }
 
     /// <summary>
@@ -84,7 +84,14 @@ namespace FortressWar.Logic
         /// <param name="character">The type of the character.</param>
         /// <param name="player">The owner of the new character.</param>
         /// <param name="y">The y coord.</param>
-        void NewCharacter(Characters character, Players player, int y);
+        /// <param name="optional_x">The optional x coord.</param>
+        void NewCharacter(Characters character, Player player, int y, int optional_x = 0);
+
+        /// <summary>
+        /// Create new extra.
+        /// </summary>
+        /// <param name="extra">The type of the extra.</param>
+        void NewExtra(Extras extra);
 
         /// <summary>
         /// If the character is dead.
@@ -109,18 +116,11 @@ namespace FortressWar.Logic
         void GetBonus(Soldier soldier);
 
         /// <summary>
-        /// The player get a coin.
-        /// </summary>
-        /// <param name="player">The player who get the coin.</param>
-        /// <param name="coin">The coin who the player get.</param>
-        void GetCoin(Players player, Coin coin);
-
-        /// <summary>
         /// Update a character type.
         /// </summary>
         /// <param name="character">The character type to update.</param>
         /// <param name="player">The player.</param>
-        void UpdateCharacter(Characters character, Players player);
+        void UpdateCharacter(Characters character, Player player);
 
         /// <summary>
         /// Save the current state of the game.

@@ -12,7 +12,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the Money.
     /// </summary>
-    public class Coin : GameItem
+    public class Coin : Character
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Coin"/> class.
@@ -21,12 +21,10 @@ namespace FortressWar.Model
         public Coin()
         {
             Random r = new Random();
-            this.Value = r.Next(Config.MinCoin, Config.MaxCoin + 1);
+            this.Bounty = r.Next(Config.MinCoin, Config.MaxCoin + 1);
+            this.Life = 1;
+            this.Y_Tile = r.Next(0, 5);
+            this.CX = r.Next(-Config.fullWidht / 2, Config.fullWidht / 2);
         }
-
-        /// <summary>
-        /// Gets the money value.
-        /// </summary>
-        public int Value { get; }
     }
 }
