@@ -210,6 +210,8 @@ namespace FortressWar.Model
         /// </summary>
         public static Brush activeBg = Brushes.LightCoral;
 
+        //TODO: StyleCop helyesség, átgondolni, hogy mi kell egyáltalán, várnak + láthatatlan méret (h a soldier megtudja támadni)
+
         /// <summary>
         /// Full width of the game.
         /// </summary>

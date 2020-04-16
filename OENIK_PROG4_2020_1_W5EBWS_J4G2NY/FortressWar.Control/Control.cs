@@ -68,7 +68,7 @@ namespace FortressWar.Control
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             throw new NotImplementedException();
-            //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
+            //TODO: logic.moveselector meghívása!
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)

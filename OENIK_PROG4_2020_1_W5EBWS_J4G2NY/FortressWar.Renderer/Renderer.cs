@@ -53,7 +53,7 @@ namespace FortressWar.Renderer
                 if (isTiled)
                 {
                     ib.TileMode = TileMode.Tile;
-                    //TODO: ib.Viewport = new Rect(0,0,,); ?
+                    //TODO: ib.Viewport = new Rect(0,0, tile , tile); ?
                     ib.ViewportUnits = BrushMappingMode.Absolute;
                 }
 
