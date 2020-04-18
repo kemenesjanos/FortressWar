@@ -28,10 +28,20 @@ namespace FortressWar.Model
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Model"/> class.
+        /// Ctor.
+        /// </summary>
         public Model()
         {
-            GameWidth = Config.FullWidht;
-            GameHeight = Config.FullHeight;
+            this.GameWidth = Config.FullWidht;
+            this.GameHeight = Config.FullHeight;
+            this.TileWidth = Config.FieldWidht;
+            this.TileHeight = Config.FieldHeight;
+            this.Potions = new List<Potion>();
+            this.Coins = new List<Coin>();
+            this.Player_1 = new Player();
+            this.Player_2 = new Player();
         }
     }
 }
