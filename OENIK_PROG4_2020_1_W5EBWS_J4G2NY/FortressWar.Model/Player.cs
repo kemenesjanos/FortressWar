@@ -48,9 +48,9 @@ namespace FortressWar.Model
         /// </summary>
         public List<Soldier> Soldiers { get; set; }
 
-        public Player(string name)
+        public Player()
         {
-            this.Name = name;
+            this.Name = "alma";
             this.Money = Config.PlayerBaseMoney;
             //TODO: a fortress coordinátái
             this.Fortress = new Fortress(this);
