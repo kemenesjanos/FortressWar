@@ -13,17 +13,17 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the star and the potion.
     /// </summary>
-    public class Bonus : GameItem
+    public class Potion : GameItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Bonus"/> class.
+        /// Initializes a new instance of the <see cref="Potion"/> class.
         /// Bonus.
         /// </summary>
-        public Bonus()
+        public Potion()
         {
             Random r = new Random();
             this.Y_Tile = r.Next(0, 5);
-            this.CX = r.Next(-Config.FullWidht / 2, Config.FullWidht / 2);
+            this.CX = r.Next(-Config.FieldWidht / 2, Config.FieldWidht / 2);
         }
     }
 }

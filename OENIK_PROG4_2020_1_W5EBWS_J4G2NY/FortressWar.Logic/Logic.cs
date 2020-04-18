@@ -114,7 +114,7 @@ namespace FortressWar.Logic
         /// A soldier get a bonus.
         /// </summary>
         /// <param name="soldier">The soldier who gets the bonus.</param>
-        public void GetBonus(Soldier soldier)
+        public void GetPotion(Soldier soldier)
         {
             soldier.LVLUp();
         }
@@ -161,12 +161,13 @@ namespace FortressWar.Logic
                         }
                     }
 
-                    foreach (Bonus item in this.model.Bonuses)
+                    foreach (Potion item in this.model.Potions)
                     {
                         if (soldier.IsCollision(item))
                         {
-                            this.GetBonus(soldier);
+                            this.GetPotion(soldier);
                         }
+                        //TODO: Eltűntetni a potion-t. + átnevezés esetleg
                     }
 
                     if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
@@ -237,7 +238,7 @@ namespace FortressWar.Logic
                     this.model.Coins.Add(new Coin());
                     break;
                 case Extras.Bonus:
-                    this.model.Bonuses.Add(new Bonus());
+                    this.model.Potions.Add(new Potion());
                     break;
                 default:
                     break;

@@ -112,7 +112,7 @@ namespace FortressWar.Logic
         /// If a soldier get a bonus.
         /// </summary>
         /// <param name="soldier">The soldier who got the bonus.</param>
-        void GetBonus(Soldier soldier);
+        void GetPotion(Soldier soldier);
 
         /// <summary>
         /// Update a character type.

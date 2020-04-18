@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barricade.cs" />
-    <Compile Include="Bonus.cs" />
+    <Compile Include="Potion.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Fortress.cs" />
