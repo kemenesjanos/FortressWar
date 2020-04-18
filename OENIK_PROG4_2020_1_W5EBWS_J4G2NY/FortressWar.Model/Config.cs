@@ -151,6 +151,11 @@ namespace FortressWar.Model
         public const int BarricadeUpgradePrice = 200;
 
         /// <summary>
+        /// Player base money.
+        /// </summary>
+        public const int PlayerBaseMoney = 1000;
+
+        /// <summary>
         /// The base bounty of the Knight.
         /// </summary>
         public const int KnightBaseBounty = 20;

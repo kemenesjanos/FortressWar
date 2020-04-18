@@ -48,6 +48,17 @@ namespace FortressWar.Model
         /// </summary>
         public List<Soldier> Soldiers { get; set; }
 
-        //TODO: contruktor
+        public Player(string name)
+        {
+            this.Name = name;
+            this.Money = Config.PlayerBaseMoney;
+            //TODO: a fortress coordinátái
+            this.Fortress = new Fortress(this);
+            this.KnightLVL = 0;
+            this.RiderLVL = 0;
+            this.BarricadeLVL = 0;
+            this.Barricades = new List<Barricade>();
+            this.Soldiers = new List<Soldier>();
+        }
     }
 }
