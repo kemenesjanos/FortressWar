@@ -27,15 +27,15 @@ namespace FortressWar.Renderer
         private Rect button12;
         private Rect button13;
         private Rect button14;
-        private Rect button21;
-        private Rect button22;
-        private Rect button23;
-        private Rect button24;
-
         private Rect choose11;
         private Rect choose12;
         private Rect choose13;
         private Rect choose14;
+
+        private Rect button21;
+        private Rect button22;
+        private Rect button23;
+        private Rect button24;
         private Rect choose21;
         private Rect choose22;
         private Rect choose23;
@@ -263,21 +263,14 @@ namespace FortressWar.Renderer
             this.GetFortress(ctx);
 
             this.GetBarricade(ctx);
-            this.GetKnight(ctx);
-            this.GetRider(ctx);
+            this.GetSoldier(ctx);
 
-            this.GetKnightFight(ctx);
-            this.GetRiderFight(ctx);
+            this.getSoldierFight(ctx);
 
             this.GetText(ctx);
         }
 
-        private void GetRiderFight(DrawingContext ctx)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void GetKnightFight(DrawingContext ctx)
+        private void getSoldierFight(DrawingContext ctx)
         {
             throw new NotImplementedException();
         }
@@ -293,14 +286,32 @@ namespace FortressWar.Renderer
             //TODO: foreach és ctx összeegyeztetés
         }
 
-        private void GetRider(DrawingContext ctx)
+        private void GetSoldier(DrawingContext ctx)
         {
-            //TODO: foreach és ctx összeegyeztetés
-        }
+            foreach (Soldier soldier in this.model.Player_1.Soldiers)
+            {
+                if (soldier is Knight)
+                {
+                    //TODO: if(Soldier.enemy == null) -> járó gif, else -> támadó if- je, ide meghívni a fight-ot
+                    ctx.DrawGeometry(this.Knight1Brush, null, soldier.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.Rider1Brush, null, soldier.RealArea);
+                }
+            }
 
-        private void GetKnight(DrawingContext ctx)
-        {
-            //TODO: foreach és ctx összeegyeztetés
+            foreach (Soldier soldier in this.model.Player_2.Soldiers)
+            {
+                if (soldier is Knight)
+                {
+                    ctx.DrawGeometry(this.Knight1Brush, null, soldier.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.Rider1Brush, null, soldier.RealArea);
+                }
+            }
         }
 
         private void GetTopArea(DrawingContext ctx)
@@ -317,10 +328,12 @@ namespace FortressWar.Renderer
 
         private void GetCharacterChoose(DrawingContext ctx)
         {
+            //TODO if -> aktív nem akítv
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button11);
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button12);
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button13);
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button14);
+
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button21);
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button22);
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button23);
@@ -329,10 +342,12 @@ namespace FortressWar.Renderer
 
         private void GetRoadChoose(DrawingContext ctx)
         {
+            //TODO if -> aktív nem akítv
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose11);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose12);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose13);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose14);
+
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose21);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose22);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose23);

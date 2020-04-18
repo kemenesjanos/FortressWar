@@ -27,5 +27,11 @@ namespace FortressWar.Model
         {
             throw new NotImplementedException();
         }
+
+        public Model()
+        {
+            GameWidth = Config.FullWidht;
+            GameHeight = Config.FullHeight;
+        }
     }
 }

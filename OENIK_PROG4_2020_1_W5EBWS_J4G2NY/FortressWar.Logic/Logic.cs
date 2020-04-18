@@ -211,6 +211,7 @@ namespace FortressWar.Logic
                         {
                             CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
+                            //TODO: barikád a jatékoshoz legközelebbi térfél pontra helyeződik, X kiszámolása
                         });
                     break;
                 case Characters.Fortress:
