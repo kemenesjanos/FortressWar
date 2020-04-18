@@ -1,4 +1,4 @@
-﻿// <copyright file="MyShape.cs" company="PlaceholderCompany">
+﻿// <copyright file="GameItem.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Model

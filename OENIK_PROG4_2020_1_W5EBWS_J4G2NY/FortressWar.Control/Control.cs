@@ -41,6 +41,9 @@ namespace FortressWar.Control
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             //TODO: model, logic, renderer
+            this.model = new Model();
+            this.logic = new Logic(this.model);
+            this.renderer = new Renderer(this.model);
 
             Window win = Window.GetWindow(this);
             if (win != null)
@@ -62,13 +65,16 @@ namespace FortressWar.Control
         /// <param name="drawingContext">Drawing board upload.</param>
         protected override void OnRender(DrawingContext drawingContext)
         {
-            base.OnRender(drawingContext);
+            if (this.renderer != null)
+            {
+                this.renderer.BuildDrawing(drawingContext);
+            }
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             throw new NotImplementedException();
-            //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
+            //TODO: logic.moveselector meghívása!
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)

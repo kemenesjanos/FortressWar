@@ -24,7 +24,7 @@ namespace FortressWar.Model
             this.Bounty = r.Next(Config.MinCoin, Config.MaxCoin + 1);
             this.Life = 1;
             this.Y_Tile = r.Next(0, 5);
-            this.CX = r.Next(-Config.fullWidht / 2, Config.fullWidht / 2);
+            this.CX = r.Next(-Config.FullWidht / 2, Config.FullWidht / 2);
         }
     }
 }

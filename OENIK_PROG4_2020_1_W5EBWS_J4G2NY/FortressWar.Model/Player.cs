@@ -47,5 +47,7 @@ namespace FortressWar.Model
         /// Gets or sets the soldier list.
         /// </summary>
         public List<Soldier> Soldiers { get; set; }
+
+        //TODO: contruktor
     }
 }

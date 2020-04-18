@@ -37,7 +37,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Gets or sets a list of bonuses in the game.
         /// </summary>
-        List<Bonus> Bonuses { get; set; }
+        List<Potion> Potions { get; set; }
 
         /// <summary>
         /// Gets or sets a list of monies in the game.

@@ -18,7 +18,7 @@ namespace FortressWar.Model
         public double GameHeight { get; set; }
         public double TileWidth { get; set; }
         public double TileHeight { get; set; }
-        public List<Bonus> Bonuses { get; set; }
+        public List<Potion> Potions { get; set; }
         public List<Coin> Coins { get; set; }
         public Player Player_1 { get; set; }
         public Player Player_2 { get; set; }
@@ -26,6 +26,12 @@ namespace FortressWar.Model
         public void MapBuild()
         {
             throw new NotImplementedException();
+        }
+
+        public Model()
+        {
+            GameWidth = Config.FullWidht;
+            GameHeight = Config.FullHeight;
         }
     }
 }

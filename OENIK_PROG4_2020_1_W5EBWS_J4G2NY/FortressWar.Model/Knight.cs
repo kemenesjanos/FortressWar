@@ -8,6 +8,8 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Knight qualities.
@@ -24,6 +26,7 @@ namespace FortressWar.Model
             this.LVL = player.KnightLVL;
             this.Owner = player;
             this.CountBasics();
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
 
         /// <summary>

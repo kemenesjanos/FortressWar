@@ -114,7 +114,7 @@ namespace FortressWar.Logic
         /// A soldier get a bonus.
         /// </summary>
         /// <param name="soldier">The soldier who gets the bonus.</param>
-        public void GetBonus(Soldier soldier)
+        public void GetPotion(Soldier soldier)
         {
             soldier.LVLUp();
         }
@@ -124,49 +124,56 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
-        public void MoveSelector(int y)
+        public void MoveSelector(int x, int y)
         {
-            throw new NotImplementedException();
+            //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
         }
 
-        public void MoveSoldier(Soldier soldier)
+        /// <summary>
+        /// Moving the soldiers and call attack if it needs.
+        /// </summary>
+        public void MoveSoldier()
         {
-            if (soldier.Enemy != null)
+            foreach (Soldier soldier in this.model.Player_1.Soldiers.Concat(this.model.Player_2.Soldiers))
             {
-                if (soldier.Enemy is Soldier)
+                if (soldier.Enemy != null)
                 {
-                    (soldier.Enemy as Soldier).Enemy = soldier;
-                }
-
-                if (this.Attack(soldier.Enemy, soldier.Power))
-                {
-                    soldier.Enemy = null;
-                }
-            }
-            else
-            {
-                soldier.CX += soldier.Speed * Config.StepDistance;
-                foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
-                    .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
-                    .Concat(this.model.Coins.Cast<Character>()))
-                {
-                    if (soldier.IsCollision(item))
+                    if (soldier.Enemy is Soldier)
                     {
-                        soldier.Enemy = item;
+                        (soldier.Enemy as Soldier).Enemy = soldier;
+                    }
+
+                    if (this.Attack(soldier.Enemy, soldier.Power))
+                    {
+                        soldier.Enemy = null;
                     }
                 }
-
-                foreach (Bonus item in this.model.Bonuses)
+                else
                 {
-                    if (soldier.IsCollision(item))
+                    soldier.CX += soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : -soldier.Speed * Config.StepDistance;
+                    foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
+                        .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
+                        .Concat(this.model.Coins.Cast<Character>()))
                     {
-                        this.GetBonus(soldier);
+                        if (soldier.IsCollision(item))
+                        {
+                            soldier.Enemy = item;
+                        }
                     }
-                }
 
-                if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
-                {
-                    soldier.Enemy = this.OtherPlayer(soldier).Fortress;
+                    foreach (Potion item in this.model.Potions)
+                    {
+                        if (soldier.IsCollision(item))
+                        {
+                            this.GetPotion(soldier);
+                        }
+                        //TODO: Eltűntetni a potion-t. + átnevezés esetleg
+                    }
+
+                    if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
+                    {
+                        soldier.Enemy = this.OtherPlayer(soldier).Fortress;
+                    }
                 }
             }
         }
@@ -186,7 +193,7 @@ namespace FortressWar.Logic
                     player.Soldiers.Add(
                         new Knight(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
                         });
                     break;
@@ -194,7 +201,7 @@ namespace FortressWar.Logic
                     player.Soldiers.Add(
                         new Rider(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
                         });
                     break;
@@ -202,15 +209,16 @@ namespace FortressWar.Logic
                     player.Barricades.Add(
                         new Barricade(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             Y_Tile = y,
+                            //TODO: barikád a jatékoshoz legközelebbi térfél pontra helyeződik, X kiszámolása
                         });
                     break;
                 case Characters.Fortress:
                     player.Fortress =
                         new Fortress(player)
                         {
-                            CX = player == this.model.Player_1 ? -Config.fullWidht / 2 : Config.fullWidht / 2,
+                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
                             CY = 0,
                         };
                     break;
@@ -231,7 +239,7 @@ namespace FortressWar.Logic
                     this.model.Coins.Add(new Coin());
                     break;
                 case Extras.Bonus:
-                    this.model.Bonuses.Add(new Bonus());
+                    this.model.Potions.Add(new Potion());
                     break;
                 default:
                     break;

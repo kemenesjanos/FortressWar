@@ -61,8 +61,7 @@ namespace FortressWar.Logic
         /// <summary>
         /// Move Soldier ahead.
         /// </summary>
-        /// <param name="soldier">The Soldier to move.</param>
-        void MoveSoldier(Soldier soldier);
+        void MoveSoldier();
 
         /// <summary>
         /// Decrease the character's life with a Demage.
@@ -76,7 +75,7 @@ namespace FortressWar.Logic
         /// Move the selector.
         /// </summary>
         /// <param name="y">The y coord to move.</param>
-        void MoveSelector(int y);
+        void MoveSelector(int x, int y);
 
         /// <summary>
         /// Create a new character.
@@ -113,7 +112,7 @@ namespace FortressWar.Logic
         /// If a soldier get a bonus.
         /// </summary>
         /// <param name="soldier">The soldier who got the bonus.</param>
-        void GetBonus(Soldier soldier);
+        void GetPotion(Soldier soldier);
 
         /// <summary>
         /// Update a character type.
