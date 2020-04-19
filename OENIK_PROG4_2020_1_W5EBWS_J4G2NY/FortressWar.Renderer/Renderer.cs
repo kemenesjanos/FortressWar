@@ -109,6 +109,7 @@ namespace FortressWar.Renderer
             this.choose24 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, -(Config.TopWidth + 90 * 4 + Config.CharacterTileHeight * 3),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
+            //TODO: ez egy karakter objektum, ennek nem itt kell majd lennie
             this.fortress1 = new Rect(Config.SideWidht, -Config.TopHeight,
                 Config.FortressTileWidth, Config.FortressTileHeight);
             this.fortress2 = new Rect(Config.FieldWidht - Config.SideWidht - Config.FortressTileWidth, -Config.TopHeight,
@@ -277,6 +278,7 @@ namespace FortressWar.Renderer
 
         private void GetText(DrawingContext ctx)
         {
+            //TODO: nagyon sok kell, ha többi hátérelem, oké, majd akkor beállítjuk
             throw new NotImplementedException();
         }
 

@@ -56,7 +56,7 @@ namespace FortressWar.Control
                 win.KeyDown += this.Win_KeyDown;
             }
 
-            //TODO: logic.refreshscreen, és utána invalidateVisual
+            this.InvalidateVisual();
         }
 
         /// <summary>
@@ -79,7 +79,6 @@ namespace FortressWar.Control
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
             //TODO: mozgatás események meghívása.
         }
     }
