@@ -210,7 +210,7 @@ namespace FortressWar.Logic
                     case Characters.Barricade:
                         if (player == this.model.Player_1)
                         {
-                            int tX = 0;
+                            int tX = Config.CharacterTileWidth;
                             while (tX < Config.FieldWidht / 2 && this.model.Player_1.Barricades.FirstOrDefault(x => x.CX == tX) != null)
                             {
                                 tX += Config.CharacterTileWidth;
@@ -228,7 +228,7 @@ namespace FortressWar.Logic
                         }
                         else
                         {
-                            int tX1 = Config.FieldWidht;
+                            int tX1 = Config.FieldWidht-Config.CharacterTileWidth;
                             while (tX1 > Config.FieldWidht / 2 && this.model.Player_2.Barricades.FirstOrDefault(x => x.CX == tX1) != null)
                             {
                                 tX1 -= Config.CharacterTileWidth;
@@ -279,9 +279,9 @@ namespace FortressWar.Logic
         public void StartGame()
         {
             this.model.Player_1.Fortress =
-                new Fortress(this.model.Player_1, -Config.FieldWidht / 2, 3);
+                new Fortress(this.model.Player_1, -Config.FieldWidht / 2);
             this.model.Player_2.Fortress =
-                new Fortress(this.model.Player_2, Config.FieldWidht / 2, 3);
+                new Fortress(this.model.Player_2, Config.FieldWidht / 2);
         }
 
         /// <summary>

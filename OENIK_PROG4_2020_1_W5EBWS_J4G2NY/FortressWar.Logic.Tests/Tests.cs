@@ -98,16 +98,17 @@ namespace FortressWar.Logic.Tests
         public void TestMoveSoldier()
         {
             this.logic.StartGame();
-            //Attack, not attack, fortress attack
+
+            // Knight vs knight same line
             this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
             this.logic.NewCharacter(Characters.Knight, this.model.Player_2, 1);
             int z = 0;
-            
+
             this.model.Player_1.Soldiers.FirstOrDefault().CX += 70 * Config.StepDistance *
                 this.model.Player_1.Soldiers.FirstOrDefault().Speed;
             this.model.Player_2.Soldiers.FirstOrDefault().CX -= 70 * Config.StepDistance *
                 this.model.Player_1.Soldiers.FirstOrDefault().Speed;
-               
+
             while (!this.model.Player_1.Soldiers.FirstOrDefault().IsCollision(
                 this.model.Player_2.Soldiers.FirstOrDefault()) && z < 50)
             {
@@ -116,9 +117,74 @@ namespace FortressWar.Logic.Tests
             }
 
             Assert.That(z < 50);
+
+            // Attack is good.
             this.logic.MoveSoldier();
             Assert.That(this.model.Player_1.Soldiers.FirstOrDefault().Life < Config.KnightBaseLife ||
                 this.model.Player_2.Soldiers.FirstOrDefault().Life < Config.KnightBaseLife);
+
+            // Attack until die
+            z = 0;
+            while (this.model.Player_1.Soldiers.FirstOrDefault() != null &&
+                this.model.Player_2.Soldiers.FirstOrDefault() != null && z < 100)
+            {
+                this.logic.MoveSoldier();
+                z++;
+            }
+
+            Assert.That(z < 100);
+
+            // Different lines
+            this.model.Player_1.Soldiers.Clear();
+            this.model.Player_2.Soldiers.Clear();
+
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_2, 2);
+            z = 0;
+
+            this.model.Player_1.Soldiers.FirstOrDefault().CX += 70 * Config.StepDistance *
+                this.model.Player_1.Soldiers.FirstOrDefault().Speed;
+            this.model.Player_2.Soldiers.FirstOrDefault().CX -= 70 * Config.StepDistance *
+                this.model.Player_1.Soldiers.FirstOrDefault().Speed;
+
+            while (!this.model.Player_1.Soldiers.FirstOrDefault().IsCollision(
+                this.model.Player_2.Soldiers.FirstOrDefault()) && z < 50)
+            {
+                this.logic.MoveSoldier();
+                z++;
+            }
+
+            Assert.That(z == 50);
+
+            // Barricade vs rider
+            this.model.Player_1.Soldiers.Clear();
+            this.model.Player_2.Soldiers.Clear();
+
+            this.logic.NewCharacter(Characters.Rider, this.model.Player_1, 1);
+            this.logic.NewCharacter(Characters.Barricade, this.model.Player_2, 1);
+            z = 0;
+
+            this.model.Player_1.Soldiers.FirstOrDefault().CX = 740;
+
+            Assert.IsNotNull(this.model.Player_2.Barricades.FirstOrDefault());
+            while (this.model.Player_2.Barricades.FirstOrDefault() != null && z < 500)
+            {
+                this.logic.MoveSoldier();
+                z++;
+            }
+
+            Assert.That(z < 500);
+
+            z = 0;
+
+            // Rider vs fortress
+            while (this.model.Player_2.Fortress.Life == Config.FortressBaseLife && z < 500)
+            {
+                this.logic.MoveSoldier();
+                z++;
+            }
+
+            Assert.That(z < 1500);
         }
 
         [Test]
