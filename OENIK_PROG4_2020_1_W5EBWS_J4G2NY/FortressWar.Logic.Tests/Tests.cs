@@ -18,9 +18,12 @@ namespace FortressWar.Logic.Tests
     [TestFixture]
     public class Tests
     {
-        Model model;
-        Logic logic;
+        private Model model;
+        private Logic logic;
 
+        /// <summary>
+        /// Test setup.
+        /// </summary>
         [OneTimeSetUp]
         public void Init()
         {
@@ -28,6 +31,9 @@ namespace FortressWar.Logic.Tests
             this.logic = new Logic(this.model);
         }
 
+        /// <summary>
+        /// Test Attack.
+        /// </summary>
         [Test]
         public void TestAttack()
         {
@@ -48,6 +54,9 @@ namespace FortressWar.Logic.Tests
             Assert.IsEmpty(this.model.Player_1.Soldiers);
         }
 
+        /// <summary>
+        /// Test Die.
+        /// </summary>
         [Test]
         public void TestDie()
         {
@@ -90,6 +99,9 @@ namespace FortressWar.Logic.Tests
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Test new character.
+        /// </summary>
         [Test]
         public void TestNewCharacter()
         {
@@ -120,6 +132,9 @@ namespace FortressWar.Logic.Tests
             }
         }
 
+        /// <summary>
+        /// Test new extra.
+        /// </summary>
         [Test]
         public void TestNewExtra()
         {
@@ -138,6 +153,9 @@ namespace FortressWar.Logic.Tests
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Test start game.
+        /// </summary>
         [Test]
         public void TestStartGame()
         {
@@ -150,9 +168,22 @@ namespace FortressWar.Logic.Tests
             Assert.That(this.model.Player_1.Fortress.Life == Config.FortressBaseLife);
         }
 
+        /// <summary>
+        /// Test update character.
+        /// </summary>
+        [Test]
         public void TestUpdateCharacter()
         {
-            throw new NotImplementedException();
+            Assert.That(this.model.Player_1.BarricadeLVL == 0);
+            int lt = 0;
+            for (int i = 0; i < Config.MaxLVL; i++)
+            {
+                this.logic.UpdateCharacter(Characters.Barricade, this.model.Player_1);
+                Assert.That(this.model.Player_1.BarricadeLVL == ++lt);
+            }
+
+            this.logic.UpdateCharacter(Characters.Barricade, this.model.Player_1);
+            Assert.That(this.model.Player_1.BarricadeLVL == lt);
         }
     }
 }
