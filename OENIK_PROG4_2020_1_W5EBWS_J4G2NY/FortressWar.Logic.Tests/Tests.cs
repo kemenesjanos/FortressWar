@@ -31,14 +31,38 @@ namespace FortressWar.Logic.Tests
         [Test]
         public void TestAttack()
         {
+            this.logic.NewCharacter(Characters.Rider, this.model.Player_1, 1);
+            int lt = this.model.Player_1.Soldiers.FirstOrDefault().Life;
+            for (int i = 0; i < Config.RiderBaseLife - 1; i++)
+            {
+                this.logic.Attack(this.model.Player_1.Soldiers.FirstOrDefault(), 1);
+                Assert.That(this.model.Player_1.Soldiers.FirstOrDefault().Life == --lt);
+                Assert.IsNotEmpty(this.model.Player_1.Soldiers);
+            }
 
-            
+            Assert.IsTrue(this.logic.Attack(this.model.Player_1.Soldiers.FirstOrDefault(), 1));
+            Assert.IsEmpty(this.model.Player_1.Soldiers);
 
+            this.logic.NewCharacter(Characters.Rider, this.model.Player_1, 1);
+            this.logic.Attack(this.model.Player_1.Soldiers.FirstOrDefault(), Config.RiderBaseLife + 100);
+            Assert.IsEmpty(this.model.Player_1.Soldiers);
         }
 
+        [Test]
         public void TestDie()
         {
-            throw new NotImplementedException();
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
+            Assert.IsNotEmpty(this.model.Player_1.Soldiers);
+            int tl = this.model.Player_2.Money;
+            int et = this.model.Player_1.Soldiers.FirstOrDefault().Bounty;
+            this.logic.Die(this.model.Player_1.Soldiers.FirstOrDefault());
+            Assert.IsEmpty(this.model.Player_1.Soldiers);
+            Assert.That(this.model.Player_2.Money == tl + et);
+
+            this.logic.NewCharacter(Characters.Barricade, this.model.Player_1, 0);
+            Assert.IsNotEmpty(this.model.Player_1.Barricades);
+            this.logic.Die(this.model.Player_1.Barricades.LastOrDefault());
+            Assert.IsEmpty(this.model.Player_1.Barricades);
         }
 
         public void TestEndGame()

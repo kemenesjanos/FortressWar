@@ -107,7 +107,7 @@ namespace FortressWar.Logic
 
         public void EndGame()
         {
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
@@ -166,8 +166,8 @@ namespace FortressWar.Logic
                         if (soldier.IsCollision(item))
                         {
                             this.GetPotion(soldier);
+                            this.model.Potions.Remove(item);
                         }
-                        //TODO: Eltűntetni a potion-t. + átnevezés esetleg
                     }
 
                     if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
