@@ -282,13 +282,13 @@ namespace FortressWar.Logic
                 new Fortress(this.model.Player_1)
                 {
                     CX = -Config.FieldWidht / 2,
-                    CY = 0,
+                    Y_Tile = 3,
                 };
             this.model.Player_2.Fortress =
                 new Fortress(this.model.Player_2)
                 {
                     CX = Config.FieldWidht / 2,
-                    CY = 0,
+                    Y_Tile = 3,
                 };
         }
 

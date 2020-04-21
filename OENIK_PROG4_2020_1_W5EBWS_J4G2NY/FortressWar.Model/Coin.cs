@@ -8,6 +8,8 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Describing the Money.
@@ -25,6 +27,7 @@ namespace FortressWar.Model
             this.Life = 1;
             this.Y_Tile = r.Next(0, 5);
             this.CX = r.Next(-Config.FullWidht / 2, Config.FullWidht / 2);
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
     }
 }

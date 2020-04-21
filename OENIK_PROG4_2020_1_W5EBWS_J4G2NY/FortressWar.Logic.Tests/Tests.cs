@@ -94,9 +94,42 @@ namespace FortressWar.Logic.Tests
             throw new NotImplementedException();
         }
 
+        [Test]
         public void TestMoveSoldier()
         {
-            throw new NotImplementedException();
+            //Attack, not attack, fortress attack
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_2, 1);
+            int z = 0;
+            this.model.Player_1.Soldiers.FirstOrDefault().CX += 70 * Config.StepDistance *
+                this.model.Player_1.Soldiers.FirstOrDefault().Speed;
+            this.model.Player_2.Soldiers.FirstOrDefault().CX -= 70 * Config.StepDistance *
+                this.model.Player_1.Soldiers.FirstOrDefault().Speed;
+            while (this.model.Player_1.Soldiers.FirstOrDefault().IsCollision(
+                this.model.Player_2.Soldiers.FirstOrDefault()) || z < 50)
+            {
+                this.logic.MoveSoldier();
+                z++;
+            }
+
+            Assert.That(z < 100);
+        }
+
+        [Test]
+        public void TestIsCollision()
+        {
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
+            this.model.Player_1.Soldiers.FirstOrDefault().CX = 0;
+            this.logic.NewCharacter(Characters.Knight, this.model.Player_2, 1);
+            this.model.Player_2.Soldiers.FirstOrDefault().CX = 0;
+
+            Assert.That(this.model.Player_1.Soldiers.FirstOrDefault().IsCollision(
+                this.model.Player_2.Soldiers.FirstOrDefault()));
+
+            this.model.Player_2.Soldiers.FirstOrDefault().CX = 10;
+
+            Assert.That(this.model.Player_1.Soldiers.FirstOrDefault().IsCollision(
+                this.model.Player_2.Soldiers.FirstOrDefault()));
         }
 
         /// <summary>
