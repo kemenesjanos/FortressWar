@@ -279,17 +279,9 @@ namespace FortressWar.Logic
         public void StartGame()
         {
             this.model.Player_1.Fortress =
-                new Fortress(this.model.Player_1)
-                {
-                    CX = -Config.FieldWidht / 2,
-                    Y_Tile = 3,
-                };
+                new Fortress(this.model.Player_1, -Config.FieldWidht / 2, 3);
             this.model.Player_2.Fortress =
-                new Fortress(this.model.Player_2)
-                {
-                    CX = Config.FieldWidht / 2,
-                    Y_Tile = 3,
-                };
+                new Fortress(this.model.Player_2, Config.FieldWidht / 2, 3);
         }
 
         /// <summary>

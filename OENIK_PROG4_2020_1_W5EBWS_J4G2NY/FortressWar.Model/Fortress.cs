@@ -21,11 +21,17 @@ namespace FortressWar.Model
         /// Ctor.
         /// </summary>
         /// <param name="owner">The owner.</param>
-        public Fortress(Player owner)
+        /// <param name="cx">Centered x coord.</param>
+        /// <param name="y">Tile y coord.</param>
+        public Fortress(Player owner, double cx, int y)
         {
+            this.CX = cx;
+            this.Y_Tile = y;
             this.Owner = owner;
             this.Life = Config.FortressBaseLife;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight * 4));
         }
+
+        public double Cx { get; }
     }
 }
