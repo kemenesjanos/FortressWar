@@ -292,9 +292,68 @@ namespace FortressWar.Logic
                 };
         }
 
+        /// <summary>
+        /// Update a player's character.
+        /// </summary>
+        /// <param name="character">The updated character.</param>
+        /// <param name="player">The owner of the character.</param>
         public void UpdateCharacter(Characters character, Player player)
         {
+            if (player == this.model.Player_1)
+            {
+                switch (character)
+                {
+                    case Characters.Knight:
+                        if (this.model.Player_1.KnightLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.KnightLVL++;
+                        }
 
+                        break;
+                    case Characters.Rider:
+                        if (this.model.Player_1.RiderLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.RiderLVL++;
+                        }
+
+                        break;
+                    case Characters.Barricade:
+                        if (this.model.Player_1.BarricadeLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.BarricadeLVL++;
+                        }
+
+                        break;
+                }
+            }
+            else
+            {
+                switch (character)
+                {
+                    case Characters.Knight:
+                        if (this.model.Player_2.KnightLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.KnightLVL++;
+                        }
+
+                        break;
+                    case Characters.Rider:
+                        if (this.model.Player_2.RiderLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.RiderLVL++;
+                        }
+
+                        break;
+                    case Characters.Barricade:
+                        if (this.model.Player_2.BarricadeLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.BarricadeLVL++;
+                        }
+
+                        break;
+                }
+
+            }
         }
 
         private Player OtherPlayer(Soldier soldier)
