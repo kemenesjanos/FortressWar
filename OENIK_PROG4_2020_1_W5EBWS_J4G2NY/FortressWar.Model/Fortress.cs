@@ -29,7 +29,7 @@ namespace FortressWar.Model
             this.Y_Tile = 1;
             this.Owner = owner;
             this.Life = Config.FortressBaseLife;
-            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight * 8));
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.FortressTileWidth, Config.FortressTileHeight));
         }
     }
 }

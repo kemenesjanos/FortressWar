@@ -122,7 +122,7 @@ namespace FortressWar.Renderer
         /// <param name="fname">Image name.</param>
         /// <param name="isTiled">Repeating of the image.</param>
         /// <returns>The image as brush.</returns>
-        private Brush GetBrush(string fname, bool isTiled)
+        public Brush GetBrush(string fname, bool isTiled)
         {
             if (!this.brushes.ContainsKey(fname))
             {
@@ -153,7 +153,7 @@ namespace FortressWar.Renderer
         /// <param name="fname">Image name.</param>
         /// <param name="isTiled">Repeating of the image.</param>
         /// <returns>The image as brush.</returns>
-        private Brush GetFortressBrush(string fname, bool isTiled)
+        public Brush GetFortressBrush(string fname, bool isTiled)
         {
             if (!this.brushes.ContainsKey(fname))
             {
@@ -271,24 +271,24 @@ namespace FortressWar.Renderer
             this.GetText(ctx);
         }
 
-        private void getSoldierFight(DrawingContext ctx)
+        public void getSoldierFight(DrawingContext ctx)
         {
             throw new NotImplementedException();
         }
 
-        private void GetText(DrawingContext ctx)
+        public void GetText(DrawingContext ctx)
         {
             //TODO: nagyon sok kell, ha többi hátérelem, oké, majd akkor beállítjuk
             throw new NotImplementedException();
         }
 
-        private void GetBarricade(DrawingContext ctx)
+        public void GetBarricade(DrawingContext ctx)
         {
             //TODO: old vizsgálat
             //TODO: foreach és ctx összeegyeztetés
         }
 
-        private void GetSoldier(DrawingContext ctx)
+        public void GetSoldier(DrawingContext ctx)
         {
             foreach (Soldier soldier in this.model.Player_1.Soldiers)
             {
@@ -316,19 +316,19 @@ namespace FortressWar.Renderer
             }
         }
 
-        private void GetTopArea(DrawingContext ctx)
+        public void GetTopArea(DrawingContext ctx)
         {
             ctx.DrawRectangle(Config.BaseBrownBg, null, this.topBackgroundRect);
         }
 
-        private void GetFortress(DrawingContext ctx)
+        public void GetFortress(DrawingContext ctx)
         {
             //TODO: old vizsgálat, gondolom kellene ide egy if, h nézze, h mikor h rajzolja ki
             ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
             ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
         }
 
-        private void GetCharacterChoose(DrawingContext ctx)
+        public void GetCharacterChoose(DrawingContext ctx)
         {
             //TODO if -> aktív nem akítv
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button11);
@@ -342,7 +342,7 @@ namespace FortressWar.Renderer
             ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 2), this.button24);
         }
 
-        private void GetRoadChoose(DrawingContext ctx)
+        public void GetRoadChoose(DrawingContext ctx)
         {
             //TODO if -> aktív nem akítv
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose11);
@@ -356,7 +356,7 @@ namespace FortressWar.Renderer
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose24);
         }
 
-        private void GetRoad(DrawingContext ctx)
+        public void GetRoad(DrawingContext ctx)
         {
             ctx.DrawRectangle(Config.RoadBg, null, this.road1);
             ctx.DrawRectangle(Config.RoadBg, null, this.road2);
@@ -364,7 +364,7 @@ namespace FortressWar.Renderer
             ctx.DrawRectangle(Config.RoadBg, null, this.road4);
         }
 
-        private void GetBackground(DrawingContext ctx)
+        public void GetBackground(DrawingContext ctx)
         {
             ctx.DrawRectangle(this.FieldBrush, null, this.backgroundRect);
         }
