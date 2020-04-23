@@ -31,9 +31,15 @@ namespace FortressWar.Model
         public double CX { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y coordinate from the center in tile.
+        /// Gets or set the Y coordinate from the center in tile.
         /// </summary>
-        public double CY { get; set; }
+        public double CY
+        {
+            get
+            {
+                return (this.Y_Tile - 2) * Config.CharacterTileHeight;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Y coordinate in tile.

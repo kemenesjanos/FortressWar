@@ -21,6 +21,11 @@ namespace FortressWar.Model
         public const double StepDistance = 5;
 
         /// <summary>
+        /// Maximum LVL of a character.
+        /// </summary>
+        public const int MaxLVL = 10;
+
+        /// <summary>
         /// Minimum coin for the random bonus.
         /// </summary>
         public const int MinCoin = 10;

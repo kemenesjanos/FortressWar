@@ -29,11 +29,6 @@ namespace FortressWar.Logic
         /// Barricade.
         /// </summary>
         Barricade,
-
-        /// <summary>
-        /// Fortress.
-        /// </summary>
-        Fortress,
     }
 
     /// <summary>
@@ -47,9 +42,9 @@ namespace FortressWar.Logic
         Coin,
 
         /// <summary>
-        /// Bonus.
+        /// Potion.
         /// </summary>
-        Bonus,
+        Potion,
     }
 
     /// <summary>
@@ -83,8 +78,7 @@ namespace FortressWar.Logic
         /// <param name="character">The type of the character.</param>
         /// <param name="player">The owner of the new character.</param>
         /// <param name="y">The y coord.</param>
-        /// <param name="optional_x">The optional x coord.</param>
-        void NewCharacter(Characters character, Player player, int y, int optional_x = 0);
+        void NewCharacter(Characters character, Player player, int y);
 
         /// <summary>
         /// Create new extra.

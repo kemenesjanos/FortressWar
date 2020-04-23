@@ -107,7 +107,7 @@ namespace FortressWar.Logic
 
         public void EndGame()
         {
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
@@ -166,8 +166,8 @@ namespace FortressWar.Logic
                         if (soldier.IsCollision(item))
                         {
                             this.GetPotion(soldier);
+                            this.model.Potions.Remove(item);
                         }
-                        //TODO: Eltűntetni a potion-t. + átnevezés esetleg
                     }
 
                     if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
@@ -184,46 +184,71 @@ namespace FortressWar.Logic
         /// <param name="character">Type of the character.</param>
         /// <param name="player">The owner.</param>
         /// <param name="y">The y coord.</param>
-        /// <param name="optional_x">Optional x coord in the barricade.</param>
-        public void NewCharacter(Characters character, Player player, int y, int optional_x = 0)
+        public void NewCharacter(Characters character, Player player, int y)
         {
-            switch (character)
+            // TODO: Fizetések
+            if (y < 5 && y >= 0)
             {
-                case Characters.Knight:
-                    player.Soldiers.Add(
-                        new Knight(player)
+                switch (character)
+                {
+                    case Characters.Knight:
+                        player.Soldiers.Add(
+                            new Knight(player)
+                            {
+                                CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
+                                Y_Tile = y,
+                            });
+                        break;
+                    case Characters.Rider:
+                        player.Soldiers.Add(
+                            new Rider(player)
+                            {
+                                CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
+                                Y_Tile = y,
+                            });
+                        break;
+                    case Characters.Barricade:
+                        if (player == this.model.Player_1)
                         {
-                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
-                            Y_Tile = y,
-                        });
-                    break;
-                case Characters.Rider:
-                    player.Soldiers.Add(
-                        new Rider(player)
+                            int tX = Config.CharacterTileWidth;
+                            while (tX < Config.FieldWidht / 2 && this.model.Player_1.Barricades.FirstOrDefault(x => x.CX == tX) != null)
+                            {
+                                tX += Config.CharacterTileWidth;
+                            }
+
+                            if (tX < Config.FieldWidht / 2)
+                            {
+                                player.Barricades.Add(
+                                    new Barricade(player)
+                                    {
+                                        CX = tX,
+                                        Y_Tile = y,
+                                    });
+                            }
+                        }
+                        else
                         {
-                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
-                            Y_Tile = y,
-                        });
-                    break;
-                case Characters.Barricade:
-                    player.Barricades.Add(
-                        new Barricade(player)
-                        {
-                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
-                            Y_Tile = y,
-                            //TODO: barikád a jatékoshoz legközelebbi térfél pontra helyeződik, X kiszámolása
-                        });
-                    break;
-                case Characters.Fortress:
-                    player.Fortress =
-                        new Fortress(player)
-                        {
-                            CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
-                            CY = 0,
-                        };
-                    break;
-                default:
-                    break;
+                            int tX1 = Config.FieldWidht-Config.CharacterTileWidth;
+                            while (tX1 > Config.FieldWidht / 2 && this.model.Player_2.Barricades.FirstOrDefault(x => x.CX == tX1) != null)
+                            {
+                                tX1 -= Config.CharacterTileWidth;
+                            }
+
+                            if (tX1 > Config.FieldWidht / 2)
+                            {
+                                player.Barricades.Add(
+                                    new Barricade(player)
+                                    {
+                                        CX = tX1,
+                                        Y_Tile = y,
+                                    });
+                            }
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -238,7 +263,7 @@ namespace FortressWar.Logic
                 case Extras.Coin:
                     this.model.Coins.Add(new Coin());
                     break;
-                case Extras.Bonus:
+                case Extras.Potion:
                     this.model.Potions.Add(new Potion());
                     break;
                 default:
@@ -253,12 +278,74 @@ namespace FortressWar.Logic
 
         public void StartGame()
         {
-            throw new NotImplementedException();
+            this.model.Player_1.Fortress =
+                new Fortress(this.model.Player_1, -Config.FieldWidht / 2);
+            this.model.Player_2.Fortress =
+                new Fortress(this.model.Player_2, Config.FieldWidht / 2);
         }
 
+        /// <summary>
+        /// Update a player's character.
+        /// </summary>
+        /// <param name="character">The updated character.</param>
+        /// <param name="player">The owner of the character.</param>
         public void UpdateCharacter(Characters character, Player player)
         {
+            if (player == this.model.Player_1)
+            {
+                switch (character)
+                {
+                    case Characters.Knight:
+                        if (this.model.Player_1.KnightLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.KnightLVL++;
+                        }
 
+                        break;
+                    case Characters.Rider:
+                        if (this.model.Player_1.RiderLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.RiderLVL++;
+                        }
+
+                        break;
+                    case Characters.Barricade:
+                        if (this.model.Player_1.BarricadeLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_1.BarricadeLVL++;
+                        }
+
+                        break;
+                }
+            }
+            else
+            {
+                switch (character)
+                {
+                    case Characters.Knight:
+                        if (this.model.Player_2.KnightLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.KnightLVL++;
+                        }
+
+                        break;
+                    case Characters.Rider:
+                        if (this.model.Player_2.RiderLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.RiderLVL++;
+                        }
+
+                        break;
+                    case Characters.Barricade:
+                        if (this.model.Player_2.BarricadeLVL < Config.MaxLVL)
+                        {
+                            this.model.Player_2.BarricadeLVL++;
+                        }
+
+                        break;
+                }
+
+            }
         }
 
         private Player OtherPlayer(Soldier soldier)

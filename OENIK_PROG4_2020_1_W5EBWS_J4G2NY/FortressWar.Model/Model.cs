@@ -42,6 +42,8 @@ namespace FortressWar.Model
             this.Coins = new List<Coin>();
             this.Player_1 = new Player();
             this.Player_2 = new Player();
+
+
         }
     }
 }
