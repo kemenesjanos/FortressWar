@@ -145,18 +145,18 @@
     <EmbeddedResource Include="Images\grass.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Gifs\1deffortress.gif" />
-    <Resource Include="Gifs\1fortress.gif" />
-    <Resource Include="Gifs\1halffortress.gif" />
-    <Resource Include="Gifs\1Horse.gif" />
-    <Resource Include="Gifs\1Soldier.gif" />
-    <Resource Include="Gifs\2deffortress.gif" />
-    <Resource Include="Gifs\2fortress.gif" />
-    <Resource Include="Gifs\2halffortress.gif" />
-    <Resource Include="Gifs\2Horse.gif" />
-    <Resource Include="Gifs\2Soldier.gif" />
-    <Resource Include="Gifs\coin.gif" />
-    <Resource Include="Gifs\potion.gif" />
+    <EmbeddedResource Include="Gifs\1deffortress.gif" />
+    <EmbeddedResource Include="Gifs\1fortress.gif" />
+    <EmbeddedResource Include="Gifs\1halffortress.gif" />
+    <EmbeddedResource Include="Gifs\1Horse.gif" />
+    <EmbeddedResource Include="Gifs\1Soldier.gif" />
+    <EmbeddedResource Include="Gifs\2deffortress.gif" />
+    <EmbeddedResource Include="Gifs\2fortress.gif" />
+    <EmbeddedResource Include="Gifs\2halffortress.gif" />
+    <EmbeddedResource Include="Gifs\2Horse.gif" />
+    <EmbeddedResource Include="Gifs\2Soldier.gif" />
+    <EmbeddedResource Include="Gifs\coin.gif" />
+    <EmbeddedResource Include="Gifs\potion.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

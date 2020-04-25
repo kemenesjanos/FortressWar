@@ -237,7 +237,7 @@ namespace FortressWar.Model
 
         private static Brush textLineColour = Brushes.White;
 
-        private static Brush darkTextLineColour = Brushes.Sienna;
+        private static Brush darkTextLineColour = new SolidColorBrush(Color.FromArgb(255, 55, 32, 21));
 
         private static Brush goldTextLineColour = Brushes.Gold;
 

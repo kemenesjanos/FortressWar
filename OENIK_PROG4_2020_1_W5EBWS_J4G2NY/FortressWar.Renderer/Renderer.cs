@@ -52,11 +52,36 @@ namespace FortressWar.Renderer
         private Rect road3;
         private Rect road4;
 
+        private Rect gold1;
+        private Rect gold2;
+
         private Rect fortress1;
         private Rect fortress2;
 
         private Typeface font = new Typeface("Arial");
         private Point textLocation = new Point(10, 10);
+
+        private FormattedText textPlayer1;
+        private FormattedText textPlayer2;
+        private FormattedText textGold1;
+        private FormattedText textGold2;
+        private FormattedText textKnight1Gold;
+        private FormattedText textKnight2Gold;
+        private FormattedText textRider1Gold;
+        private FormattedText textRider2Gold;
+        private FormattedText textBarricade1Gold;
+        private FormattedText textBarricade2Gold;
+        private FormattedText textKnight1Level;
+        private FormattedText textKnight2Level;
+        private FormattedText textRider1Level;
+        private FormattedText textRider2Level;
+        private FormattedText textBarricade1Level;
+        private FormattedText textBarricade2Level;
+
+        private FormattedText upgrade1;
+        private FormattedText upgrade2;
+
+        private FormattedText fortressWar;
 
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
@@ -79,12 +104,12 @@ namespace FortressWar.Renderer
             this.button14 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
                 Config.SideWidht, Config.SideHeight / 4);
 
-            this.buttonchar11 = new Rect(Config.CharacterTileWidth, Config.TopHeight + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
-            this.buttonchar12 = new Rect(Config.CharacterTileWidth, Config.TopHeight + Config.SideHeight / 4 + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
-            this.buttonchar13 = new Rect(Config.CharacterTileWidth, Config.TopHeight + Config.SideHeight / 4 * 2 + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
+            this.buttonchar11 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonchar12 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonchar13 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
 
             this.button21 = new Rect(Config.FullWidht - Config.SideWidht, Config.TopHeight,
                 Config.SideWidht, Config.SideHeight / 4);
@@ -95,14 +120,14 @@ namespace FortressWar.Renderer
             this.button24 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
                 Config.SideWidht, Config.SideHeight / 4);
 
-            this.buttonchar21 = new Rect(Config.FullWidht - Config.CharacterTileWidth * 2, Config.TopHeight + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
-            this.buttonchar22 = new Rect(Config.FullWidht - Config.CharacterTileWidth * 2, Config.TopHeight + Config.SideHeight / 4 + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
-            this.buttonchar23 = new Rect(Config.FullWidht - Config.CharacterTileWidth * 2, Config.TopHeight + Config.SideHeight / 4 * 2 + 55,
-                Config.CharacterTileWidth, Config.CharacterTileHeight);
+            this.buttonchar21 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonchar22 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonchar23 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
 
-            this.road1 = new Rect(Config.SideWidht + Config.FortressTileWidth, Config.TopHeight + 90 ,
+            this.road1 = new Rect(Config.SideWidht + Config.FortressTileWidth, Config.TopHeight + 90,
                 Config.FieldWidht, Config.CharacterTileHeight);
             this.road2 = new Rect(Config.SideWidht + Config.FortressTileWidth, (Config.TopHeight + 90 * 2 + Config.CharacterTileHeight),
                 Config.FieldWidht, Config.CharacterTileHeight);
@@ -128,6 +153,9 @@ namespace FortressWar.Renderer
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose24 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90 * 4 + Config.CharacterTileHeight * 3),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+
+            this.gold1 = new Rect(5, 125, Config.CharacterTileWidth, Config.CharacterTileHeight * 1.5);
+            this.gold2 = new Rect(Config.FullWidht - 5 - Config.CharacterTileWidth, 125, Config.CharacterTileWidth, Config.CharacterTileHeight * 1.5);
 
             //TODO: ez egy karakter objektum, ennek nem itt kell majd lennie
             this.fortress1 = new Rect(Config.SideWidht, Config.TopHeight + 50,
@@ -271,6 +299,14 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
+        /// Gets make Barricade2 brush.
+        /// </summary>
+        private Brush GoldBrush
+        {
+            get { return this.GetBrush("FortressWar.Images.coin1.png", false); }
+        }
+
+        /// <summary>
         /// Build of the drawing.
         /// </summary>
         /// /// <param name="ctx">The context.</param>
@@ -299,7 +335,189 @@ namespace FortressWar.Renderer
         public void GetText(DrawingContext ctx)
         {
             //TODO: nagyon sok kell, ha többi hátérelem, oké, majd akkor beállítjuk
-            //throw new NotImplementedException();
+            this.textPlayer1 = new FormattedText(
+                    this.model.Player_1.Name,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
+            this.textPlayer2 = new FormattedText(
+                    this.model.Player_2.Name,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
+            this.textGold1 = new FormattedText(
+                    this.model.Player_1.Money.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
+            this.textGold2 = new FormattedText(
+                    this.model.Player_2.Money.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
+            this.textKnight1Level = new FormattedText(
+                    this.model.Player_1.KnightLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textKnight2Level = new FormattedText(
+                    this.model.Player_2.KnightLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textRider1Level = new FormattedText(
+                    this.model.Player_1.RiderLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textRider2Level = new FormattedText(
+                    this.model.Player_2.RiderLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textBarricade1Level = new FormattedText(
+                    this.model.Player_1.BarricadeLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textBarricade2Level = new FormattedText(
+                    this.model.Player_2.BarricadeLVL.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.textKnight1Gold = new FormattedText(
+                    "200",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.textKnight2Gold = new FormattedText(
+                    "200",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.textRider1Gold = new FormattedText(
+                    "400",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.textRider2Gold = new FormattedText(
+                    "400",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.textBarricade1Gold = new FormattedText(
+                    "150",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.textBarricade2Gold = new FormattedText(
+                    "150",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    20,
+                    Config.GoldTextLineColour);
+
+            this.upgrade1 = new FormattedText(
+                    "UPGRADE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.upgrade2 = new FormattedText(
+                    "UPGRADE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    18,
+                    Config.TextLineColour);
+
+            this.fortressWar = new FormattedText(
+                    "FortressWar",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Arial Bold"),
+                    100,
+                    Config.DarkTextLineColour);
+
+            ctx.DrawText(this.textPlayer1, new Point(20, 20));
+            ctx.DrawText(this.textPlayer2, new Point(Config.FullWidht - 20, 20));
+
+            ctx.DrawText(this.textGold1, new Point(60, 150));
+            ctx.DrawText(this.textGold2, new Point(Config.FullWidht - 60, 150));
+
+            ctx.DrawRectangle(this.GoldBrush, null, this.gold1);
+            ctx.DrawRectangle(this.GoldBrush, null, this.gold2);
+
+            ctx.DrawText(this.textKnight1Level, new Point(70, Config.TopHeight + 145));
+            ctx.DrawText(this.textKnight2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145));
+
+            ctx.DrawText(this.textRider1Level, new Point(70, Config.TopHeight + 145 + Config.SideHeight/4));
+            ctx.DrawText(this.textRider2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145 + Config.SideHeight / 4));
+
+            ctx.DrawText(this.textBarricade1Level, new Point(70, Config.TopHeight + 145 + Config.SideHeight / 2));
+            ctx.DrawText(this.textBarricade2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145 + Config.SideHeight / 2));
+
+            ctx.DrawText(this.textKnight1Gold, new Point(55, Config.TopHeight + 10));
+            ctx.DrawText(this.textKnight2Gold, new Point(Config.FullWidht - 55, Config.TopHeight + 10));
+
+            ctx.DrawText(this.textRider1Gold, new Point(55, Config.TopHeight + 10 + Config.SideHeight / 4));
+            ctx.DrawText(this.textRider2Gold, new Point(Config.FullWidht - 55, Config.TopHeight + 10 + Config.SideHeight / 4));
+
+            ctx.DrawText(this.textBarricade1Gold, new Point(55, Config.TopHeight + 10 + Config.SideHeight / 2));
+            ctx.DrawText(this.textBarricade2Gold, new Point(Config.FullWidht - 55, Config.TopHeight + 10 + Config.SideHeight / 2));
+
+            ctx.DrawText(this.upgrade1, new Point(30, 800));
+            ctx.DrawText(this.upgrade2, new Point(Config.FullWidht - 30, 800));
+
+            ctx.DrawText(this.fortressWar, new Point(510, 20));
         }
 
         public void GetBarricade(DrawingContext ctx)
@@ -351,19 +569,19 @@ namespace FortressWar.Renderer
         public void GetCharacterChoose(DrawingContext ctx)
         {
             //TODO if -> aktív nem akítv
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button11);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button12);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button13);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button14);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button11);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button12);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button13);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button14);
 
             ctx.DrawRectangle(this.Knight1Brush, null, this.buttonchar11);
             ctx.DrawRectangle(this.Rider1Brush, null, this.buttonchar12);
             ctx.DrawRectangle(this.Barricade1Brush, null, this.buttonchar13);
 
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button21);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button22);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button23);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 4), this.button24);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button21);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button22);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button23);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button24);
 
             ctx.DrawRectangle(this.Knight2Brush, null, this.buttonchar21);
             ctx.DrawRectangle(this.Rider2Brush, null, this.buttonchar22);
