@@ -112,5 +112,51 @@
       <Name>FortressWar.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\1barricade.png" />
+    <EmbeddedResource Include="Images\1deffortress1.png" />
+    <EmbeddedResource Include="Images\1deffortress2.png" />
+    <EmbeddedResource Include="Images\1fortress1.png" />
+    <EmbeddedResource Include="Images\1fortress2.png" />
+    <EmbeddedResource Include="Images\1halffortress1.png" />
+    <EmbeddedResource Include="Images\1halffortress2.png" />
+    <EmbeddedResource Include="Images\1hwalk1.png" />
+    <EmbeddedResource Include="Images\1hwalk2.png" />
+    <EmbeddedResource Include="Images\1walk1.png" />
+    <EmbeddedResource Include="Images\1walk2.png" />
+    <EmbeddedResource Include="Images\2barricade.png" />
+    <EmbeddedResource Include="Images\2deffortress1.png" />
+    <EmbeddedResource Include="Images\2deffortress2.png" />
+    <EmbeddedResource Include="Images\2fortress1.png" />
+    <EmbeddedResource Include="Images\2fortress2.png" />
+    <EmbeddedResource Include="Images\2halffortress1.png" />
+    <EmbeddedResource Include="Images\2halffortress2.png" />
+    <EmbeddedResource Include="Images\2hwalk1.png" />
+    <EmbeddedResource Include="Images\2hwalk2.png" />
+    <EmbeddedResource Include="Images\2walk1.png" />
+    <Content Include="Images\2walk2.png" />
+    <EmbeddedResource Include="Images\coin1.png" />
+    <EmbeddedResource Include="Images\coin2.png" />
+    <EmbeddedResource Include="Images\potion1.png" />
+    <EmbeddedResource Include="Images\potion2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\grass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gifs\1deffortress.gif" />
+    <Resource Include="Gifs\1fortress.gif" />
+    <Resource Include="Gifs\1halffortress.gif" />
+    <Resource Include="Gifs\1Horse.gif" />
+    <Resource Include="Gifs\1Soldier.gif" />
+    <Resource Include="Gifs\2deffortress.gif" />
+    <Resource Include="Gifs\2fortress.gif" />
+    <Resource Include="Gifs\2halffortress.gif" />
+    <Resource Include="Gifs\2Horse.gif" />
+    <Resource Include="Gifs\2Soldier.gif" />
+    <Resource Include="Gifs\coin.gif" />
+    <Resource Include="Gifs\potion.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -129,7 +129,7 @@ namespace FortressWar.Renderer
                 BitmapImage bmp = new BitmapImage();
 
                 bmp.BeginInit();
-                bmp.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+                bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);
@@ -160,7 +160,7 @@ namespace FortressWar.Renderer
                 BitmapImage bmp = new BitmapImage();
 
                 bmp.BeginInit();
-                bmp.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+                bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);
@@ -183,7 +183,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush FieldBrush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.grass.png", true); }
+            get { return this.GetBrush("FortressWar.Images.grass.png", true); }
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Knight1Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.1walk1.png", false); }
+            get { return this.GetBrush("FortressWar.Images.1walk1.png", false); }
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Knight2Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.2walk1.png", false); }
+            get { return this.GetBrush("FortressWar.Images.2walk1.png", false); }
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Rider1Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.1hwalk1.png", false); }
+            get { return this.GetBrush("FortressWar.Images.1hwalk1.png", false); }
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Rider2Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.2hwalk1.png", false); }
+            get { return this.GetBrush("FortressWar.Images.2hwalk1.png", false); }
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Barricade1Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.1barricade.png", false); }
+            get { return this.GetBrush("FortressWar.Images.1barricade.png", false); }
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Barricade2Brush
         {
-            get { return this.GetBrush("FortressWar.Model.Images.2barricade.png", false); }
+            get { return this.GetBrush("FortressWar.Images.2barricade.png", false); }
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Fortress1Brush
         {
-            get { return this.GetFortressBrush("FortressWar.Model.Images.1fortress1.png", false); }
+            get { return this.GetFortressBrush("FortressWar.Images.1fortress1.png", false); }
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush Fortress2Brush
         {
-            get { return this.GetFortressBrush("FortressWar.Model.Images.2fortress1.png", false); }
+            get { return this.GetFortressBrush("FortressWar.Images.2fortress1.png", false); }
         }
 
         /// <summary>
@@ -273,13 +273,13 @@ namespace FortressWar.Renderer
 
         public void getSoldierFight(DrawingContext ctx)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void GetText(DrawingContext ctx)
         {
             //TODO: nagyon sok kell, ha többi hátérelem, oké, majd akkor beállítjuk
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void GetBarricade(DrawingContext ctx)
