@@ -523,7 +523,15 @@ namespace FortressWar.Renderer
         public void GetBarricade(DrawingContext ctx)
         {
             //TODO: old vizsgálat
-            //TODO: foreach és ctx összeegyeztetés
+            foreach (Barricade baraicade in this.model.Player_1.Barricades)
+            {
+                ctx.DrawGeometry(this.Barricade1Brush, null, baraicade.RealArea);
+            }
+
+            foreach (Barricade baraicade in this.model.Player_2.Barricades)
+            {
+                ctx.DrawGeometry(this.Barricade2Brush, null, baraicade.RealArea);
+            }
         }
 
         public void GetSoldier(DrawingContext ctx)
@@ -545,11 +553,11 @@ namespace FortressWar.Renderer
             {
                 if (soldier is Knight)
                 {
-                    ctx.DrawGeometry(this.Knight1Brush, null, soldier.RealArea);
+                    ctx.DrawGeometry(this.Knight2Brush, null, soldier.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.Rider1Brush, null, soldier.RealArea);
+                    ctx.DrawGeometry(this.Rider2Brush, null, soldier.RealArea);
                 }
             }
         }

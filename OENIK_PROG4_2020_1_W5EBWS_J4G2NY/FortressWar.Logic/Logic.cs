@@ -29,6 +29,8 @@ namespace FortressWar.Logic
         public Logic(Model model)
         {
             this.model = model;
+            StartGame();
+            NewCharacter(Characters.Knight,model.Player_2,1);
         }
 
         /// <summary>
