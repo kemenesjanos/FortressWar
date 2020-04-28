@@ -83,6 +83,8 @@ namespace FortressWar.Renderer
 
         private FormattedText fortressWar;
 
+        private Size jatekmeret;
+
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
         /// <summary>
@@ -92,16 +94,16 @@ namespace FortressWar.Renderer
         public Renderer(Model model)
         {
             this.model = model;
-            this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
-            this.topBackgroundRect = new Rect(0, 0, Config.TopWidth, Config.TopHeight);
+            this.backgroundRect = new Rect(0, 0, model.GameWidth, model.GameHeight);
+            this.topBackgroundRect = new Rect(0, 0, model.GameWidth, model.GameHeight * 0.2);
 
-            this.button11 = new Rect(0, Config.TopHeight,
+            this.button11 = new Rect(0, model.GameHeight * 0.2,
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button12 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4)),
+            this.button12 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button13 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
+            this.button13 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 2)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button14 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
+            this.button14 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 3)),
                 Config.SideWidht, Config.SideHeight / 4);
 
             this.buttonchar11 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + 40,
@@ -111,13 +113,13 @@ namespace FortressWar.Renderer
             this.buttonchar13 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
 
-            this.button21 = new Rect(Config.FullWidht - Config.SideWidht, Config.TopHeight,
+            this.button21 = new Rect(model.GameWidth - Config.SideWidht, model.GameHeight * 0.2,
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button22 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4)),
+            this.button22 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button23 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
+            this.button23 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 2)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button24 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
+            this.button24 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 3)),
                 Config.SideWidht, Config.SideHeight / 4);
 
             this.buttonchar21 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + 40,

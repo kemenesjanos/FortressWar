@@ -41,7 +41,7 @@ namespace FortressWar.Control
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             //TODO: model, logic, renderer
-            this.model = new Model();
+            this.model = new Model(ActualWidth, ActualHeight);
             this.logic = new Logic(this.model);
             this.renderer = new Renderer(this.model);
 
