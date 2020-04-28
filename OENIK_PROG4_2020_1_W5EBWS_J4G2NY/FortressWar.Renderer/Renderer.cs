@@ -83,8 +83,6 @@ namespace FortressWar.Renderer
 
         private FormattedText fortressWar;
 
-        private Size jatekmeret;
-
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
         /// <summary>
@@ -98,13 +96,13 @@ namespace FortressWar.Renderer
             this.topBackgroundRect = new Rect(0, 0, model.GameWidth, model.GameHeight * 0.2);
 
             this.button11 = new Rect(0, model.GameHeight * 0.2,
-                Config.SideWidht, Config.SideHeight / 4);
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
             this.button12 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4)),
-                Config.SideWidht, Config.SideHeight / 4);
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
             this.button13 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 2)),
-                Config.SideWidht, Config.SideHeight / 4);
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
             this.button14 = new Rect(0, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 3)),
-                Config.SideWidht, Config.SideHeight / 4);
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
 
             this.buttonchar11 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
@@ -113,14 +111,14 @@ namespace FortressWar.Renderer
             this.buttonchar13 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
 
-            this.button21 = new Rect(model.GameWidth - Config.SideWidht, model.GameHeight * 0.2,
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button22 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4)),
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button23 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 2)),
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button24 = new Rect(model.GameWidth - Config.SideWidht, (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 3)),
-                Config.SideWidht, Config.SideHeight / 4);
+            this.button21 = new Rect(model.GameWidth - (model.GameWidth * 0.09), model.GameHeight * 0.2,
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
+            this.button22 = new Rect(model.GameWidth - (model.GameWidth * 0.09), (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4)),
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
+            this.button23 = new Rect(model.GameWidth - (model.GameWidth * 0.09), (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 2)),
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
+            this.button24 = new Rect(model.GameWidth - (model.GameWidth * 0.09), (model.GameHeight * 0.2 + (model.GameHeight * 0.8 / 4 * 3)),
+                (model.GameWidth * 0.09), (model.GameHeight * 0.8 / 4));
 
             this.buttonchar21 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
@@ -418,7 +416,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textKnight1Gold = new FormattedText(
-                    "200",
+                    this.model.Player_1.KnightPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -426,7 +424,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textKnight2Gold = new FormattedText(
-                    "200",
+                    this.model.Player_2.KnightPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -434,7 +432,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textRider1Gold = new FormattedText(
-                    "400",
+                    this.model.Player_1.RiderPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -442,7 +440,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textRider2Gold = new FormattedText(
-                    "400",
+                    this.model.Player_2.RiderPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -450,7 +448,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textBarricade1Gold = new FormattedText(
-                    "150",
+                    this.model.Player_1.BarricadePrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -458,7 +456,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textBarricade2Gold = new FormattedText(
-                    "150",
+                    this.model.Player_1.BarricadePrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
