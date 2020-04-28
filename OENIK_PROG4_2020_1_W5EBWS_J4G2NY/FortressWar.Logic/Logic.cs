@@ -30,7 +30,14 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
-            NewCharacter(Characters.Knight,model.Player_2,1);
+            NewCharacter(Characters.Rider, model.Player_1,1);
+            NewCharacter(Characters.Rider, model.Player_1, 2);
+            NewCharacter(Characters.Rider, model.Player_1, 3);
+            NewCharacter(Characters.Rider, model.Player_1, 4);
+            NewCharacter(Characters.Rider, model.Player_2, 1);
+            NewCharacter(Characters.Rider, model.Player_2, 2);
+            NewCharacter(Characters.Rider, model.Player_2, 3);
+            NewCharacter(Characters.Rider, model.Player_2, 4);
         }
 
         /// <summary>
@@ -126,8 +133,12 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
-        public void MoveSelector(int x, int y)
+        public void MoveSelector(int dy)
         {
+            if ((this.model.Selector.Y_Tile + dy) >= -1 && (this.model.Selector.Y_Tile + dy) <= 4)
+            {
+                this.model.Selector.Y_Tile += dy;
+            }
             //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
         }
 
@@ -189,30 +200,50 @@ namespace FortressWar.Logic
         public void NewCharacter(Characters character, Player player, int y)
         {
             // TODO: Fizetések
-            if (y < 5 && y >= 0)
+            if (y < 5 && y > 0)
             {
                 switch (character)
                 {
                     case Characters.Knight:
+                        if (player.Money - player.KnightPrice < 0)
+                        {
+                            break;
+                        }
+
+                        player.Money -= player.KnightPrice;
                         player.Soldiers.Add(
                             new Knight(player)
                             {
-                                CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
+                                CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2,
                                 Y_Tile = y,
                             });
                         break;
                     case Characters.Rider:
+                        if (player.Money - player.RiderPrice < 0)
+                        {
+                            break;
+                        }
+
+                        player.Money -= player.RiderPrice;
                         player.Soldiers.Add(
                             new Rider(player)
                             {
-                                CX = player == this.model.Player_1 ? -Config.FieldWidht / 2 : Config.FieldWidht / 2,
+                                CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2,
                                 Y_Tile = y,
                             });
                         break;
                     case Characters.Barricade:
+                        if (player.Money - player.BarricadePrice < 0)
+                        {
+                            break;
+                        }
+
+                        player.Money -= player.BarricadePrice;
                         if (player == this.model.Player_1)
                         {
-                            int tX = Config.CharacterTileWidth;
+                            int tX = Config.CharacterTileWidth - Config.CharacterTileWidth;
                             while (tX < Config.FieldWidht / 2 && this.model.Player_1.Barricades.FirstOrDefault(x => x.CX == tX) != null)
                             {
                                 tX += Config.CharacterTileWidth;
@@ -298,6 +329,11 @@ namespace FortressWar.Logic
                 switch (character)
                 {
                     case Characters.Knight:
+                        if (player.Money < Config.KnightUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_1.KnightLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.KnightLVL++;
@@ -305,6 +341,11 @@ namespace FortressWar.Logic
 
                         break;
                     case Characters.Rider:
+                        if (player.Money < Config.RiderUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_1.RiderLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.RiderLVL++;
@@ -312,6 +353,11 @@ namespace FortressWar.Logic
 
                         break;
                     case Characters.Barricade:
+                        if (player.Money < Config.BarricadeUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_1.BarricadeLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.BarricadeLVL++;
@@ -325,6 +371,11 @@ namespace FortressWar.Logic
                 switch (character)
                 {
                     case Characters.Knight:
+                        if (player.Money < Config.KnightUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_2.KnightLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.KnightLVL++;
@@ -332,6 +383,11 @@ namespace FortressWar.Logic
 
                         break;
                     case Characters.Rider:
+                        if (player.Money < Config.RiderUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_2.RiderLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.RiderLVL++;
@@ -339,6 +395,11 @@ namespace FortressWar.Logic
 
                         break;
                     case Characters.Barricade:
+                        if (player.Money < Config.BarricadeUpgradePrice)
+                        {
+                            break;
+                        }
+
                         if (this.model.Player_2.BarricadeLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.BarricadeLVL++;

@@ -21,6 +21,16 @@ namespace FortressWar.Model
         public const double StepDistance = 5;
 
         /// <summary>
+        /// Selector height.
+        /// </summary>
+        public const int SelectorHeight = 200;
+
+        /// <summary>
+        /// Selector width.
+        /// </summary>
+        public const int SelectorWidth = 150;
+
+        /// <summary>
         /// Maximum LVL of a character.
         /// </summary>
         public const int MaxLVL = 10;

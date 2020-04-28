@@ -48,6 +48,35 @@ namespace FortressWar.Model
         /// </summary>
         public List<Soldier> Soldiers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Selector.
+        /// </summary>
+        public Selector Selector { get; set; }
+
+        /// <summary>
+        /// Gets price of the Knight.
+        /// </summary>
+        public int KnightPrice
+        {
+            get { return Config.KnightBasePrice + (this.KnightLVL * Config.KnightLVLPrice); }
+        }
+
+        /// <summary>
+        /// Gets price of the Rider.
+        /// </summary>
+        public int RiderPrice
+        {
+            get { return Config.RiderBasePrice + (this.RiderLVL * Config.RiderLVLPrice); }
+        }
+
+        /// <summary>
+        /// Gets price of the Barricade.
+        /// </summary>
+        public int BarricadePrice
+        {
+            get { return Config.BarricadeBasePrice + (this.BarricadeLVL * Config.BarricadeLVLPrice); }
+        }
+
         public Player()
         {
             this.Name = "alma";
