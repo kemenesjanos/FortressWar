@@ -28,6 +28,5 @@ namespace FortressWar.Model
         /// Gets or sets the player who owns this character.
         /// </summary>
         public Player Owner { get; set; }
-
     }
 }
