@@ -73,7 +73,6 @@ namespace FortressWar.Control
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            throw new NotImplementedException();
             //TODO: logic.moveselector meghívása!
         }
 

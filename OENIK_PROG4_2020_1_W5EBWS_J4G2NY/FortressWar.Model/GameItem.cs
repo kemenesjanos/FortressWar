@@ -32,7 +32,7 @@ namespace FortressWar.Model
         /// </summary>
         public double CX
         {
-            get { return this.cx + Config.FullWidht / 2; }
+            get { return this.cx + (Config.FieldWidht / 2); }
             set { this.cx = value; }
         }
 
@@ -43,7 +43,8 @@ namespace FortressWar.Model
         {
             get
             {
-                return (this.Y_Tile - 2) * Config.CharacterTileHeight + Config.FullHeight / 2;
+                return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)
+                    + Config.FieldHeight / 2 + Config.CharacterTileHeight / 2 - 25;
             }
         }
 

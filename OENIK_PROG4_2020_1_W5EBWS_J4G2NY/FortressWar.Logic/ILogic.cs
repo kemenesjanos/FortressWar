@@ -69,8 +69,8 @@ namespace FortressWar.Logic
         /// <summary>
         /// Move the selector.
         /// </summary>
-        /// <param name="y">The y coord to move.</param>
-        void MoveSelector(int x, int y);
+        /// <param name="dy">The y directon to move.</param>
+        void MoveSelector(int dy);
 
         /// <summary>
         /// Create a new character.

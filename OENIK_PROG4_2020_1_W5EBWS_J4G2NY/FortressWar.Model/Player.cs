@@ -48,6 +48,11 @@ namespace FortressWar.Model
         /// </summary>
         public List<Soldier> Soldiers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Selector.
+        /// </summary>
+        public Selector Selector { get; set; }
+
         public Player()
         {
             this.Name = "alma";

@@ -22,6 +22,7 @@ namespace FortressWar.Model
         public List<Coin> Coins { get; set; }
         public Player Player_1 { get; set; }
         public Player Player_2 { get; set; }
+        public Selector Selector { get; set; }
 
         public void MapBuild()
         {
@@ -42,7 +43,6 @@ namespace FortressWar.Model
             this.Coins = new List<Coin>();
             this.Player_1 = new Player();
             this.Player_2 = new Player();
-
 
         }
     }
