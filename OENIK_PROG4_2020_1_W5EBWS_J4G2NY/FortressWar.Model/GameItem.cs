@@ -25,10 +25,16 @@ namespace FortressWar.Model
         /// </summary>
         protected double rotDegree = 0;
 
+        private double cx;
+
         /// <summary>
         /// Gets or sets the X coordinate from the center.
         /// </summary>
-        public double CX { get; set; }
+        public double CX
+        {
+            get { return this.cx + Config.FullWidht / 2; }
+            set { this.cx = value; }
+        }
 
         /// <summary>
         /// Gets or set the Y coordinate from the center in tile.
@@ -37,7 +43,7 @@ namespace FortressWar.Model
         {
             get
             {
-                return (this.Y_Tile - 2) * Config.CharacterTileHeight;
+                return (this.Y_Tile - 2) * Config.CharacterTileHeight + Config.FullHeight / 2;
             }
         }
 

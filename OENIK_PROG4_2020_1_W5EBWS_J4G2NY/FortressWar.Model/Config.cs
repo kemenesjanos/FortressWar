@@ -237,19 +237,19 @@ namespace FortressWar.Model
 
         private static Brush textLineColour = Brushes.White;
 
-        private static Brush darkTextLineColour = Brushes.Sienna;
+        private static Brush darkTextLineColour = new SolidColorBrush(Color.FromArgb(255, 55, 32, 21));
 
         private static Brush goldTextLineColour = Brushes.Gold;
 
-        private static Brush baseBrownBg = Brushes.SaddleBrown;
+        private static Brush baseBrownBg = new SolidColorBrush(Color.FromArgb(255, 86, 48, 32));
 
-        private static Brush roadBg = Brushes.AntiqueWhite;
+        private static Brush roadBg = new SolidColorBrush(Color.FromArgb(255, 199, 183, 148));
 
-        private static Brush roadChooseIconBg = Brushes.DarkSalmon;
+        private static Brush roadChooseIconBg = new SolidColorBrush(Color.FromArgb(255, 156, 132, 109));
 
-        private static Brush characterIconBg = Brushes.Sienna;
+        private static Brush characterIconBg = new SolidColorBrush(Color.FromArgb(255, 120, 80, 63));
 
-        private static Brush characterIconLine = Brushes.SandyBrown;
+        private static Brush characterIconLine = new SolidColorBrush(Color.FromArgb(255, 86, 48, 32));
 
         private static Brush activeBg = Brushes.LightCoral;
 
