@@ -33,10 +33,10 @@ namespace FortressWar.Model
         /// Initializes a new instance of the <see cref="Model"/> class.
         /// Ctor.
         /// </summary>
-        public Model(double w, double h)
+        public Model()
         {
-            this.GameWidth = w;
-            this.GameHeight = h;
+            this.GameWidth = Config.FullWidht;
+            this.GameHeight = Config.FullHeight;
             this.TileWidth = Config.FieldWidht;
             this.TileHeight = Config.FieldHeight;
             this.Potions = new List<Potion>();

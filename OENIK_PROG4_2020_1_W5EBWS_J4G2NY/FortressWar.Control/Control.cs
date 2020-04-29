@@ -41,7 +41,7 @@ namespace FortressWar.Control
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             //TODO: model, logic, renderer
-            this.model = new Model(ActualWidth, ActualHeight);
+            this.model = new Model();
             this.logic = new Logic(this.model);
             this.renderer = new Renderer(this.model);
 
@@ -49,12 +49,13 @@ namespace FortressWar.Control
             if (win != null)
             {
                 this.tickTimer = new DispatcherTimer();
-                this.tickTimer.Interval = TimeSpan.FromMilliseconds(40);
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(1000);
                 this.tickTimer.Tick += this.TickTimer_Tick;
                 this.tickTimer.Start();
 
                 win.KeyDown += this.Win_KeyDown;
             }
+            logic.RefreshScreen += (obj, args) => InvalidateVisual();
 
             this.InvalidateVisual();
         }
@@ -79,6 +80,7 @@ namespace FortressWar.Control
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             //TODO: mozgatás események meghívása.
+            logic.MoveSoldier();
         }
     }
 }

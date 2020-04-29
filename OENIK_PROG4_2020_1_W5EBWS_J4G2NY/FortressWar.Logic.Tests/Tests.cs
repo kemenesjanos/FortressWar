@@ -27,7 +27,7 @@ namespace FortressWar.Logic.Tests
         [OneTimeSetUp]
         public void Init()
         {
-            this.model = new Model(this.model.GameWidth, this.model.GameHeight);
+            this.model = new Model();
             this.logic = new Logic(this.model);
         }
 

@@ -9,5 +9,5 @@
         mc:Ignorable="d"
         Title="MainWindow"
         WindowState="Maximized">
-    <localControl:Control />
+    <localControl:Control Width="1600" Height="900"/>
 </Window>

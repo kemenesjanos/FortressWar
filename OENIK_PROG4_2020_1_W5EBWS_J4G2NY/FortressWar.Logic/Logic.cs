@@ -21,6 +21,8 @@ namespace FortressWar.Logic
         private Model model;
         private Random rnd = new Random();
 
+        public event EventHandler RefreshScreen;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Logic"/> class.
         /// Ctor.
@@ -31,11 +33,11 @@ namespace FortressWar.Logic
             this.model = model;
             StartGame();
             NewCharacter(Characters.Rider, model.Player_1,1);
-            NewCharacter(Characters.Rider, model.Player_1, 2);
+            NewCharacter(Characters.Knight, model.Player_1, 2);
             NewCharacter(Characters.Rider, model.Player_1, 3);
             NewCharacter(Characters.Rider, model.Player_1, 4);
             NewCharacter(Characters.Rider, model.Player_2, 1);
-            NewCharacter(Characters.Rider, model.Player_2, 2);
+            NewCharacter(Characters.Knight, model.Player_2, 2);
             NewCharacter(Characters.Rider, model.Player_2, 3);
             NewCharacter(Characters.Rider, model.Player_2, 4);
         }
@@ -51,11 +53,13 @@ namespace FortressWar.Logic
             if (attackedCharacter.Life - damage <= 0)
             {
                 this.Die(attackedCharacter);
+                RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             else
             {
                 attackedCharacter.Life -= damage;
+                RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return false;
             }
         }
@@ -100,6 +104,7 @@ namespace FortressWar.Logic
                 this.GetBountry(character);
                 this.model.Coins.Remove(character as Coin);
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         private void GetBountry(Character character)
@@ -112,11 +117,12 @@ namespace FortressWar.Logic
             {
                 this.model.Player_1.Money += character.Bounty;
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         public void EndGame()
         {
-            
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -139,7 +145,9 @@ namespace FortressWar.Logic
             {
                 this.model.Selector.Y_Tile += dy;
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
             //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
+            //TODO: egy segéd metódus a választás kezeléséhez
         }
 
         /// <summary>
@@ -163,7 +171,7 @@ namespace FortressWar.Logic
                 }
                 else
                 {
-                    soldier.CX += soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : -soldier.Speed * Config.StepDistance;
+                    soldier.CX += soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : soldier.Speed * -Config.StepDistance;
                     foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
                         .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
                         .Concat(this.model.Coins.Cast<Character>()))
@@ -189,6 +197,7 @@ namespace FortressWar.Logic
                     }
                 }
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -282,6 +291,7 @@ namespace FortressWar.Logic
                     default:
                         break;
                 }
+                RefreshScreen?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -302,6 +312,7 @@ namespace FortressWar.Logic
                 default:
                     break;
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         public void SaveGameState()
@@ -315,6 +326,7 @@ namespace FortressWar.Logic
                 new Fortress(this.model.Player_1, -Config.FieldWidht / 2);
             this.model.Player_2.Fortress =
                 new Fortress(this.model.Player_2, Config.FieldWidht / 2);
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -409,6 +421,7 @@ namespace FortressWar.Logic
                 }
 
             }
+            RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         private Player OtherPlayer(Soldier soldier)
