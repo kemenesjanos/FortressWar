@@ -141,7 +141,7 @@ namespace FortressWar.Logic
 
         public void MoveSelector(Player player, int dy)
         {
-            if ((this.model.Selector.Y_Tile + dy) >= -1 && (this.model.Selector.Y_Tile + dy) <= 4)
+            if ((this.model.Selector.Y_Tile + dy) >= 0 && (this.model.Selector.Y_Tile + dy) <= 4)
             {
                 this.model.Selector.Y_Tile += dy;
             }
@@ -153,7 +153,64 @@ namespace FortressWar.Logic
 
         public void SelectorSelect(Player player)
         {
-
+            if (player.Selector.IsPutACharacter)
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        player.Selector.CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        //player.Selector.CY = player == this.model.Player_1 ?
+                          //      (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
+            else if (player.Selector.IsUpgrade)
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
+            else
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
         }
 
         /// <summary>
