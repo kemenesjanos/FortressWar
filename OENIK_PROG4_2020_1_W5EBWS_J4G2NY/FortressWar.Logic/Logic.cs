@@ -139,15 +139,78 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
-        public void MoveSelector(int dy)
+        public void MoveSelector(Player player, int dy)
         {
-            if ((this.model.Selector.Y_Tile + dy) >= -1 && (this.model.Selector.Y_Tile + dy) <= 4)
+            if ((this.model.Selector.Y_Tile + dy) >= 0 && (this.model.Selector.Y_Tile + dy) <= 4)
             {
                 this.model.Selector.Y_Tile += dy;
             }
+
             RefreshScreen?.Invoke(this, EventArgs.Empty);
             //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
             //TODO: egy segéd metódus a választás kezeléséhez
+        }
+
+        public void SelectorSelect(Player player)
+        {
+            if (player.Selector.IsPutACharacter)
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        player.Selector.CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        //player.Selector.CY = player == this.model.Player_1 ?
+                          //      (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
+            else if (player.Selector.IsUpgrade)
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
+            else
+            {
+                switch (player.Selector.Y_Tile)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                };
+            }
         }
 
         /// <summary>
@@ -171,7 +234,8 @@ namespace FortressWar.Logic
                 }
                 else
                 {
-                    soldier.CX += soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : soldier.Speed * -Config.StepDistance;
+                    soldier.CX = (soldier.CX - (Config.FieldWidht / 2)) +
+                        (soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : soldier.Speed * -1 * Config.StepDistance);
                     foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
                         .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
                         .Concat(this.model.Coins.Cast<Character>()))

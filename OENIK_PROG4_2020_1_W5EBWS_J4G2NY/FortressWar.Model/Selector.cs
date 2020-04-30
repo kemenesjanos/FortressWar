@@ -23,9 +23,21 @@ namespace FortressWar.Model
         /// <param name="cx">the cx coord.</param>
         public Selector(double cx)
         {
+            this.IsPutACharacter = false;
+            this.IsUpgrade = false;
             this.Y_Tile = 1;
             this.CX = cx;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.SelectorWidth, Config.SelectorHeight));
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether is the selector put a Character.
+        /// </summary>
+        public bool IsPutACharacter { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether is the selector in UpgradeMode.
+        /// </summary>
+        public bool IsUpgrade { get; set; }
     }
 }

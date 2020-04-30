@@ -69,8 +69,15 @@ namespace FortressWar.Logic
         /// <summary>
         /// Move the selector.
         /// </summary>
+        /// <param name="player">The owner of the selector.</param>
         /// <param name="dy">The y directon to move.</param>
-        void MoveSelector(int dy);
+        void MoveSelector(Player player, int dy);
+
+        /// <summary>
+        /// Select the selector.
+        /// </summary>
+        /// <param name="player">The owner of the selector.</param>
+        void SelectorSelect(Player player);
 
         /// <summary>
         /// Create a new character.

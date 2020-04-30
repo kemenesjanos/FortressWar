@@ -49,7 +49,7 @@ namespace FortressWar.Control
             if (win != null)
             {
                 this.tickTimer = new DispatcherTimer();
-                this.tickTimer.Interval = TimeSpan.FromMilliseconds(1000);
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(200);
                 this.tickTimer.Tick += this.TickTimer_Tick;
                 this.tickTimer.Start();
 
