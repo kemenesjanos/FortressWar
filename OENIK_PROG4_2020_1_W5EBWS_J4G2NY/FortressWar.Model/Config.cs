@@ -23,7 +23,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Selector height.
         /// </summary>
-        public const int SelectorHeight = 200;
+        public const int SelectorHeight = 170;
 
         /// <summary>
         /// Selector width.

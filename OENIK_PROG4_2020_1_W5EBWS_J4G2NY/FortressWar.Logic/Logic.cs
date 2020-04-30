@@ -393,9 +393,9 @@ namespace FortressWar.Logic
             this.model.Player_2.Fortress =
                 new Fortress(this.model.Player_2, Config.FieldWidht / 2);
             this.model.Player_1.Selector =
-                new Selector(200);
+                new Selector(-(Config.FieldWidht / 2));
             this.model.Player_2.Selector =
-                new Selector(700);
+                new Selector((Config.FieldWidht / 2)- Config.SelectorWidth/2);
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 

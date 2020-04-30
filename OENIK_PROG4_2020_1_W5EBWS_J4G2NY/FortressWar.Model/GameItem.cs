@@ -47,10 +47,9 @@ namespace FortressWar.Model
                 {
                     if (!(this as Selector).IsPutACharacter)
                     {
-                        return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)
-                    + Config.FieldHeight / 2 + Config.CharacterTileHeight / 2 - 25;
+                        return Math.Floor((this.Y_Tile - 2) * 1.0 * Config.SelectorHeight)
+                    + Config.FieldHeight / 2 + Config.SelectorHeight / 2 - 260;
                     }
-                    
                 }
 
                 return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)

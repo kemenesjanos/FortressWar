@@ -25,7 +25,7 @@ namespace FortressWar.Model
         {
             this.IsPutACharacter = false;
             this.IsUpgrade = false;
-            this.Y_Tile = 1;
+            this.Y_Tile = 2;
             this.CX = cx;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.SelectorWidth, Config.SelectorHeight));
         }
