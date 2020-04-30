@@ -18,7 +18,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The movement distance.
         /// </summary>
-        public const double StepDistance = 5;
+        public const double StepDistance = 2;
 
         /// <summary>
         /// Selector height.

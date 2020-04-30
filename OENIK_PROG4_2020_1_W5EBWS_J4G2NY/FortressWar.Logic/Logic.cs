@@ -33,6 +33,8 @@ namespace FortressWar.Logic
             this.model = model;
             StartGame();
             NewCharacter(Characters.Rider, model.Player_1,1);
+            NewCharacter(Characters.Barricade, model.Player_1, 1);
+            NewCharacter(Characters.Barricade, model.Player_1, 1);
             NewCharacter(Characters.Knight, model.Player_1, 2);
             NewCharacter(Characters.Rider, model.Player_1, 3);
             NewCharacter(Characters.Rider, model.Player_1, 4);
@@ -390,6 +392,10 @@ namespace FortressWar.Logic
                 new Fortress(this.model.Player_1, -Config.FieldWidht / 2);
             this.model.Player_2.Fortress =
                 new Fortress(this.model.Player_2, Config.FieldWidht / 2);
+            this.model.Player_1.Selector =
+                new Selector(200);
+            this.model.Player_2.Selector =
+                new Selector(700);
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 

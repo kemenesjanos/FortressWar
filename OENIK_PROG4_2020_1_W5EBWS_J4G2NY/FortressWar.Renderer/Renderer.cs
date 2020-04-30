@@ -325,6 +325,14 @@ namespace FortressWar.Renderer
             this.getSoldierFight(ctx);
 
             this.GetText(ctx);
+
+            this.GetChoose(ctx);
+        }
+
+        private void GetChoose(DrawingContext ctx)
+        {
+            ctx.DrawGeometry(null, new Pen(Brushes.Black, 4), this.model.Player_1.Selector.RealArea);
+            ctx.DrawGeometry(null, new Pen(Brushes.Black, 4), this.model.Player_2.Selector.RealArea);
         }
 
         public void getSoldierFight(DrawingContext ctx)
