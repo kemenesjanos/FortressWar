@@ -499,7 +499,7 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textKnight1Level, new Point(70, Config.TopHeight + 145));
             ctx.DrawText(this.textKnight2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145));
 
-            ctx.DrawText(this.textRider1Level, new Point(70, Config.TopHeight + 145 + Config.SideHeight/4));
+            ctx.DrawText(this.textRider1Level, new Point(70, Config.TopHeight + 145 + Config.SideHeight / 4));
             ctx.DrawText(this.textRider2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145 + Config.SideHeight / 4));
 
             ctx.DrawText(this.textBarricade1Level, new Point(70, Config.TopHeight + 145 + Config.SideHeight / 2));
@@ -564,7 +564,7 @@ namespace FortressWar.Renderer
 
         public void GetTopArea(DrawingContext ctx)
         {
-            ctx.DrawRectangle(Config.BaseBrownBg, null, this.topBackgroundRect);
+            ctx.DrawRectangle(Config.BaseBrownBg, new Pen(Config.CharacterIconLine, 6), this.topBackgroundRect);
         }
 
         public void GetFortress(DrawingContext ctx)
