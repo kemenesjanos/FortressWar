@@ -23,25 +23,25 @@ namespace FortressWar.Renderer
         private Rect backgroundRect;
         private Rect topBackgroundRect;
 
-        private Rect button11;
-        private Rect button12;
-        private Rect button13;
-        private Rect button14;
-        private Rect buttonchar11;
-        private Rect buttonchar12;
-        private Rect buttonchar13;
+        private Rect button1Knight;
+        private Rect button1Rider;
+        private Rect button1Barricade;
+        private Rect button1Upgrade;
+        private Rect buttonChar1Knight;
+        private Rect buttonChar1Rider;
+        private Rect buttonChar1Barricade;
         private Rect choose11;
         private Rect choose12;
         private Rect choose13;
         private Rect choose14;
 
-        private Rect button21;
-        private Rect button22;
-        private Rect button23;
-        private Rect button24;
-        private Rect buttonchar21;
-        private Rect buttonchar22;
-        private Rect buttonchar23;
+        private Rect button2Knight;
+        private Rect button2Rider;
+        private Rect button2Barricade;
+        private Rect button2Upgrade;
+        private Rect buttonChar2Knight;
+        private Rect buttonChar2Rider;
+        private Rect buttonChar2Barricade;
         private Rect choose21;
         private Rect choose22;
         private Rect choose23;
@@ -51,6 +51,9 @@ namespace FortressWar.Renderer
         private Rect road2;
         private Rect road3;
         private Rect road4;
+
+        private Rect back1;
+        private Rect back2;
 
         private Rect gold1;
         private Rect gold2;
@@ -77,6 +80,8 @@ namespace FortressWar.Renderer
         private FormattedText textRider2Level;
         private FormattedText textBarricade1Level;
         private FormattedText textBarricade2Level;
+        private FormattedText textBack1;
+        private FormattedText textBack2;
 
         private FormattedText upgrade1;
         private FormattedText upgrade2;
@@ -91,40 +96,42 @@ namespace FortressWar.Renderer
         /// <param name="model">The parameter.</param>
         public Renderer(Model model)
         {
+            //TODO: BACK implementálás
+            //TODO: POTI és PÉNZ kirajzolás
             this.model = model;
             this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
             this.topBackgroundRect = new Rect(0, 0, Config.TopWidth, Config.TopHeight);
 
-            this.button11 = new Rect(0, Config.TopHeight,
+            this.button1Knight = new Rect(0, Config.TopHeight,
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button12 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4)),
+            this.button1Rider = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button13 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
+            this.button1Barricade = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
                 Config.SideWidht, Config.SideHeight / 4);
-            this.button14 = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
-                Config.SideWidht, Config.SideHeight / 4);
-
-            this.buttonchar11 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + 40,
-                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
-            this.buttonchar12 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 + 40,
-                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
-            this.buttonchar13 = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
-                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
-
-            this.button21 = new Rect(Config.FullWidht - Config.SideWidht, Config.TopHeight,
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button22 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4)),
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button23 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
-                Config.SideWidht, Config.SideHeight / 4);
-            this.button24 = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
+            this.button1Upgrade = new Rect(0, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
                 Config.SideWidht, Config.SideHeight / 4);
 
-            this.buttonchar21 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + 40,
+            this.buttonChar1Knight = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
-            this.buttonchar22 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 + 40,
+            this.buttonChar1Rider = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
-            this.buttonchar23 = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
+            this.buttonChar1Barricade = new Rect(Config.CharacterTileWidth - 25, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+
+            this.button2Knight = new Rect(Config.FullWidht - Config.SideWidht, Config.TopHeight,
+                Config.SideWidht, Config.SideHeight / 4);
+            this.button2Rider = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4)),
+                Config.SideWidht, Config.SideHeight / 4);
+            this.button2Barricade = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 2)),
+                Config.SideWidht, Config.SideHeight / 4);
+            this.button2Upgrade = new Rect(Config.FullWidht - Config.SideWidht, (Config.TopHeight + (Config.SideHeight / 4 * 3)),
+                Config.SideWidht, Config.SideHeight / 4);
+
+            this.buttonChar2Knight = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonChar2Rider = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 + 40,
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
+            this.buttonChar2Barricade = new Rect(Config.FullWidht - Config.CharacterTileWidth - 75, Config.TopHeight + Config.SideHeight / 4 * 2 + 40,
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight * 2);
 
             this.road1 = new Rect(Config.SideWidht + Config.FortressTileWidth, Config.TopHeight + 90,
@@ -145,6 +152,9 @@ namespace FortressWar.Renderer
             this.choose14 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), (Config.TopHeight + 90 * 4 + Config.CharacterTileHeight * 3),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
+            this.back1 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), (Config.TopHeight + 90 * 5 + Config.CharacterTileHeight * 4),
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+
             this.choose21 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose22 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90 * 2 + Config.CharacterTileHeight),
@@ -152,6 +162,9 @@ namespace FortressWar.Renderer
             this.choose23 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90 * 3 + Config.CharacterTileHeight * 2),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose24 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90 * 4 + Config.CharacterTileHeight * 3),
+                Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+
+            this.back2 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, (Config.TopHeight + 90 * 5 + Config.CharacterTileHeight * 4),
                 Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
             this.gold1 = new Rect(5, 125, Config.CharacterTileWidth, Config.CharacterTileHeight * 1.5);
@@ -316,8 +329,10 @@ namespace FortressWar.Renderer
             this.GetTopArea(ctx);
             this.GetRoad(ctx);
             this.GetRoadChoose(ctx);
-            this.GetCharacterChoose(ctx);
             this.GetFortress(ctx);
+            this.GetCharacterChoose(ctx);
+            this.GetChoose(ctx);
+            this.GetCharacterChooseChar(ctx);
 
             this.GetBarricade(ctx);
             this.GetSoldier(ctx);
@@ -325,14 +340,12 @@ namespace FortressWar.Renderer
             this.getSoldierFight(ctx);
 
             this.GetText(ctx);
-
-            this.GetChoose(ctx);
         }
 
         private void GetChoose(DrawingContext ctx)
         {
-            ctx.DrawGeometry(null, new Pen(Brushes.Black, 4), this.model.Player_1.Selector.RealArea);
-            ctx.DrawGeometry(null, new Pen(Brushes.Black, 4), this.model.Player_2.Selector.RealArea);
+            ctx.DrawGeometry(Config.ActiveBg, null, this.model.Player_1.Selector.RealArea);
+            ctx.DrawGeometry(Config.ActiveBg, null, this.model.Player_2.Selector.RealArea);
         }
 
         public void getSoldierFight(DrawingContext ctx)
@@ -487,6 +500,22 @@ namespace FortressWar.Renderer
                     18,
                     Config.TextLineColour);
 
+            this.textBack1 = new FormattedText(
+                    "BACK",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    30,
+                    Config.DarkTextLineColour);
+
+            this.textBack2 = new FormattedText(
+                    "BACK",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    30,
+                    Config.DarkTextLineColour);
+
             this.fortressWar = new FormattedText(
                     "FortressWar",
                     System.Globalization.CultureInfo.CurrentCulture,
@@ -524,6 +553,9 @@ namespace FortressWar.Renderer
 
             ctx.DrawText(this.upgrade1, new Point(30, 800));
             ctx.DrawText(this.upgrade2, new Point(Config.FullWidht - 30, 800));
+
+            ctx.DrawText(this.textBack1, new Point(10 + Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), 10 + (Config.TopHeight + 90 * 5 + Config.CharacterTileHeight * 4)));
+            ctx.DrawText(this.textBack2, new Point(10 + Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, 10 + (Config.TopHeight + 90 * 5 + Config.CharacterTileHeight * 4)));
 
             ctx.DrawText(this.fortressWar, new Point(510, 20));
         }
@@ -578,30 +610,41 @@ namespace FortressWar.Renderer
         public void GetFortress(DrawingContext ctx)
         {
             //TODO: old vizsgálat, gondolom kellene ide egy if, h nézze, h mikor h rajzolja ki
-            ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
-            ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
+            //ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
+            //ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
+            ctx.DrawGeometry(this.Fortress1Brush, null, this.model.Player_1.Fortress.RealArea);
+            ctx.DrawGeometry(this.Fortress2Brush, null, this.model.Player_2.Fortress.RealArea);
+        }
+
+        public void GetCharacterChooseChar(DrawingContext ctx)
+        {
+            ctx.DrawRectangle(this.Knight1Brush, null, this.buttonChar1Knight);
+            ctx.DrawRectangle(this.Rider1Brush, null, this.buttonChar1Rider);
+            ctx.DrawRectangle(this.Barricade1Brush, null, this.buttonChar1Barricade);
+
+            ctx.DrawRectangle(this.Knight2Brush, null, this.buttonChar2Knight);
+            ctx.DrawRectangle(this.Rider2Brush, null, this.buttonChar2Rider);
+            ctx.DrawRectangle(this.Barricade2Brush, null, this.buttonChar2Barricade);
         }
 
         public void GetCharacterChoose(DrawingContext ctx)
         {
             //TODO if -> aktív nem akítv
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button11);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button12);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button13);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button14);
+            //TODO: ilyenek kellenek vizsgálatra
+            if (model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
+            {
 
-            ctx.DrawRectangle(this.Knight1Brush, null, this.buttonchar11);
-            ctx.DrawRectangle(this.Rider1Brush, null, this.buttonchar12);
-            ctx.DrawRectangle(this.Barricade1Brush, null, this.buttonchar13);
+            }
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Knight);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Rider);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Barricade);
+            //TODO: model.player_1.selector.isupgrade == true vagy false
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Upgrade);
 
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button21);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button22);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button23);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button24);
-
-            ctx.DrawRectangle(this.Knight2Brush, null, this.buttonchar21);
-            ctx.DrawRectangle(this.Rider2Brush, null, this.buttonchar22);
-            ctx.DrawRectangle(this.Barricade2Brush, null, this.buttonchar23);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Knight);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Rider);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Barricade);
+            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Upgrade);
         }
 
         public void GetRoadChoose(DrawingContext ctx)
@@ -616,6 +659,9 @@ namespace FortressWar.Renderer
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose22);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose23);
             ctx.DrawRectangle(Config.RoadChooseIconBg, null, this.choose24);
+
+            ctx.DrawRectangle(Config.BackBg, null, this.back1);
+            ctx.DrawRectangle(Config.BackBg, null, this.back2);
         }
 
         public void GetRoad(DrawingContext ctx)

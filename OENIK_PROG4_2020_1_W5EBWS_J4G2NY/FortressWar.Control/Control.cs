@@ -56,7 +56,8 @@ namespace FortressWar.Control
 
                 win.KeyDown += this.Win_KeyDown;
             }
-            logic.RefreshScreen += (obj, args) => InvalidateVisual();
+
+            this.logic.RefreshScreen += (obj, args) => this.InvalidateVisual();
 
             this.InvalidateVisual();
         }
@@ -76,21 +77,16 @@ namespace FortressWar.Control
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             //TODO: logic.moveselector meghívása!
-            //TODO: gombok Dy-át beállítani + a W S és a Fel Le-nek nem Dx mozgatás kell? távábbá az enter és space??
             switch (e.Key)
             {
                 //1-es játékos
-                case Key.W: logic.MoveSelector(model.Player_1, 1); break;
-                case Key.S: logic.MoveSelector(model.Player_1, 1); break;
-                case Key.D: logic.MoveSelector(model.Player_1, 1); break;
-                case Key.A: logic.MoveSelector(model.Player_1, 1); break;
-                case Key.Space: logic.MoveSelector(model.Player_1, 1); break;
+                case Key.W: this.logic.MoveSelector(this.model.Player_1, -1); break;
+                case Key.S: this.logic.MoveSelector(this.model.Player_1, 1); break;
+                case Key.Space: this.logic.SelectorSelect(this.model.Player_1); break;
                 //2-es játékos
-                case Key.Up: logic.MoveSelector(model.Player_2, 1); break;
-                case Key.Down: logic.MoveSelector(model.Player_2, 1); break;
-                case Key.Right: logic.MoveSelector(model.Player_2, 1); break;
-                case Key.Left: logic.MoveSelector(model.Player_2, 1); break;
-                case Key.Enter: logic.MoveSelector(model.Player_2, 1); break;
+                case Key.Up: this.logic.MoveSelector(this.model.Player_2, -1); break;
+                case Key.Down: this.logic.MoveSelector(this.model.Player_2, 1); break;
+                case Key.Enter: this.logic.SelectorSelect(this.model.Player_2); break;
             }
             //TODO: játék vége vizsgálat a várakra és azzal akár kiírás
         }
@@ -98,7 +94,7 @@ namespace FortressWar.Control
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             //TODO: mozgatás események meghívása.
-            logic.MoveSoldier();
+            this.logic.MoveSoldier();
         }
     }
 }
