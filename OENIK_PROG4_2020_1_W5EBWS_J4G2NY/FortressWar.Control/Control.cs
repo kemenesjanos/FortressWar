@@ -9,6 +9,7 @@ namespace FortressWar.Control
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
+    using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
     using FortressWar.Logic;
@@ -75,6 +76,23 @@ namespace FortressWar.Control
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             //TODO: logic.moveselector meghívása!
+            //TODO: gombok Dy-át beállítani + a W S és a Fel Le-nek nem Dx mozgatás kell? távábbá az enter és space??
+            switch (e.Key)
+            {
+                //1-es játékos
+                case Key.W: logic.MoveSelector(model.Player_1, 1); break;
+                case Key.S: logic.MoveSelector(model.Player_1, 1); break;
+                case Key.D: logic.MoveSelector(model.Player_1, 1); break;
+                case Key.A: logic.MoveSelector(model.Player_1, 1); break;
+                case Key.Space: logic.MoveSelector(model.Player_1, 1); break;
+                //2-es játékos
+                case Key.Up: logic.MoveSelector(model.Player_2, 1); break;
+                case Key.Down: logic.MoveSelector(model.Player_2, 1); break;
+                case Key.Right: logic.MoveSelector(model.Player_2, 1); break;
+                case Key.Left: logic.MoveSelector(model.Player_2, 1); break;
+                case Key.Enter: logic.MoveSelector(model.Player_2, 1); break;
+            }
+            //TODO: játék vége vizsgálat a várakra és azzal akár kiírás
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
