@@ -17,6 +17,32 @@ namespace FortressWar.Model
     public class Selector : GameItem
     {
         /// <summary>
+        /// Enum of the selected characters
+        /// </summary>
+        public enum SelectedCharacters
+        {
+            /// <summary>
+            /// Knight.
+            /// </summary>
+            Knight,
+
+            /// <summary>
+            /// Rider.
+            /// </summary>
+            Rider,
+
+            /// <summary>
+            /// Barricade.
+            /// </summary>
+            Barricade,
+
+            /// <summary>
+            /// If there is not a selected character.
+            /// </summary>
+            None,
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Selector"/> class.
         /// Selector.
         /// </summary>
@@ -39,5 +65,10 @@ namespace FortressWar.Model
         /// Gets or sets a value indicating whether is the selector in UpgradeMode.
         /// </summary>
         public bool IsUpgrade { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected character.
+        /// </summary>
+        public SelectedCharacters SelectedCharacter { get; set; }
     }
 }
