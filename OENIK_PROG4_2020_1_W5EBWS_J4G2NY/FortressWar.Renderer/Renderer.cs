@@ -250,6 +250,38 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
+        /// Gets make Gold bonus brush.
+        /// </summary>
+        private Brush GoldBonusBrush1
+        {
+            get { return this.GetBrush("FortressWar.Images.coin1.png", true); }
+        }
+
+        /// <summary>
+        /// Gets make Gold bonus brush.
+        /// </summary>
+        private Brush GoldBonusBrush2
+        {
+            get { return this.GetBrush("FortressWar.Images.coin2.png", true); }
+        }
+
+        /// <summary>
+        /// Gets make Potion bonus brush.
+        /// </summary>
+        private Brush PotionBonusBrush1
+        {
+            get { return this.GetBrush("FortressWar.Images.potion1.png", true); }
+        }
+
+        /// <summary>
+        /// Gets make Potion bonus brush.
+        /// </summary>
+        private Brush PotionBonusBrush2
+        {
+            get { return this.GetBrush("FortressWar.Images.potion2.png", true); }
+        }
+
+        /// <summary>
         /// Gets make Knight1 brush.
         /// </summary>
         private Brush Knight1Brush1
@@ -434,6 +466,7 @@ namespace FortressWar.Renderer
 
             this.GetBarricade(ctx);
             this.GetSoldier(ctx);
+            this.GetBonus(ctx);
 
             this.getSoldierFight(ctx);
 
@@ -441,6 +474,33 @@ namespace FortressWar.Renderer
 
             this.stw = new Stopwatch();
             this.stw.Start();
+        }
+
+        private void GetBonus(DrawingContext ctx)
+        {
+            foreach (Coin coin in this.model.Coins)
+            {
+                if (this.stw.ElapsedMilliseconds % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.GoldBonusBrush1, null, coin.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.GoldBonusBrush2, null, coin.RealArea);
+                }
+            }
+
+            foreach (Potion potion in this.model.Potions)
+            {
+                if (this.stw.ElapsedMilliseconds % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.PotionBonusBrush1, null, potion.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.PotionBonusBrush1, null, potion.RealArea);
+                }
+            }
         }
 
         private void GetChoose(DrawingContext ctx)
