@@ -99,7 +99,6 @@ namespace FortressWar.Renderer
         /// <param name="model">The parameter.</param>
         public Renderer(Model model)
         {
-            //TODO: BACK implementálás
             //TODO: POTI és PÉNZ kirajzolás
             this.model = model;
             this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
@@ -815,22 +814,79 @@ namespace FortressWar.Renderer
 
         public void GetCharacterChoose(DrawingContext ctx)
         {
-            //TODO if -> aktív nem akítv
-            //TODO: ilyenek kellenek vizsgálatra
-            if (model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
+            //1-es játékos
+            if (this.model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
             {
-
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button1Knight);
             }
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Knight);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Rider);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Barricade);
-            //TODO: model.player_1.selector.isupgrade == true vagy false
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Upgrade);
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Knight);
+            }
 
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Knight);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Rider);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Barricade);
-            ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Upgrade);
+            if (this.model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Rider)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button1Rider);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Rider);
+            }
+
+            if (this.model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Barricade)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button1Barricade);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Barricade);
+            }
+
+            if (this.model.Player_1.Selector.IsUpgrade == true)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button1Upgrade);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Upgrade);
+            }
+
+            //2-es játékos
+            if (this.model.Player_2.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button2Knight);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Knight);
+            }
+
+            if (this.model.Player_2.Selector.SelectedCharacter == Selector.SelectedCharacters.Rider)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button2Rider);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Rider);
+            }
+
+            if (this.model.Player_2.Selector.SelectedCharacter == Selector.SelectedCharacters.Barricade)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button2Barricade);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Barricade);
+            }
+
+            if (this.model.Player_2.Selector.IsUpgrade == true)
+            {
+                ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button2Upgrade);
+            }
+            else
+            {
+                ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button2Upgrade);
+            }
         }
 
         public void GetRoadChoose(DrawingContext ctx)
