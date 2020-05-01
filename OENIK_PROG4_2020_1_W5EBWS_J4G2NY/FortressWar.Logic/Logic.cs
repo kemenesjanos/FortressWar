@@ -34,16 +34,9 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
-            NewCharacter(Characters.Rider, model.Player_1,1);
-            NewCharacter(Characters.Barricade, model.Player_1, 1);
-            NewCharacter(Characters.Barricade, model.Player_1, 1);
-            NewCharacter(Characters.Knight, model.Player_1, 2);
-            NewCharacter(Characters.Rider, model.Player_1, 3);
-            NewCharacter(Characters.Rider, model.Player_1, 4);
-            NewCharacter(Characters.Rider, model.Player_2, 1);
-            NewCharacter(Characters.Knight, model.Player_2, 2);
-            NewCharacter(Characters.Rider, model.Player_2, 3);
-            NewCharacter(Characters.Rider, model.Player_2, 4);
+
+            SelectorSelect(model.Player_1);
+
         }
 
         /// <summary>
@@ -145,9 +138,13 @@ namespace FortressWar.Logic
 
         public void MoveSelector(Player player, int dy)
         {
-            if ((this.model.Selector.Y_Tile + dy) >= 0 && (this.model.Selector.Y_Tile + dy) <= 4)
+            if ((player.Selector.Y_Tile + dy) > 0 && (player.Selector.Y_Tile + dy) <= 4)
             {
-                this.model.Selector.Y_Tile += dy;
+                player.Selector.Y_Tile += dy;
+            }
+            else if (player.Selector.IsPutACharacter && (player.Selector.Y_Tile + dy) == 0)
+            {
+                player.Selector.Y_Tile += dy;
             }
 
             RefreshScreen?.Invoke(this, EventArgs.Empty);
@@ -177,6 +174,7 @@ namespace FortressWar.Logic
                     }
                 }
 
+                player.Selector.IsPutACharacter = false;
                 player.Selector.SelectedCharacter = Selector.SelectedCharacters.None;
                 player.Selector.CX = player == this.model.Player_1 ?
                     -(Config.FieldWidht / 2) : (Config.FieldWidht / 2) - (Config.SelectorWidth / 2);
@@ -199,24 +197,27 @@ namespace FortressWar.Logic
                         this.UpdateCharacter(Characters.Barricade, player);
                         break;
                     case 4:
-                        player.Selector.IsUpgrade = false;
                         break;
                     default:
+                        player.Selector.IsUpgrade = false;
                         break;
-                };
+                }
             }
             else
             {
                 switch (player.Selector.Y_Tile)
                 {
                     case 1:
+                        player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Knight;
+                        player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
-                        player.Selector.area =new RectangleGeometry(
+                                -(Config.FieldWidht / 4) - (Config.CharacterTileWidth / 2) : Config.FieldWidht / 4;
+                        player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 2:
+                        player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Rider;
                         player.Selector.CX = player == this.model.Player_1 ?
                                 (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
@@ -224,6 +225,7 @@ namespace FortressWar.Logic
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 3:
+                        player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Barricade;
                         player.Selector.CX = player == this.model.Player_1 ?
                                 (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
