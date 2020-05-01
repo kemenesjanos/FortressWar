@@ -86,8 +86,11 @@ namespace FortressWar.Renderer
         private FormattedText textBack1;
         private FormattedText textBack2;
 
-        private FormattedText upgrade1;
-        private FormattedText upgrade2;
+        private FormattedText textUpgrade1;
+        private FormattedText textUpgrade2;
+
+        private FormattedText textFortress1;
+        private FormattedText textFortress2;
 
         private FormattedText fortressWar;
 
@@ -396,7 +399,7 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
-        /// Gets make Barricade2 brush.
+        /// Gets make Fortress1 brush.
         /// </summary>
         private Brush Fortress1Brush1
         {
@@ -404,11 +407,91 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
-        /// Gets make Barricade2 brush.
+        /// Gets make Fortress1 brush.
+        /// </summary>
+        private Brush Fortress1Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.1fortress2.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make HalfFortress1 brush.
+        /// </summary>
+        private Brush FortressHalf1Brush1
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.1halffortress1.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make HalfFortress1 brush.
+        /// </summary>
+        private Brush FortressHalf1Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.1halffortress2.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make DefFortress1 brush.
+        /// </summary>
+        private Brush FortressDef1Brush1
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.1deffortress1.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make DefFortress1 brush.
+        /// </summary>
+        private Brush FortressDef1Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.1deffortress2.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make Fortress2 brush.
         /// </summary>
         private Brush Fortress2Brush1
         {
             get { return this.GetFortressBrush("FortressWar.Images.2fortress1.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make Fortress2 brush.
+        /// </summary>
+        private Brush Fortress2Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.2fortress2.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make HalfFortress2 brush.
+        /// </summary>
+        private Brush FortressHalf2Brush1
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.2halffortress1.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make GalfFortress2 brush.
+        /// </summary>
+        private Brush FortressHalf2Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.2halffortress2.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make DefFortress2 brush.
+        /// </summary>
+        private Brush FortressDef2Brush1
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.2deffortress1.png", false); }
+        }
+
+        /// <summary>
+        /// Gets make DefFortress2 brush.
+        /// </summary>
+        private Brush FortressDef2Brush2
+        {
+            get { return this.GetFortressBrush("FortressWar.Images.2deffortress2.png", false); }
         }
 
         /// <summary>
@@ -429,13 +512,13 @@ namespace FortressWar.Renderer
             this.GetTopArea(ctx);
             this.GetRoad(ctx);
             this.GetRoadChoose(ctx);
-            this.GetFortress(ctx);
             this.GetCharacterChoose(ctx);
             this.GetChoose(ctx);
             this.GetCharacterChooseChar(ctx);
 
             this.GetBarricade(ctx);
             this.GetSoldier(ctx);
+            this.GetFortress(ctx);
             this.GetBonus(ctx);
 
             this.GetSoldierFight(ctx);
@@ -614,7 +697,7 @@ namespace FortressWar.Renderer
                     20,
                     Config.GoldTextLineColour);
 
-            this.upgrade1 = new FormattedText(
+            this.textUpgrade1 = new FormattedText(
                     "UPGRADE",
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
@@ -622,7 +705,7 @@ namespace FortressWar.Renderer
                     18,
                     Config.TextLineColour);
 
-            this.upgrade2 = new FormattedText(
+            this.textUpgrade2 = new FormattedText(
                     "UPGRADE",
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
@@ -654,6 +737,22 @@ namespace FortressWar.Renderer
                     100,
                     Config.DarkTextLineColour);
 
+            this.textFortress1 = new FormattedText(
+                    this.model.Player_1.Fortress.Life.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
+            this.textFortress2 = new FormattedText(
+                    this.model.Player_2.Fortress.Life.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.RightToLeft,
+                    this.font,
+                    32,
+                    Config.TextLineColour);
+
             ctx.DrawText(this.textPlayer1, new Point(20, 20));
             ctx.DrawText(this.textPlayer2, new Point(Config.FullWidht - 20, 20));
 
@@ -681,11 +780,14 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textBarricade1Gold, new Point(55, Config.TopHeight + 10 + (Config.SideHeight / 2)));
             ctx.DrawText(this.textBarricade2Gold, new Point(Config.FullWidht - 55, Config.TopHeight + 10 + (Config.SideHeight / 2)));
 
-            ctx.DrawText(this.upgrade1, new Point(30, 800));
-            ctx.DrawText(this.upgrade2, new Point(Config.FullWidht - 30, 800));
+            ctx.DrawText(this.textUpgrade1, new Point(30, 800));
+            ctx.DrawText(this.textUpgrade2, new Point(Config.FullWidht - 30, 800));
 
             ctx.DrawText(this.textBack1, new Point(10 + Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));
             ctx.DrawText(this.textBack2, new Point(10 + Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));
+
+            ctx.DrawText(this.textFortress1, new Point(260, 150));
+            ctx.DrawText(this.textFortress2, new Point(Config.FullWidht - 260, 150));
 
             ctx.DrawText(this.fortressWar, new Point(510, 20));
         }
@@ -825,8 +927,73 @@ namespace FortressWar.Renderer
             //TODO: old vizsgálat, gondolom kellene ide egy if, h nézze, h mikor h rajzolja ki
             //ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
             //ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
-            ctx.DrawGeometry(this.Fortress1Brush1, null, this.model.Player_1.Fortress.RealArea);
-            ctx.DrawGeometry(this.Fortress2Brush1, null, this.model.Player_2.Fortress.RealArea);
+            if (this.model.Player_1.Fortress.Life < 25)
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.FortressDef1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.FortressDef1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                }
+            }
+            else if (this.model.Player_1.Fortress.Life < 75)
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.FortressHalf1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.FortressHalf1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                }
+            }
+            else
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.Fortress1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.Fortress1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                }
+            }
+
+            if (this.model.Player_1.Fortress.Life < 25)
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.FortressDef2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.FortressDef2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                }
+            }
+            else if (this.model.Player_1.Fortress.Life < 75)
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.FortressHalf2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.FortressHalf2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                }
+            }
+            else
+            {
+                if (DateTime.Now.Millisecond % 2 == 0)
+                {
+                    ctx.DrawGeometry(this.Fortress2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                }
+                else
+                {
+                    ctx.DrawGeometry(this.Fortress2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                }
+            }
         }
 
         private void GetCharacterChooseChar(DrawingContext ctx)
