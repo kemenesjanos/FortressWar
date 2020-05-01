@@ -8,6 +8,8 @@ namespace FortressWar.Logic
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Media;
     using FortressWar.Model;
 
     /// <summary>
@@ -157,39 +159,47 @@ namespace FortressWar.Logic
         {
             if (player.Selector.IsPutACharacter)
             {
-                switch (player.Selector.Y_Tile)
+                if (player.Selector.Y_Tile != 0)
                 {
-                    case 0:
-                        player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
-                        //player.Selector.CY = player == this.model.Player_1 ?
-                          //      (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        break;
-                };
+                    switch (player.Selector.SelectedCharacter)
+                    {
+                        case Selector.SelectedCharacters.Knight:
+                            this.NewCharacter(Characters.Knight, player, player.Selector.Y_Tile);
+                            break;
+                        case Selector.SelectedCharacters.Rider:
+                            this.NewCharacter(Characters.Rider, player, player.Selector.Y_Tile);
+                            break;
+                        case Selector.SelectedCharacters.Barricade:
+                            this.NewCharacter(Characters.Barricade, player, player.Selector.Y_Tile);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                player.Selector.SelectedCharacter = Selector.SelectedCharacters.None;
+                player.Selector.CX = player == this.model.Player_1 ?
+                    -(Config.FieldWidht / 2) : (Config.FieldWidht / 2) - (Config.SelectorWidth / 2);
+                player.Selector.Y_Tile = 1;
+                player.Selector.area =
+                    new RectangleGeometry(
+                        new System.Windows.Rect(player.Selector.CX, player.Selector.CY, Config.SelectorWidth, Config.SelectorHeight));
             }
             else if (player.Selector.IsUpgrade)
             {
                 switch (player.Selector.Y_Tile)
                 {
-                    case 0:
-                        break;
                     case 1:
+                        this.UpdateCharacter(Characters.Knight, player);
                         break;
                     case 2:
+                        this.UpdateCharacter(Characters.Rider, player);
                         break;
                     case 3:
+                        this.UpdateCharacter(Characters.Barricade, player);
                         break;
                     case 4:
+                        player.Selector.IsUpgrade = false;
                         break;
                     default:
                         break;
@@ -199,20 +209,36 @@ namespace FortressWar.Logic
             {
                 switch (player.Selector.Y_Tile)
                 {
-                    case 0:
-                        break;
                     case 1:
+                        player.Selector.SelectedCharacter = Selector.SelectedCharacters.Knight;
+                        player.Selector.CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        player.Selector.area =new RectangleGeometry(
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 2:
+                        player.Selector.SelectedCharacter = Selector.SelectedCharacters.Rider;
+                        player.Selector.CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        player.Selector.area = new RectangleGeometry(
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 3:
+                        player.Selector.SelectedCharacter = Selector.SelectedCharacters.Barricade;
+                        player.Selector.CX = player == this.model.Player_1 ?
+                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                        player.Selector.area = new RectangleGeometry(
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 4:
+                        player.Selector.IsUpgrade = true;
                         break;
                     default:
                         break;
-                };
+                }
             }
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -395,7 +421,7 @@ namespace FortressWar.Logic
             this.model.Player_1.Selector =
                 new Selector(-(Config.FieldWidht / 2));
             this.model.Player_2.Selector =
-                new Selector((Config.FieldWidht / 2)- Config.SelectorWidth/2);
+                new Selector((Config.FieldWidht / 2) - (Config.SelectorWidth / 2));
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 

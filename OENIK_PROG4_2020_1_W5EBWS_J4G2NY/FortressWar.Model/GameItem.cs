@@ -8,6 +8,7 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Media;
 
     /// <summary>
@@ -18,7 +19,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The (0;0) centered geometry.
         /// </summary>
-        protected Geometry area;
+        public Geometry area;
 
         /// <summary>
         /// Rotation in degree.
@@ -47,13 +48,13 @@ namespace FortressWar.Model
                 {
                     if (!(this as Selector).IsPutACharacter)
                     {
-                        return Math.Floor((this.Y_Tile - 2) * 1.0 * Config.SelectorHeight)
-                    + Config.FieldHeight / 2 + Config.SelectorHeight / 2 - 260;
+                        return Math.Floor((this.Y_Tile - 2) * 0.5 * Config.SelectorHeight)
+                    + (Config.FieldHeight / 2) + (Config.SelectorHeight / 2) - 250;
                     }
                 }
 
                 return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)
-                    + Config.FieldHeight / 2 + Config.CharacterTileHeight / 2 - 25;
+                    + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 25;
             }
         }
 
