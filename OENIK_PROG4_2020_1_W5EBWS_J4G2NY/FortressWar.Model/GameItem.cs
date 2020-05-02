@@ -57,6 +57,10 @@ namespace FortressWar.Model
                     + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 90;
                     }
                 }
+                else if(this is Fortress)
+                {
+                    return 150;
+                }
 
                 return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)
                     + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 25;
