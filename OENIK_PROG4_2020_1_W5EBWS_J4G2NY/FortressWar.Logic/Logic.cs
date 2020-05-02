@@ -22,7 +22,6 @@ namespace FortressWar.Logic
         /// </summary>
         private Model model;
         private Random rnd = new Random();
-
         public event EventHandler RefreshScreen;
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
-            NewExtra(Extras.Coin);
+            NewExtra(Extras.Potion);
         }
 
         /// <summary>
@@ -279,14 +278,21 @@ namespace FortressWar.Logic
                             soldier.Enemy = item;
                         }
                     }
-
+                    bool e = false;
+                    Potion p = null;
                     foreach (Potion item in this.model.Potions)
                     {
                         if (soldier.IsCollision(item))
                         {
                             this.GetPotion(soldier);
-                            this.model.Potions.Remove(item);
+                            e = true;
+                            p = item;
                         }
+                    }
+                    if (e)
+                    {
+                        this.model.Potions.Remove(p);
+                        p = null;
                     }
 
                     if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))

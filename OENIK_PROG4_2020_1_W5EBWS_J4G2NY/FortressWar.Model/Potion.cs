@@ -9,6 +9,8 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Describing the star and the potion.
@@ -22,8 +24,9 @@ namespace FortressWar.Model
         public Potion()
         {
             Random r = new Random();
-            this.Y_Tile = r.Next(0, 5);
-            this.CX = r.Next(-Config.FieldWidht / 2, Config.FieldWidht / 2);
+            this.Y_Tile = r.Next(1, 5);
+            this.CX = r.Next((-Config.FieldWidht / 2) - Config.CharacterTileWidth, Config.FieldWidht / 2);
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
     }
 }
