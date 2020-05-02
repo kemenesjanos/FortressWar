@@ -196,9 +196,10 @@ namespace FortressWar.Logic
                     case 4:
                         break;
                     default:
-                        player.Selector.IsUpgrade = false;
+                        
                         break;
                 }
+                player.Selector.IsUpgrade = false;
             }
             else
             {
@@ -455,6 +456,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.KnightUpgradePrice;
                         if (this.model.Player_1.KnightLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.KnightLVL++;
@@ -467,6 +469,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.RiderUpgradePrice;
                         if (this.model.Player_1.RiderLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.RiderLVL++;
@@ -478,6 +481,8 @@ namespace FortressWar.Logic
                         {
                             break;
                         }
+
+                        player.Money -= Config.BarricadeUpgradePrice;
 
                         if (this.model.Player_1.BarricadeLVL < Config.MaxLVL)
                         {
