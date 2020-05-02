@@ -23,6 +23,7 @@ namespace FortressWar.Logic
         private Model model;
         private Random rnd = new Random();
         public event EventHandler RefreshScreen;
+        public event EventHandler FinishedGame;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logic"/> class.
@@ -116,7 +117,8 @@ namespace FortressWar.Logic
 
         public void EndGame()
         {
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+            this.FinishedGame?.Invoke(this, EventArgs.Empty);
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
