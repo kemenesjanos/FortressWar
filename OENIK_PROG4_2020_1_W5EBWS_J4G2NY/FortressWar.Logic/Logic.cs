@@ -34,6 +34,7 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
+            NewExtra(Extras.Coin);
         }
 
         /// <summary>
@@ -96,7 +97,6 @@ namespace FortressWar.Logic
             }
             else if (character is Coin)
             {
-                this.GetBountry(character);
                 this.model.Coins.Remove(character as Coin);
             }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
@@ -259,6 +259,10 @@ namespace FortressWar.Logic
 
                     if (this.Attack(soldier.Enemy, soldier.Power))
                     {
+                        if (soldier.Enemy is Coin)
+                        {
+                            soldier.Owner.Money += soldier.Enemy.Bounty;
+                        }
                         soldier.Enemy = null;
                     }
                 }
