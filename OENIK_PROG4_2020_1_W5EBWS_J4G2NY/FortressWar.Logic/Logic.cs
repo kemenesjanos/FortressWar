@@ -343,17 +343,17 @@ namespace FortressWar.Logic
                             break;
                         }
 
-                        player.Money -= player.BarricadePrice;
                         if (player == this.model.Player_1)
                         {
-                            int tX = Config.CharacterTileWidth - Config.CharacterTileWidth;
-                            while (tX < Config.FieldWidht / 2 && this.model.Player_1.Barricades.FirstOrDefault(x => x.CX == tX) != null)
+                            int tX = -Config.FieldWidht / 2;
+                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX) != null)
                             {
                                 tX += Config.CharacterTileWidth;
                             }
 
-                            if (tX < Config.FieldWidht / 2)
+                            if (tX < 0 - Config.CharacterTileWidth)
                             {
+                                player.Money -= player.BarricadePrice;
                                 player.Barricades.Add(
                                     new Barricade(player)
                                     {
@@ -364,14 +364,15 @@ namespace FortressWar.Logic
                         }
                         else
                         {
-                            int tX1 = Config.FieldWidht-Config.CharacterTileWidth;
-                            while (tX1 > Config.FieldWidht / 2 && this.model.Player_2.Barricades.FirstOrDefault(x => x.CX == tX1) != null)
+                            int tX1 = Config.FieldWidht / 2 - Config.CharacterTileWidth;
+                            while (tX1 > 0 && this.model.Player_2.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX1) != null)
                             {
                                 tX1 -= Config.CharacterTileWidth;
                             }
 
-                            if (tX1 > Config.FieldWidht / 2)
+                            if (tX1 > 0)
                             {
+                                player.Money -= player.BarricadePrice;
                                 player.Barricades.Add(
                                     new Barricade(player)
                                     {
