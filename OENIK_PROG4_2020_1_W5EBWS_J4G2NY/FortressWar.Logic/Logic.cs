@@ -34,9 +34,6 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
-
-            SelectorSelect(model.Player_1);
-
         }
 
         /// <summary>
@@ -49,6 +46,7 @@ namespace FortressWar.Logic
         {
             if (attackedCharacter.Life - damage <= 0)
             {
+                attackedCharacter.Life = 0;
                 this.Die(attackedCharacter);
                 RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -212,23 +210,25 @@ namespace FortressWar.Logic
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Knight;
                         player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                -(Config.FieldWidht / 4) - (Config.CharacterTileWidth / 2) : Config.FieldWidht / 4;
+                                -(Config.FieldWidht / 4) - Config.CharacterTileWidth  : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
-                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth*2, Config.CharacterTileHeight));
                         break;
                     case 2:
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Rider;
+                        player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                                -(Config.FieldWidht / 4) - (Config.CharacterTileWidth / 2) : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;
                     case 3:
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Barricade;
+                        player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                                -(Config.FieldWidht / 4) - (Config.CharacterTileWidth / 2) : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
                         break;

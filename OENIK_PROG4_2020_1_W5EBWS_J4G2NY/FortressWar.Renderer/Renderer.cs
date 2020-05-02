@@ -104,6 +104,8 @@ namespace FortressWar.Renderer
         {
             //TODO: POTI és PÉNZ kirajzolás
             this.model = model;
+            //TODO: CHECK IF THIS IS GOOD OR NOT
+            this.stw = new Stopwatch();
             this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
             this.topBackgroundRect = new Rect(0, 0, Config.TopWidth, Config.TopHeight);
 

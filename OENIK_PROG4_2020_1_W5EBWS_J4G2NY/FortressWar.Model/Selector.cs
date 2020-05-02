@@ -49,6 +49,7 @@ namespace FortressWar.Model
         /// <param name="cx">the cx coord.</param>
         public Selector(double cx)
         {
+            this.SelectedCharacter = SelectedCharacters.None;
             this.IsPutACharacter = false;
             this.IsUpgrade = false;
             this.Y_Tile = 1;
