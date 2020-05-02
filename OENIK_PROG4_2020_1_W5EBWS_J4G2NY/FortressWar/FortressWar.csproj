@@ -135,7 +135,15 @@
     <EmbeddedResource Include="Images\2hwalk1.png" />
     <EmbeddedResource Include="Images\2hwalk2.png" />
     <EmbeddedResource Include="Images\2walk1.png" />
-    <Content Include="Images\2walk2.png" />
+    <EmbeddedResource Include="Images\1attack1.png" />
+    <EmbeddedResource Include="Images\1attack2.png" />
+    <EmbeddedResource Include="Images\1hattack1.png" />
+    <EmbeddedResource Include="Images\1hattack2.png" />
+    <EmbeddedResource Include="Images\2attack1.png" />
+    <EmbeddedResource Include="Images\2attack2.png" />
+    <EmbeddedResource Include="Images\2hattack1.png" />
+    <EmbeddedResource Include="Images\2hattack2.png" />
+    <EmbeddedResource Include="Images\2walk2.png" />
     <EmbeddedResource Include="Images\coin1.png" />
     <EmbeddedResource Include="Images\coin2.png" />
     <EmbeddedResource Include="Images\potion1.png" />

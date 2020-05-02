@@ -261,7 +261,11 @@ namespace FortressWar.Model
 
         private static Brush characterIconLine = new SolidColorBrush(Color.FromArgb(255, 86, 48, 32));
 
-        private static Brush activeBg = Brushes.LightCoral;
+        private static Brush activeBg = new SolidColorBrush(Color.FromArgb(255, 195, 146, 105));
+
+        private static Brush currentActiveBg = Brushes.LightCoral;
+
+        private static Brush backBg = new SolidColorBrush(Color.FromArgb(255, 136, 68, 68));
 
         /// <summary>
         /// Gets or sets main text colour.
@@ -307,5 +311,15 @@ namespace FortressWar.Model
         /// Gets or sets active icon background colour.
         /// </summary>
         public static Brush ActiveBg { get => activeBg; set => activeBg = value; }
+
+        /// <summary>
+        /// Gets or sets current active icon background colour.
+        /// </summary>
+        public static Brush CurrentActiveBg { get => currentActiveBg; set => currentActiveBg = value; }
+
+        /// <summary>
+        /// Gets or sets back icon background colour.
+        /// </summary>
+        public static Brush BackBg { get => backBg; set => backBg = value; }
     }
 }

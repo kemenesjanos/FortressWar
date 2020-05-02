@@ -9,6 +9,7 @@ namespace FortressWar.Control
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
+    using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
     using FortressWar.Logic;
@@ -55,7 +56,8 @@ namespace FortressWar.Control
 
                 win.KeyDown += this.Win_KeyDown;
             }
-            logic.RefreshScreen += (obj, args) => InvalidateVisual();
+
+            this.logic.RefreshScreen += (obj, args) => this.InvalidateVisual();
 
             this.InvalidateVisual();
         }
@@ -75,12 +77,24 @@ namespace FortressWar.Control
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             //TODO: logic.moveselector meghívása!
+            switch (e.Key)
+            {
+                //1-es játékos
+                case Key.W: this.logic.MoveSelector(this.model.Player_1, -1); break;
+                case Key.S: this.logic.MoveSelector(this.model.Player_1, 1); break;
+                case Key.Space: this.logic.SelectorSelect(this.model.Player_1); break;
+                //2-es játékos
+                case Key.Up: this.logic.MoveSelector(this.model.Player_2, -1); break;
+                case Key.Down: this.logic.MoveSelector(this.model.Player_2, 1); break;
+                case Key.Enter: this.logic.SelectorSelect(this.model.Player_2); break;
+            }
+            //TODO: játék vége vizsgálat a várakra és azzal akár kiírás
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             //TODO: mozgatás események meghívása.
-            logic.MoveSoldier();
+            this.logic.MoveSoldier();
         }
     }
 }

@@ -8,6 +8,6 @@
         xmlns:localModel="clr-namespace:FortressWar.Model;assembly=FortressWar.Model"
         mc:Ignorable="d"
         Title="MainWindow"
-        WindowState="Maximized">
+        WindowState="Maximized" Background="Black">
     <localControl:Control Width="1600" Height="900"/>
 </Window>
