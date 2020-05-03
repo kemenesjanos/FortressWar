@@ -88,6 +88,7 @@ namespace FortressWar.Renderer
 
         private FormattedText textUpgrade1;
         private FormattedText textUpgrade2;
+        private FormattedText textUpgradePrice;
 
         private FormattedText textFortress1;
         private FormattedText textFortress2;
@@ -137,7 +138,7 @@ namespace FortressWar.Renderer
             this.choose13 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 3) + Config.CharacterTileHeight * 2, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose14 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 4) + Config.CharacterTileHeight * 3, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
-            this.back1 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), (Config.TopHeight + 90 * 5 + Config.CharacterTileHeight * 4), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.back1 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 5) + Config.CharacterTileHeight * 4, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
             this.choose21 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + 90, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose22 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 2) + Config.CharacterTileHeight, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
@@ -152,6 +153,15 @@ namespace FortressWar.Renderer
             //TODO: ez egy karakter objektum, ennek nem itt kell majd lennie
             this.fortress1 = new Rect(Config.SideWidht, Config.TopHeight + 50, Config.FortressTileWidth, Config.FortressTileHeight);
             this.fortress2 = new Rect(Config.FieldWidht + Config.SideWidht + Config.FortressTileWidth, Config.TopHeight + 50, Config.FortressTileWidth, Config.FortressTileHeight);
+        }
+
+        /// <summary>
+        /// Help make smooth frame change.
+        /// </summary>
+        /// <returns>True or False.</returns>
+        public bool FrameTimer()
+        {
+            return Math.Round(this.stw.Elapsed.TotalMilliseconds, 0) % 400 < 200;
         }
 
         /// <summary>
@@ -229,7 +239,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush GoldBonusBrush1
         {
-            get { return this.GetBrush("FortressWar.Images.coin1.png", true); }
+            get { return this.GetBrush("FortressWar.Images.coin1.png", false); }
         }
 
         /// <summary>
@@ -237,7 +247,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush GoldBonusBrush2
         {
-            get { return this.GetBrush("FortressWar.Images.coin2.png", true); }
+            get { return this.GetBrush("FortressWar.Images.coin2.png", false); }
         }
 
         /// <summary>
@@ -245,7 +255,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush PotionBonusBrush1
         {
-            get { return this.GetBrush("FortressWar.Images.potion1.png", true); }
+            get { return this.GetBrush("FortressWar.Images.potion1.png", false); }
         }
 
         /// <summary>
@@ -253,7 +263,7 @@ namespace FortressWar.Renderer
         /// </summary>
         private Brush PotionBonusBrush2
         {
-            get { return this.GetBrush("FortressWar.Images.potion2.png", true); }
+            get { return this.GetBrush("FortressWar.Images.potion2.png", false); }
         }
 
         /// <summary>
@@ -527,7 +537,6 @@ namespace FortressWar.Renderer
 
             this.GetText(ctx);
 
-            this.stw = new Stopwatch();
             this.stw.Start();
         }
 
@@ -652,7 +661,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textKnight1Gold = new FormattedText(
-                    "200",
+                    this.model.Player_1.KnightPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -660,7 +669,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textKnight2Gold = new FormattedText(
-                    "200",
+                    this.model.Player_2.KnightPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -668,7 +677,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textRider1Gold = new FormattedText(
-                    "400",
+                    this.model.Player_1.RiderPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -676,7 +685,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textRider2Gold = new FormattedText(
-                    "400",
+                    this.model.Player_2.RiderPrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -684,7 +693,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textBarricade1Gold = new FormattedText(
-                    "150",
+                    this.model.Player_1.BarricadePrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -692,7 +701,7 @@ namespace FortressWar.Renderer
                     Config.GoldTextLineColour);
 
             this.textBarricade2Gold = new FormattedText(
-                    "150",
+                    this.model.Player_2.BarricadePrice.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -714,6 +723,17 @@ namespace FortressWar.Renderer
                     this.font,
                     18,
                     Config.TextLineColour);
+
+            this.textUpgradePrice = new FormattedText(
+                    "                  UPGRADE PRICE\n" +
+                    "Knight: " + Config.KnightUpgradePrice.ToString() +
+                    "   Rider: " + Config.RiderUpgradePrice.ToString() +
+                    "   Barricade: " + Config.BarricadeUpgradePrice.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Arial Bold"),
+                    20,
+                    Config.DarkTextLineColour);
 
             this.textBack1 = new FormattedText(
                     "BACK",
@@ -785,6 +805,8 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textUpgrade1, new Point(30, 800));
             ctx.DrawText(this.textUpgrade2, new Point(Config.FullWidht - 30, 800));
 
+            ctx.DrawText(this.textUpgradePrice, new Point(600, Config.TopHeight - 50));
+
             ctx.DrawText(this.textBack1, new Point(10 + Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));
             ctx.DrawText(this.textBack2, new Point(10 + Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));
 
@@ -816,7 +838,7 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.Knight1Brush1, null, soldier.RealArea);
                         }
@@ -827,7 +849,7 @@ namespace FortressWar.Renderer
                     }
                     else
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.KnightAttack1Brush1, null, soldier.RealArea);
                         }
@@ -841,7 +863,7 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.Rider1Brush1, null, soldier.RealArea);
                         }
@@ -852,7 +874,7 @@ namespace FortressWar.Renderer
                     }
                     else
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.RiderAttack1Brush1, null, soldier.RealArea);
                         }
@@ -870,7 +892,7 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.Knight2Brush1, null, soldier.RealArea);
                         }
@@ -881,7 +903,7 @@ namespace FortressWar.Renderer
                     }
                     else
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.KnightAttack2Brush1, null, soldier.RealArea);
                         }
@@ -895,7 +917,7 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.Rider2Brush1, null, soldier.RealArea);
                         }
@@ -906,7 +928,7 @@ namespace FortressWar.Renderer
                     }
                     else
                     {
-                        if (this.stw.ElapsedMilliseconds % 2 == 0)
+                        if (FrameTimer())
                         {
                             ctx.DrawGeometry(this.RiderAttack2Brush1, null, soldier.RealArea);
                         }
@@ -929,9 +951,9 @@ namespace FortressWar.Renderer
             //TODO: old vizsgálat, gondolom kellene ide egy if, h nézze, h mikor h rajzolja ki
             //ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
             //ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
-            if (this.model.Player_1.Fortress.Life < 25)
+            if (this.model.Player_1.Fortress.Life < 1500)
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.FortressDef1Brush1, null, this.model.Player_1.Fortress.RealArea);
                 }
@@ -940,9 +962,9 @@ namespace FortressWar.Renderer
                     ctx.DrawGeometry(this.FortressDef1Brush2, null, this.model.Player_1.Fortress.RealArea);
                 }
             }
-            else if (this.model.Player_1.Fortress.Life < 75)
+            else if (this.model.Player_1.Fortress.Life < 7500)
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.FortressHalf1Brush1, null, this.model.Player_1.Fortress.RealArea);
                 }
@@ -953,7 +975,7 @@ namespace FortressWar.Renderer
             }
             else
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.Fortress1Brush1, null, this.model.Player_1.Fortress.RealArea);
                 }
@@ -963,9 +985,9 @@ namespace FortressWar.Renderer
                 }
             }
 
-            if (this.model.Player_2.Fortress.Life < 25)
+            if (this.model.Player_2.Fortress.Life < 1500)
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.FortressDef2Brush1, null, this.model.Player_2.Fortress.RealArea);
                 }
@@ -974,9 +996,9 @@ namespace FortressWar.Renderer
                     ctx.DrawGeometry(this.FortressDef2Brush2, null, this.model.Player_2.Fortress.RealArea);
                 }
             }
-            else if (this.model.Player_2.Fortress.Life < 75)
+            else if (this.model.Player_2.Fortress.Life < 7500)
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.FortressHalf2Brush1, null, this.model.Player_2.Fortress.RealArea);
                 }
@@ -987,7 +1009,7 @@ namespace FortressWar.Renderer
             }
             else
             {
-                if (DateTime.Now.Millisecond % 2 == 0)
+                if (FrameTimer())
                 {
                     ctx.DrawGeometry(this.Fortress2Brush1, null, this.model.Player_2.Fortress.RealArea);
                 }

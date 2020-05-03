@@ -58,7 +58,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base power of the rider.
         /// </summary>
-        public const int RiderBasePower = 50;
+        public const int RiderBasePower = 40;
 
         /// <summary>
         /// The rider get that much power when do a level up.
@@ -88,7 +88,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the knight.
         /// </summary>
-        public const int KnightBaseLife = 100;
+        public const int KnightBaseLife = 200;
 
         /// <summary>
         /// The knight get that much Life when do a level up.
@@ -98,7 +98,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the rider.
         /// </summary>
-        public const int RiderBaseLife = 150;
+        public const int RiderBaseLife = 250;
 
         /// <summary>
         /// The rider get that much Life when do a level up.
@@ -108,7 +108,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the Barricade.
         /// </summary>
-        public const int BarricadeBaseLife = 150;
+        public const int BarricadeBaseLife = 400;
 
         /// <summary>
         /// The Barricade get that much Life when do a level up.
@@ -118,7 +118,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the Fortress.
         /// </summary>
-        public const int FortressBaseLife = 1000;
+        public const int FortressBaseLife = 10000;
 
         /// <summary>
         /// The base Price of the knight.
@@ -148,7 +148,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The Upgrade Price of the Rider.
         /// </summary>
-        public const int RiderUpgradePrice = 400;
+        public const int RiderUpgradePrice = 300;
 
         /// <summary>
         /// The base Price of the Barricade.
@@ -163,7 +163,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The Upgrade Price of the Barricade.
         /// </summary>
-        public const int BarricadeUpgradePrice = 200;
+        public const int BarricadeUpgradePrice = 100;
 
         /// <summary>
         /// Player base money.
