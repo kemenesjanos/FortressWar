@@ -35,6 +35,7 @@ namespace FortressWar.Logic
             this.model = model;
             StartGame();
             NewExtra(Extras.Potion);
+            NewExtra(Extras.Coin);
         }
 
         /// <summary>
@@ -431,9 +432,9 @@ namespace FortressWar.Logic
         public void StartGame()
         {
             this.model.Player_1.Fortress =
-                new Fortress(this.model.Player_1, (-Config.FieldWidht / 2) + 70);
+                new Fortress(this.model.Player_1, (-Config.FieldWidht / 2) + 75);
             this.model.Player_2.Fortress =
-                new Fortress(this.model.Player_2, (Config.FieldWidht / 2) - 70 - Config.FortressTileWidth / 2);
+                new Fortress(this.model.Player_2, (Config.FieldWidht / 2) - 75 - Config.FortressTileWidth / 2);
             this.model.Player_1.Selector =
                 new Selector(-(Config.FieldWidht / 2));
             this.model.Player_2.Selector =

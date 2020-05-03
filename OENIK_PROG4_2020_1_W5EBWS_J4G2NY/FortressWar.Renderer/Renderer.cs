@@ -20,7 +20,7 @@ namespace FortressWar.Renderer
     /// </summary>
     public class Renderer
     {
-        public Stopwatch stw;
+        private Stopwatch stw;
 
         private Model model;
         private Rect backgroundRect;
@@ -61,9 +61,6 @@ namespace FortressWar.Renderer
         private Rect gold1;
         private Rect gold2;
 
-        private Rect fortress1;
-        private Rect fortress2;
-
         private Typeface font = new Typeface("Arial");
         private Point textLocation = new Point(10, 10);
 
@@ -103,9 +100,7 @@ namespace FortressWar.Renderer
         /// <param name="model">The parameter.</param>
         public Renderer(Model model)
         {
-            //TODO: POTI és PÉNZ kirajzolás
             this.model = model;
-            //TODO: CHECK IF THIS IS GOOD OR NOT
             this.stw = new Stopwatch();
             this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
             this.topBackgroundRect = new Rect(0, 0, Config.TopWidth, Config.TopHeight);
@@ -135,24 +130,20 @@ namespace FortressWar.Renderer
 
             this.choose11 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + 90, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose12 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 2) + Config.CharacterTileHeight, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
-            this.choose13 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 3) + Config.CharacterTileHeight * 2, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
-            this.choose14 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 4) + Config.CharacterTileHeight * 3, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.choose13 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 3) + (Config.CharacterTileHeight * 2), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.choose14 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 4) + (Config.CharacterTileHeight * 3), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
-            this.back1 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 5) + Config.CharacterTileHeight * 4, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.back1 = new Rect(Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
             this.choose21 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + 90, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
             this.choose22 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 2) + Config.CharacterTileHeight, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
-            this.choose23 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 3) + Config.CharacterTileHeight * 2, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
-            this.choose24 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 4) + Config.CharacterTileHeight * 3, Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.choose23 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 3) + (Config.CharacterTileHeight * 2), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
+            this.choose24 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 4) + (Config.CharacterTileHeight * 3), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
             this.back2 = new Rect(Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4), Config.CharacterTileWidth * 2, Config.CharacterTileHeight);
 
             this.gold1 = new Rect(5, 125, Config.CharacterTileWidth, Config.CharacterTileHeight * 1.5);
             this.gold2 = new Rect(Config.FullWidht - 5 - Config.CharacterTileWidth, 125, Config.CharacterTileWidth, Config.CharacterTileHeight * 1.5);
-
-            //TODO: ez egy karakter objektum, ennek nem itt kell majd lennie
-            this.fortress1 = new Rect(Config.SideWidht, Config.TopHeight + 50, Config.FortressTileWidth, Config.FortressTileHeight);
-            this.fortress2 = new Rect(Config.FieldWidht + Config.SideWidht + Config.FortressTileWidth, Config.TopHeight + 50, Config.FortressTileWidth, Config.FortressTileHeight);
         }
 
         /// <summary>
@@ -229,289 +220,289 @@ namespace FortressWar.Renderer
         /// <summary>
         /// Gets make Knight1 brush.
         /// </summary>
-        private Brush FieldBrush
+        private Brush GetFieldBrush()
         {
-            get { return this.GetBrush("FortressWar.Images.grass.png", true); }
+            return this.GetBrush("FortressWar.Images.grass.png", true);
         }
 
         /// <summary>
         /// Gets make Gold bonus brush.
         /// </summary>
-        private Brush GoldBonusBrush1
+        private Brush GetGoldBonusBrush1()
         {
-            get { return this.GetBrush("FortressWar.Images.coin1.png", false); }
+            return this.GetBrush("FortressWar.Images.coin1.png", false);
         }
 
         /// <summary>
         /// Gets make Gold bonus brush.
         /// </summary>
-        private Brush GoldBonusBrush2
+        private Brush GetGoldBonusBrush2()
         {
-            get { return this.GetBrush("FortressWar.Images.coin2.png", false); }
+            return this.GetBrush("FortressWar.Images.coin2.png", false);
         }
 
         /// <summary>
         /// Gets make Potion bonus brush.
         /// </summary>
-        private Brush PotionBonusBrush1
+        private Brush GetPotionBonusBrush1()
         {
-            get { return this.GetBrush("FortressWar.Images.potion1.png", false); }
+            return this.GetBrush("FortressWar.Images.potion1.png", false);
         }
 
         /// <summary>
         /// Gets make Potion bonus brush.
         /// </summary>
-        private Brush PotionBonusBrush2
+        private Brush GetPotionBonusBrush2()
         {
-            get { return this.GetBrush("FortressWar.Images.potion2.png", false); }
+            return this.GetBrush("FortressWar.Images.potion2.png", false);
         }
 
         /// <summary>
         /// Gets make Knight1 brush.
         /// </summary>
-        private Brush Knight1Brush1
+        private Brush GetKnight1Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.1walk1.png", false); }
+            return this.GetBrush("FortressWar.Images.1walk1.png", false);
         }
 
         /// <summary>
         /// Gets make Knight1 brush.
         /// </summary>
-        private Brush Knight1Brush2
+        private Brush GetKnight1Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.1walk2.png", false); }
+            return this.GetBrush("FortressWar.Images.1walk2.png", false);
         }
 
         /// <summary>
         /// Gets make Knight1 attack brush.
         /// </summary>
-        private Brush KnightAttack1Brush1
+        private Brush GetKnightAttack1Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.1attack1.png", false); }
+            return this.GetBrush("FortressWar.Images.1attack1.png", false);
         }
 
         /// <summary>
         /// Gets make Knight1 attack brush.
         /// </summary>
-        private Brush KnightAttack1Brush2
+        private Brush GetKnightAttack1Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.1attack2.png", false); }
+            return this.GetBrush("FortressWar.Images.1attack2.png", false);
         }
 
         /// <summary>
         /// Gets make Knight2 brush.
         /// </summary>
-        private Brush Knight2Brush1
+        private Brush GetKnight2Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.2walk1.png", false); }
+            return this.GetBrush("FortressWar.Images.2walk1.png", false);
         }
 
         /// <summary>
         /// Gets make Knight2 attack brush.
         /// </summary>
-        private Brush KnightAttack2Brush2
+        private Brush GetKnightAttack2Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.2attack2.png", false); }
+            return this.GetBrush("FortressWar.Images.2attack2.png", false);
         }
 
         /// <summary>
         /// Gets make Knight2 attack brush.
         /// </summary>
-        private Brush KnightAttack2Brush1
+        private Brush GetKnightAttack2Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.2attack1.png", false); }
+            return this.GetBrush("FortressWar.Images.2attack1.png", false);
         }
 
         /// <summary>
         /// Gets make Knight2 brush.
         /// </summary>
-        private Brush Knight2Brush2
+        private Brush GetKnight2Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.2walk2.png", false); }
+            return this.GetBrush("FortressWar.Images.2walk2.png", false);
         }
 
         /// <summary>
         /// Gets make Rider1 brush.
         /// </summary>
-        private Brush Rider1Brush1
+        private Brush GetRider1Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.1hwalk1.png", false); }
+            return this.GetBrush("FortressWar.Images.1hwalk1.png", false);
         }
 
         /// <summary>
         /// Gets make Rider1 brush.
         /// </summary>
-        private Brush Rider1Brush2
+        private Brush GetRider1Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.1hwalk2.png", false); }
+            return this.GetBrush("FortressWar.Images.1hwalk2.png", false);
         }
 
         /// <summary>
         /// Gets make Rider1 attack brush.
         /// </summary>
-        private Brush RiderAttack1Brush1
+        private Brush GetRiderAttack1Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.1hattack1.png", false); }
+            return this.GetBrush("FortressWar.Images.1hattack1.png", false);
         }
 
         /// <summary>
         /// Gets make Rider1 attack brush.
         /// </summary>
-        private Brush RiderAttack1Brush2
+        private Brush GetRiderAttack1Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.1hattack2.png", false); }
+            return this.GetBrush("FortressWar.Images.1hattack2.png", false);
         }
 
         /// <summary>
         /// Gets make Rider2 brush.
         /// </summary>
-        private Brush Rider2Brush1
+        private Brush GetRider2Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.2hwalk1.png", false); }
+            return this.GetBrush("FortressWar.Images.2hwalk1.png", false);
         }
 
         /// <summary>
         /// Gets make Rider2 brush.
         /// </summary>
-        private Brush Rider2Brush2
+        private Brush GetRider2Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.2hwalk2.png", false); }
+            return this.GetBrush("FortressWar.Images.2hwalk2.png", false);
         }
 
         /// <summary>
         /// Gets make Rider2 attack brush.
         /// </summary>
-        private Brush RiderAttack2Brush1
+        private Brush GetRiderAttack2Brush1()
         {
-            get { return this.GetBrush("FortressWar.Images.2hattack1.png", false); }
+            return this.GetBrush("FortressWar.Images.2hattack1.png", false);
         }
 
         /// <summary>
         /// Gets make Rider2 attack brush.
         /// </summary>
-        private Brush RiderAttack2Brush2
+        private Brush GetRiderAttack2Brush2()
         {
-            get { return this.GetBrush("FortressWar.Images.2hattack2.png", false); }
+            return this.GetBrush("FortressWar.Images.2hattack2.png", false);
         }
 
         /// <summary>
         /// Gets make Barricade1 brush.
         /// </summary>
-        private Brush Barricade1Brush
+        private Brush GetBarricade1Brush()
         {
-            get { return this.GetBrush("FortressWar.Images.1barricade.png", false); }
+            return this.GetBrush("FortressWar.Images.1barricade.png", false);
         }
 
         /// <summary>
         /// Gets make Barricade2 brush.
         /// </summary>
-        private Brush Barricade2Brush
+        private Brush GetBarricade2Brush()
         {
-            get { return this.GetBrush("FortressWar.Images.2barricade.png", false); }
+            return this.GetBrush("FortressWar.Images.2barricade.png", false);
         }
 
         /// <summary>
         /// Gets make Fortress1 brush.
         /// </summary>
-        private Brush Fortress1Brush1
+        private Brush GetFortress1Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1fortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1fortress1.png", false);
         }
 
         /// <summary>
         /// Gets make Fortress1 brush.
         /// </summary>
-        private Brush Fortress1Brush2
+        private Brush GetFortress1Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1fortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1fortress2.png", false);
         }
 
         /// <summary>
         /// Gets make HalfFortress1 brush.
         /// </summary>
-        private Brush FortressHalf1Brush1
+        private Brush GetFortressHalf1Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1halffortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1halffortress1.png", false);
         }
 
         /// <summary>
         /// Gets make HalfFortress1 brush.
         /// </summary>
-        private Brush FortressHalf1Brush2
+        private Brush GetFortressHalf1Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1halffortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1halffortress2.png", false);
         }
 
         /// <summary>
         /// Gets make DefFortress1 brush.
         /// </summary>
-        private Brush FortressDef1Brush1
+        private Brush GetFortressDef1Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1deffortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1deffortress1.png", false);
         }
 
         /// <summary>
         /// Gets make DefFortress1 brush.
         /// </summary>
-        private Brush FortressDef1Brush2
+        private Brush GetFortressDef1Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.1deffortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.1deffortress2.png", false);
         }
 
         /// <summary>
         /// Gets make Fortress2 brush.
         /// </summary>
-        private Brush Fortress2Brush1
+        private Brush GetFortress2Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2fortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2fortress1.png", false);
         }
 
         /// <summary>
         /// Gets make Fortress2 brush.
         /// </summary>
-        private Brush Fortress2Brush2
+        private Brush GetFortress2Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2fortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2fortress2.png", false);
         }
 
         /// <summary>
         /// Gets make HalfFortress2 brush.
         /// </summary>
-        private Brush FortressHalf2Brush1
+        private Brush GetFortressHalf2Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2halffortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2halffortress1.png", false);
         }
 
         /// <summary>
         /// Gets make GalfFortress2 brush.
         /// </summary>
-        private Brush FortressHalf2Brush2
+        private Brush GetFortressHalf2Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2halffortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2halffortress2.png", false);
         }
 
         /// <summary>
         /// Gets make DefFortress2 brush.
         /// </summary>
-        private Brush FortressDef2Brush1
+        private Brush GetFortressDef2Brush1()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2deffortress1.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2deffortress1.png", false);
         }
 
         /// <summary>
         /// Gets make DefFortress2 brush.
         /// </summary>
-        private Brush FortressDef2Brush2
+        private Brush GetFortressDef2Brush2()
         {
-            get { return this.GetFortressBrush("FortressWar.Images.2deffortress2.png", false); }
+            return this.GetFortressBrush("FortressWar.Images.2deffortress2.png", false);
         }
 
         /// <summary>
         /// Gets make Barricade2 brush.
         /// </summary>
-        private Brush GoldBrush
+        private Brush GetGoldBrush()
         {
-            get { return this.GetBrush("FortressWar.Images.coin1.png", false); }
+            return this.GetBrush("FortressWar.Images.coin1.png", false);
         }
 
         /// <summary>
@@ -533,8 +524,6 @@ namespace FortressWar.Renderer
             this.GetFortress(ctx);
             this.GetBonus(ctx);
 
-            this.GetSoldierFight(ctx);
-
             this.GetText(ctx);
 
             this.stw.Start();
@@ -544,25 +533,25 @@ namespace FortressWar.Renderer
         {
             foreach (Coin coin in this.model.Coins)
             {
-                if (this.stw.ElapsedMilliseconds % 2 == 0)
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.GoldBonusBrush1, null, coin.RealArea);
+                    ctx.DrawGeometry(this.GetGoldBonusBrush1(), null, coin.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.GoldBonusBrush2, null, coin.RealArea);
+                    ctx.DrawGeometry(this.GetGoldBonusBrush2(), null, coin.RealArea);
                 }
             }
 
             foreach (Potion potion in this.model.Potions)
             {
-                if (this.stw.ElapsedMilliseconds % 2 == 0)
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.PotionBonusBrush1, null, potion.RealArea);
+                    ctx.DrawGeometry(this.GetPotionBonusBrush1(), null, potion.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.PotionBonusBrush1, null, potion.RealArea);
+                    ctx.DrawGeometry(this.GetPotionBonusBrush2(), null, potion.RealArea);
                 }
             }
         }
@@ -571,11 +560,6 @@ namespace FortressWar.Renderer
         {
             ctx.DrawGeometry(Config.ActiveBg, null, this.model.Player_1.Selector.RealArea);
             ctx.DrawGeometry(Config.ActiveBg, null, this.model.Player_2.Selector.RealArea);
-        }
-
-        private void GetSoldierFight(DrawingContext ctx)
-        {
-            //TODO: erre szükség van?
         }
 
         private void GetText(DrawingContext ctx)
@@ -781,8 +765,8 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textGold1, new Point(60, 150));
             ctx.DrawText(this.textGold2, new Point(Config.FullWidht - 60, 150));
 
-            ctx.DrawRectangle(this.GoldBrush, null, this.gold1);
-            ctx.DrawRectangle(this.GoldBrush, null, this.gold2);
+            ctx.DrawRectangle(this.GetGoldBrush(), null, this.gold1);
+            ctx.DrawRectangle(this.GetGoldBrush(), null, this.gold2);
 
             ctx.DrawText(this.textKnight1Level, new Point(70, Config.TopHeight + 145));
             ctx.DrawText(this.textKnight2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145));
@@ -818,15 +802,14 @@ namespace FortressWar.Renderer
 
         private void GetBarricade(DrawingContext ctx)
         {
-            //TODO: old vizsgálat
             foreach (Barricade baraicade in this.model.Player_1.Barricades)
             {
-                ctx.DrawGeometry(this.Barricade1Brush, null, baraicade.RealArea);
+                ctx.DrawGeometry(this.GetBarricade1Brush(), null, baraicade.RealArea);
             }
 
             foreach (Barricade baraicade in this.model.Player_2.Barricades)
             {
-                ctx.DrawGeometry(this.Barricade2Brush, null, baraicade.RealArea);
+                ctx.DrawGeometry(this.GetBarricade2Brush(), null, baraicade.RealArea);
             }
         }
 
@@ -838,24 +821,24 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.Knight1Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnight1Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.Knight1Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnight1Brush2(), null, soldier.RealArea);
                         }
                     }
                     else
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.KnightAttack1Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnightAttack1Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.KnightAttack1Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnightAttack1Brush2(), null, soldier.RealArea);
                         }
                     }
                 }
@@ -863,24 +846,24 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.Rider1Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRider1Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.Rider1Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRider1Brush2(), null, soldier.RealArea);
                         }
                     }
                     else
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.RiderAttack1Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRiderAttack1Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.RiderAttack1Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRiderAttack1Brush2(), null, soldier.RealArea);
                         }
                     }
                 }
@@ -892,24 +875,24 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.Knight2Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnight2Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.Knight2Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnight2Brush2(), null, soldier.RealArea);
                         }
                     }
                     else
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.KnightAttack2Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnightAttack2Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.KnightAttack2Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetKnightAttack2Brush2(), null, soldier.RealArea);
                         }
                     }
                 }
@@ -917,24 +900,24 @@ namespace FortressWar.Renderer
                 {
                     if (soldier.Enemy == null)
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.Rider2Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRider2Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.Rider2Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRider2Brush2(), null, soldier.RealArea);
                         }
                     }
                     else
                     {
-                        if (FrameTimer())
+                        if (this.FrameTimer())
                         {
-                            ctx.DrawGeometry(this.RiderAttack2Brush1, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRiderAttack2Brush1(), null, soldier.RealArea);
                         }
                         else
                         {
-                            ctx.DrawGeometry(this.RiderAttack2Brush2, null, soldier.RealArea);
+                            ctx.DrawGeometry(this.GetRiderAttack2Brush2(), null, soldier.RealArea);
                         }
                     }
                 }
@@ -948,92 +931,88 @@ namespace FortressWar.Renderer
 
         private void GetFortress(DrawingContext ctx)
         {
-            //TODO: old vizsgálat, gondolom kellene ide egy if, h nézze, h mikor h rajzolja ki
-            //ctx.DrawRectangle(this.Fortress1Brush, null, this.fortress1);
-            //ctx.DrawRectangle(this.Fortress2Brush, null, this.fortress2);
             if (this.model.Player_1.Fortress.Life < 1500)
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.FortressDef1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressDef1Brush1(), null, this.model.Player_1.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.FortressDef1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressDef1Brush2(), null, this.model.Player_1.Fortress.RealArea);
                 }
             }
             else if (this.model.Player_1.Fortress.Life < 7500)
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.FortressHalf1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressHalf1Brush1(), null, this.model.Player_1.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.FortressHalf1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressHalf1Brush2(), null, this.model.Player_1.Fortress.RealArea);
                 }
             }
             else
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.Fortress1Brush1, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortress1Brush1(), null, this.model.Player_1.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.Fortress1Brush2, null, this.model.Player_1.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortress1Brush2(), null, this.model.Player_1.Fortress.RealArea);
                 }
             }
 
             if (this.model.Player_2.Fortress.Life < 1500)
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.FortressDef2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressDef2Brush1(), null, this.model.Player_2.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.FortressDef2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressDef2Brush2(), null, this.model.Player_2.Fortress.RealArea);
                 }
             }
             else if (this.model.Player_2.Fortress.Life < 7500)
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.FortressHalf2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressHalf2Brush1(), null, this.model.Player_2.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.FortressHalf2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortressHalf2Brush2(), null, this.model.Player_2.Fortress.RealArea);
                 }
             }
             else
             {
-                if (FrameTimer())
+                if (this.FrameTimer())
                 {
-                    ctx.DrawGeometry(this.Fortress2Brush1, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortress2Brush1(), null, this.model.Player_2.Fortress.RealArea);
                 }
                 else
                 {
-                    ctx.DrawGeometry(this.Fortress2Brush2, null, this.model.Player_2.Fortress.RealArea);
+                    ctx.DrawGeometry(this.GetFortress2Brush2(), null, this.model.Player_2.Fortress.RealArea);
                 }
             }
         }
 
         private void GetCharacterChooseChar(DrawingContext ctx)
         {
-            ctx.DrawRectangle(this.Knight1Brush1, null, this.buttonChar1Knight);
-            ctx.DrawRectangle(this.Rider1Brush1, null, this.buttonChar1Rider);
-            ctx.DrawRectangle(this.Barricade1Brush, null, this.buttonChar1Barricade);
+            ctx.DrawRectangle(this.GetKnight1Brush1(), null, this.buttonChar1Knight);
+            ctx.DrawRectangle(this.GetRider1Brush1(), null, this.buttonChar1Rider);
+            ctx.DrawRectangle(this.GetBarricade1Brush(), null, this.buttonChar1Barricade);
 
-            ctx.DrawRectangle(this.Knight2Brush1, null, this.buttonChar2Knight);
-            ctx.DrawRectangle(this.Rider2Brush1, null, this.buttonChar2Rider);
-            ctx.DrawRectangle(this.Barricade2Brush, null, this.buttonChar2Barricade);
+            ctx.DrawRectangle(this.GetKnight2Brush1(), null, this.buttonChar2Knight);
+            ctx.DrawRectangle(this.GetRider2Brush1(), null, this.buttonChar2Rider);
+            ctx.DrawRectangle(this.GetBarricade2Brush(), null, this.buttonChar2Barricade);
         }
 
         private void GetCharacterChoose(DrawingContext ctx)
         {
-            //1-es játékos
             if (this.model.Player_1.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
             {
                 ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button1Knight);
@@ -1070,7 +1049,6 @@ namespace FortressWar.Renderer
                 ctx.DrawRectangle(Config.CharacterIconBg, new Pen(Config.CharacterIconLine, 6), this.button1Upgrade);
             }
 
-            //2-es játékos
             if (this.model.Player_2.Selector.SelectedCharacter == Selector.SelectedCharacters.Knight)
             {
                 ctx.DrawRectangle(Config.CurrentActiveBg, new Pen(Config.CharacterIconLine, 6), this.button2Knight);
@@ -1134,7 +1112,7 @@ namespace FortressWar.Renderer
 
         private void GetBackground(DrawingContext ctx)
         {
-            ctx.DrawRectangle(this.FieldBrush, null, this.backgroundRect);
+            ctx.DrawRectangle(this.GetFieldBrush(), null, this.backgroundRect);
         }
     }
 }
