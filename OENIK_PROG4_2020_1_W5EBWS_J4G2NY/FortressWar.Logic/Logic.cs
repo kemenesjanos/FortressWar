@@ -22,8 +22,8 @@ namespace FortressWar.Logic
         /// </summary>
         private Model model;
         private Random rnd = new Random();
-
         public event EventHandler RefreshScreen;
+        public event EventHandler FinishedGame;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logic"/> class.
@@ -34,9 +34,7 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
-
-            SelectorSelect(model.Player_1);
-
+            NewExtra(Extras.Potion);
         }
 
         /// <summary>
@@ -49,6 +47,7 @@ namespace FortressWar.Logic
         {
             if (attackedCharacter.Life - damage <= 0)
             {
+                attackedCharacter.Life = 0;
                 this.Die(attackedCharacter);
                 RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return true;
@@ -98,7 +97,6 @@ namespace FortressWar.Logic
             }
             else if (character is Coin)
             {
-                this.GetBountry(character);
                 this.model.Coins.Remove(character as Coin);
             }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
@@ -119,7 +117,8 @@ namespace FortressWar.Logic
 
         public void EndGame()
         {
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+            this.FinishedGame?.Invoke(this, EventArgs.Empty);
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -199,9 +198,10 @@ namespace FortressWar.Logic
                     case 4:
                         break;
                     default:
-                        player.Selector.IsUpgrade = false;
+                        
                         break;
                 }
+                player.Selector.IsUpgrade = false;
             }
             else
             {
@@ -212,25 +212,27 @@ namespace FortressWar.Logic
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Knight;
                         player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                -(Config.FieldWidht / 4) - (Config.CharacterTileWidth / 2) : Config.FieldWidht / 4;
+                                -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
-                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
                         break;
                     case 2:
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Rider;
+                        player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                                -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
-                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
                         break;
                     case 3:
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Barricade;
+                        player.Selector.Y_Tile = 1;
                         player.Selector.CX = player == this.model.Player_1 ?
-                                (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2;
+                                -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
-                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+                            new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
                         break;
                     case 4:
                         player.Selector.IsUpgrade = true;
@@ -259,6 +261,10 @@ namespace FortressWar.Logic
 
                     if (this.Attack(soldier.Enemy, soldier.Power))
                     {
+                        if (soldier.Enemy is Coin)
+                        {
+                            soldier.Owner.Money += soldier.Enemy.Bounty;
+                        }
                         soldier.Enemy = null;
                     }
                 }
@@ -275,14 +281,21 @@ namespace FortressWar.Logic
                             soldier.Enemy = item;
                         }
                     }
-
+                    bool e = false;
+                    Potion p = null;
                     foreach (Potion item in this.model.Potions)
                     {
                         if (soldier.IsCollision(item))
                         {
                             this.GetPotion(soldier);
-                            this.model.Potions.Remove(item);
+                            e = true;
+                            p = item;
                         }
+                    }
+                    if (e)
+                    {
+                        this.model.Potions.Remove(p);
+                        p = null;
                     }
 
                     if (soldier.IsCollision(this.OtherPlayer(soldier).Fortress))
@@ -343,17 +356,17 @@ namespace FortressWar.Logic
                             break;
                         }
 
-                        player.Money -= player.BarricadePrice;
                         if (player == this.model.Player_1)
                         {
-                            int tX = Config.CharacterTileWidth - Config.CharacterTileWidth;
-                            while (tX < Config.FieldWidht / 2 && this.model.Player_1.Barricades.FirstOrDefault(x => x.CX == tX) != null)
+                            int tX = -Config.FieldWidht / 2;
+                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX) != null)
                             {
                                 tX += Config.CharacterTileWidth;
                             }
 
-                            if (tX < Config.FieldWidht / 2)
+                            if (tX < 0 - Config.CharacterTileWidth)
                             {
+                                player.Money -= player.BarricadePrice;
                                 player.Barricades.Add(
                                     new Barricade(player)
                                     {
@@ -364,14 +377,15 @@ namespace FortressWar.Logic
                         }
                         else
                         {
-                            int tX1 = Config.FieldWidht-Config.CharacterTileWidth;
-                            while (tX1 > Config.FieldWidht / 2 && this.model.Player_2.Barricades.FirstOrDefault(x => x.CX == tX1) != null)
+                            int tX1 = Config.FieldWidht / 2 - Config.CharacterTileWidth;
+                            while (tX1 > 0 && this.model.Player_2.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX1) != null)
                             {
                                 tX1 -= Config.CharacterTileWidth;
                             }
 
-                            if (tX1 > Config.FieldWidht / 2)
+                            if (tX1 > 0)
                             {
+                                player.Money -= player.BarricadePrice;
                                 player.Barricades.Add(
                                     new Barricade(player)
                                     {
@@ -417,9 +431,9 @@ namespace FortressWar.Logic
         public void StartGame()
         {
             this.model.Player_1.Fortress =
-                new Fortress(this.model.Player_1, -Config.FieldWidht / 2);
+                new Fortress(this.model.Player_1, (-Config.FieldWidht / 2) + 70);
             this.model.Player_2.Fortress =
-                new Fortress(this.model.Player_2, Config.FieldWidht / 2);
+                new Fortress(this.model.Player_2, (Config.FieldWidht / 2) - 70 - Config.FortressTileWidth / 2);
             this.model.Player_1.Selector =
                 new Selector(-(Config.FieldWidht / 2));
             this.model.Player_2.Selector =
@@ -444,6 +458,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.KnightUpgradePrice;
                         if (this.model.Player_1.KnightLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.KnightLVL++;
@@ -456,6 +471,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.RiderUpgradePrice;
                         if (this.model.Player_1.RiderLVL < Config.MaxLVL)
                         {
                             this.model.Player_1.RiderLVL++;
@@ -467,6 +483,8 @@ namespace FortressWar.Logic
                         {
                             break;
                         }
+
+                        player.Money -= Config.BarricadeUpgradePrice;
 
                         if (this.model.Player_1.BarricadeLVL < Config.MaxLVL)
                         {

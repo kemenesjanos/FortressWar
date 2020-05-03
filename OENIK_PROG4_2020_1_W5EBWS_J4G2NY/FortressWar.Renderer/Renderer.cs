@@ -104,6 +104,8 @@ namespace FortressWar.Renderer
         {
             //TODO: POTI és PÉNZ kirajzolás
             this.model = model;
+            //TODO: CHECK IF THIS IS GOOD OR NOT
+            this.stw = new Stopwatch();
             this.backgroundRect = new Rect(0, 0, Config.FullWidht, Config.FullHeight);
             this.topBackgroundRect = new Rect(0, 0, Config.TopWidth, Config.TopHeight);
 
@@ -961,7 +963,7 @@ namespace FortressWar.Renderer
                 }
             }
 
-            if (this.model.Player_1.Fortress.Life < 25)
+            if (this.model.Player_2.Fortress.Life < 25)
             {
                 if (DateTime.Now.Millisecond % 2 == 0)
                 {
@@ -972,7 +974,7 @@ namespace FortressWar.Renderer
                     ctx.DrawGeometry(this.FortressDef2Brush2, null, this.model.Player_2.Fortress.RealArea);
                 }
             }
-            else if (this.model.Player_1.Fortress.Life < 75)
+            else if (this.model.Player_2.Fortress.Life < 75)
             {
                 if (DateTime.Now.Millisecond % 2 == 0)
                 {
