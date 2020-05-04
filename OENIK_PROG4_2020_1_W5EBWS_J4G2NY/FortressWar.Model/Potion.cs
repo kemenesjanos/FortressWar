@@ -27,7 +27,7 @@ namespace FortressWar.Model
             this.Y_Tile = r.Next(1, 5);
             //this.CX = r.Next((-Config.FieldWidht / 2) - Config.CharacterTileWidth, Config.FieldWidht / 2);
             this.CX = r.Next((-200), 200);
-            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth * 0.75, Config.CharacterTileHeight));
         }
     }
 }

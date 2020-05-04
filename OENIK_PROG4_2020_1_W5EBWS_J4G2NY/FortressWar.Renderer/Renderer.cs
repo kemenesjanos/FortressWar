@@ -597,7 +597,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textKnight1Level = new FormattedText(
-                    this.model.Player_1.KnightLVL.ToString(),
+                    "LVL" + (this.model.Player_1.KnightLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -605,7 +605,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textKnight2Level = new FormattedText(
-                    this.model.Player_2.KnightLVL.ToString(),
+                    "LVL" + (this.model.Player_2.KnightLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -613,7 +613,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textRider1Level = new FormattedText(
-                    this.model.Player_1.RiderLVL.ToString(),
+                    "LVL" + (this.model.Player_1.RiderLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -621,7 +621,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textRider2Level = new FormattedText(
-                    this.model.Player_2.RiderLVL.ToString(),
+                    "LVL" + (this.model.Player_2.RiderLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -629,7 +629,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textBarricade1Level = new FormattedText(
-                    this.model.Player_1.BarricadeLVL.ToString(),
+                    "LVL" + (this.model.Player_1.BarricadeLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     this.font,
@@ -637,7 +637,7 @@ namespace FortressWar.Renderer
                     Config.TextLineColour);
 
             this.textBarricade2Level = new FormattedText(
-                    this.model.Player_2.BarricadeLVL.ToString(),
+                    "LVL" + (this.model.Player_2.BarricadeLVL + 1).ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.RightToLeft,
                     this.font,
@@ -768,14 +768,14 @@ namespace FortressWar.Renderer
             ctx.DrawRectangle(this.GetGoldBrush(), null, this.gold1);
             ctx.DrawRectangle(this.GetGoldBrush(), null, this.gold2);
 
-            ctx.DrawText(this.textKnight1Level, new Point(70, Config.TopHeight + 145));
-            ctx.DrawText(this.textKnight2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145));
+            ctx.DrawText(this.textKnight1Level, new Point(55, Config.TopHeight + 145));
+            ctx.DrawText(this.textKnight2Level, new Point(Config.FullWidht - 55, Config.TopHeight + 145));
 
-            ctx.DrawText(this.textRider1Level, new Point(70, Config.TopHeight + 145 + (Config.SideHeight / 4)));
-            ctx.DrawText(this.textRider2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145 + (Config.SideHeight / 4)));
+            ctx.DrawText(this.textRider1Level, new Point(55, Config.TopHeight + 145 + (Config.SideHeight / 4)));
+            ctx.DrawText(this.textRider2Level, new Point(Config.FullWidht - 55, Config.TopHeight + 145 + (Config.SideHeight / 4)));
 
-            ctx.DrawText(this.textBarricade1Level, new Point(70, Config.TopHeight + 145 + (Config.SideHeight / 2)));
-            ctx.DrawText(this.textBarricade2Level, new Point(Config.FullWidht - 70, Config.TopHeight + 145 + (Config.SideHeight / 2)));
+            ctx.DrawText(this.textBarricade1Level, new Point(55, Config.TopHeight + 145 + (Config.SideHeight / 2)));
+            ctx.DrawText(this.textBarricade2Level, new Point(Config.FullWidht - 55, Config.TopHeight + 145 + (Config.SideHeight / 2)));
 
             ctx.DrawText(this.textKnight1Gold, new Point(55, Config.TopHeight + 10));
             ctx.DrawText(this.textKnight2Gold, new Point(Config.FullWidht - 55, Config.TopHeight + 10));

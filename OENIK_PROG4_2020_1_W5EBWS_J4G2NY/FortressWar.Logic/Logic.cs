@@ -34,6 +34,9 @@ namespace FortressWar.Logic
         {
             this.model = model;
             StartGame();
+            // TODO: A BACK-et most felül kezeli a játék és nem alul!
+            // TODO: Auto pénznövekedés időzítve (+1 / sec). Esetleg MoneyGrow vagy valamilyen metódus? Talán ezt a metódust a controlba beágyazni az időzítés miatt?
+            // TODO: Valami randommal kéne működnie a newExtra-nak, ami figyeli, h van e már ilyen elem a pályán, ha igen, akkor lerak egyett (az lenne a legjobb ha nem folyamatosan lenne a pályán mind2)
             NewExtra(Extras.Potion);
             NewExtra(Extras.Coin);
         }
@@ -148,8 +151,6 @@ namespace FortressWar.Logic
             }
 
             RefreshScreen?.Invoke(this, EventArgs.Empty);
-            //TODO: lenyomott gombok meghatározása és feltételek közé helyezése!
-            //TODO: egy segéd metódus a választás kezeléséhez
         }
 
         public void SelectorSelect(Player player)
@@ -316,7 +317,6 @@ namespace FortressWar.Logic
         /// <param name="y">The y coord.</param>
         public void NewCharacter(Characters character, Player player, int y)
         {
-            // TODO: Fizetések
             if (y < 5 && y > 0)
             {
                 switch (character)
