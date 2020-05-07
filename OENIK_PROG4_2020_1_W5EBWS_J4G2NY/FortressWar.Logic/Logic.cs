@@ -17,13 +17,8 @@ namespace FortressWar.Logic
     /// </summary>
     public class Logic : ILogic
     {
-        /// <summary>
-        /// The model.
-        /// </summary>
         private Model model;
         private Random rnd = new Random();
-        public event EventHandler RefreshScreen;
-        public event EventHandler FinishedGame;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logic"/> class.
@@ -33,13 +28,21 @@ namespace FortressWar.Logic
         public Logic(Model model)
         {
             this.model = model;
-            StartGame();
-            // TODO: A BACK-et most felül kezeli a játék és nem alul!
-            // TODO: Auto pénznövekedés időzítve (+1 / sec). Esetleg MoneyGrow vagy valamilyen metódus? Talán ezt a metódust a controlba beágyazni az időzítés miatt?
+            this.StartGame();
             // TODO: Valami randommal kéne működnie a newExtra-nak, ami figyeli, h van e már ilyen elem a pályán, ha igen, akkor lerak egyett (az lenne a legjobb ha nem folyamatosan lenne a pályán mind2)
             NewExtra(Extras.Potion);
             NewExtra(Extras.Coin);
         }
+
+        /// <summary>
+        /// The RefreshScreen event is called if the screen have to be Refreshed.
+        /// </summary>
+        public event EventHandler RefreshScreen;
+
+        /// <summary>
+        /// Is called if the game finished.
+        /// </summary>
+        public event EventHandler FinishedGame;
 
         /// <summary>
         /// Decrease the attacked character's life.
@@ -53,13 +56,13 @@ namespace FortressWar.Logic
             {
                 attackedCharacter.Life = 0;
                 this.Die(attackedCharacter);
-                RefreshScreen?.Invoke(this, EventArgs.Empty);
+                this.RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return true;
             }
             else
             {
                 attackedCharacter.Life -= damage;
-                RefreshScreen?.Invoke(this, EventArgs.Empty);
+                this.RefreshScreen?.Invoke(this, EventArgs.Empty);
                 return false;
             }
         }
@@ -103,24 +106,13 @@ namespace FortressWar.Logic
             {
                 this.model.Coins.Remove(character as Coin);
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
-        private void GetBountry(Character character)
-        {
-            if (character.Owner == this.model.Player_1)
-            {
-                this.model.Player_2.Money += character.Bounty;
-            }
-            else
-            {
-                this.model.Player_1.Money += character.Bounty;
-            }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
-        }
-
-
-
+        /// <summary>
+        /// End the game.
+        /// </summary>
         public void EndGame()
         {
             this.FinishedGame?.Invoke(
@@ -147,25 +139,34 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Move a selector.
+        /// </summary>
+        /// <param name="player">The owner of the selector.</param>
+        /// <param name="dy">Amount of move.</param>
         public void MoveSelector(Player player, int dy)
         {
             if ((player.Selector.Y_Tile + dy) > 0 && (player.Selector.Y_Tile + dy) <= 4)
             {
                 player.Selector.Y_Tile += dy;
             }
-            else if (player.Selector.IsPutACharacter && (player.Selector.Y_Tile + dy) == 0)
+            else if (player.Selector.IsPutACharacter && (player.Selector.Y_Tile + dy) == 5)
             {
                 player.Selector.Y_Tile += dy;
             }
 
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Selector select.
+        /// </summary>
+        /// <param name="player">The owner of the selector.</param>
         public void SelectorSelect(Player player)
         {
             if (player.Selector.IsPutACharacter)
             {
-                if (player.Selector.Y_Tile != 0)
+                if (player.Selector.Y_Tile != 5)
                 {
                     switch (player.Selector.SelectedCharacter)
                     {
@@ -208,9 +209,9 @@ namespace FortressWar.Logic
                     case 4:
                         break;
                     default:
-                        
                         break;
                 }
+
                 player.Selector.IsUpgrade = false;
             }
             else
@@ -275,6 +276,7 @@ namespace FortressWar.Logic
                         {
                             soldier.Owner.Money += soldier.Enemy.Bounty;
                         }
+
                         soldier.Enemy = null;
                     }
                 }
@@ -291,6 +293,7 @@ namespace FortressWar.Logic
                             soldier.Enemy = item;
                         }
                     }
+
                     bool e = false;
                     Potion p = null;
                     foreach (Potion item in this.model.Potions)
@@ -302,6 +305,7 @@ namespace FortressWar.Logic
                             p = item;
                         }
                     }
+
                     if (e)
                     {
                         this.model.Potions.Remove(p);
@@ -314,7 +318,9 @@ namespace FortressWar.Logic
                     }
                 }
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+            this.IncreasePlayersMoney();
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -368,7 +374,7 @@ namespace FortressWar.Logic
                         if (player == this.model.Player_1)
                         {
                             int tX = -Config.FieldWidht / 2;
-                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX) != null)
+                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - (Config.FieldWidht / 2) == tX) != null)
                             {
                                 tX += Config.CharacterTileWidth;
                             }
@@ -386,8 +392,8 @@ namespace FortressWar.Logic
                         }
                         else
                         {
-                            int tX1 = Config.FieldWidht / 2 - Config.CharacterTileWidth;
-                            while (tX1 > 0 && this.model.Player_2.Barricades.SingleOrDefault(x => x.CX - Config.FieldWidht / 2 == tX1) != null)
+                            int tX1 = (Config.FieldWidht / 2) - Config.CharacterTileWidth;
+                            while (tX1 > 0 && this.model.Player_2.Barricades.SingleOrDefault(x => x.CX - (Config.FieldWidht / 2) == tX1) != null)
                             {
                                 tX1 -= Config.CharacterTileWidth;
                             }
@@ -408,7 +414,8 @@ namespace FortressWar.Logic
                     default:
                         break;
                 }
-                RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+                this.RefreshScreen?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -429,7 +436,8 @@ namespace FortressWar.Logic
                 default:
                     break;
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         public void SaveGameState()
@@ -437,17 +445,20 @@ namespace FortressWar.Logic
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Start the game.
+        /// </summary>
         public void StartGame()
         {
             this.model.Player_1.Fortress =
                 new Fortress(this.model.Player_1, (-Config.FieldWidht / 2) + 75);
             this.model.Player_2.Fortress =
-                new Fortress(this.model.Player_2, (Config.FieldWidht / 2) - 75 - Config.FortressTileWidth / 2);
+                new Fortress(this.model.Player_2, (Config.FieldWidht / 2) - 75 - (Config.FortressTileWidth / 2));
             this.model.Player_1.Selector =
                 new Selector(-(Config.FieldWidht / 2));
             this.model.Player_2.Selector =
                 new Selector((Config.FieldWidht / 2) - (Config.SelectorWidth / 2));
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -546,7 +557,8 @@ namespace FortressWar.Logic
                 }
 
             }
-            RefreshScreen?.Invoke(this, EventArgs.Empty);
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -573,6 +585,20 @@ namespace FortressWar.Logic
         private Player OtherPlayer(Soldier soldier)
         {
             return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
+        }
+
+        private void GetBountry(Character character)
+        {
+            if (character.Owner == this.model.Player_1)
+            {
+                this.model.Player_2.Money += character.Bounty;
+            }
+            else
+            {
+                this.model.Player_1.Money += character.Bounty;
+            }
+
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
     }
 }

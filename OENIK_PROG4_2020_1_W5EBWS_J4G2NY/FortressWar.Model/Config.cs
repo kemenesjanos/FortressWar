@@ -23,7 +23,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The players money increase that much.
         /// </summary>
-        public const int IncreaseMoney = 100;
+        public const int IncreaseMoney = 1;
 
         /// <summary>
         /// Selector height.
