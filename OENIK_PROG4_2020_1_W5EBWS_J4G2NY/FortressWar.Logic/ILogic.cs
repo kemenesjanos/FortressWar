@@ -143,5 +143,10 @@ namespace FortressWar.Logic
         /// <param name="player1_name">The first player's name.</param>
         /// <param name="player2_name">The second player's name.</param>
         void SetPlayersName(string player1_name, string player2_name);
+
+        /// <summary>
+        /// Placing the extras if needed.
+        /// </summary>
+        void PlaceExtras();
     }
 }

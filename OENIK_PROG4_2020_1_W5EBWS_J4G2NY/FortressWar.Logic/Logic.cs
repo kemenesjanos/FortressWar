@@ -29,9 +29,6 @@ namespace FortressWar.Logic
         {
             this.model = model;
             this.StartGame();
-            // TODO: Valami randommal kéne működnie a newExtra-nak, ami figyeli, h van e már ilyen elem a pályán, ha igen, akkor lerak egyett (az lenne a legjobb ha nem folyamatosan lenne a pályán mind2)
-            NewExtra(Extras.Potion);
-            NewExtra(Extras.Coin);
         }
 
         /// <summary>
@@ -320,6 +317,7 @@ namespace FortressWar.Logic
             }
 
             this.IncreasePlayersMoney();
+            this.PlaceExtras();
             this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
@@ -580,6 +578,22 @@ namespace FortressWar.Logic
         {
             this.model.Player_1.Name = player1_name;
             this.model.Player_2.Name = player2_name;
+        }
+
+        /// <summary>
+        /// Place new extra if needed.
+        /// </summary>
+        public void PlaceExtras()
+        {
+            if (this.model.Potions.Count == 0)
+            {
+                this.NewExtra(Extras.Potion);
+            }
+
+            if (this.model.Coins.Count == 0)
+            {
+                this.NewExtra(Extras.Coin);
+            }
         }
 
         private Player OtherPlayer(Soldier soldier)
