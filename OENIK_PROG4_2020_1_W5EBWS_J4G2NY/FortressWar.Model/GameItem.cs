@@ -61,6 +61,11 @@ namespace FortressWar.Model
                 {
                     return 150;
                 }
+                else if (this is Potion || this is Coin)
+                {
+                    return Math.Floor((this.Y_Tile - 2) * 1.4 * Config.CharacterTileHeight)
+                    + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 90;
+                }
 
                 return Math.Floor((this.Y_Tile - 2) * 2.8 * Config.CharacterTileHeight)
                     + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 25;
