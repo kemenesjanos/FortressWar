@@ -121,7 +121,13 @@ namespace FortressWar.Logic
 
         public void EndGame()
         {
-            this.FinishedGame?.Invoke(this, EventArgs.Empty);
+            this.FinishedGame?.Invoke(
+                this,
+                new FinishedGameEventArgs()
+                {
+                    WinnerName =
+                    this.model.Player_1.Fortress.Life == 0 ? this.model.Player_2.Name : this.model.Player_1.Name,
+                });
             this.RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
