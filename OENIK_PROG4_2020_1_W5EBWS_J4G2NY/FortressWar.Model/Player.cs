@@ -79,9 +79,8 @@ namespace FortressWar.Model
 
         public Player()
         {
-            this.Name = "alma";
+            this.Name = "Player";
             this.Money = Config.PlayerBaseMoney;
-            //TODO: a fortress coordinátái
             this.KnightLVL = 0;
             this.RiderLVL = 0;
             this.BarricadeLVL = 0;

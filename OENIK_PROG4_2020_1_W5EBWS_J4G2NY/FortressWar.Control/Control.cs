@@ -41,7 +41,6 @@ namespace FortressWar.Control
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO: model, logic, renderer
             this.model = new Model();
             this.logic = new Logic(this.model);
             this.renderer = new Renderer(this.model);
@@ -50,7 +49,7 @@ namespace FortressWar.Control
             if (win != null)
             {
                 this.tickTimer = new DispatcherTimer();
-                this.tickTimer.Interval = TimeSpan.FromMilliseconds(100);
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(200);
                 this.tickTimer.Tick += this.TickTimer_Tick;
                 this.tickTimer.Start();
 
@@ -76,7 +75,6 @@ namespace FortressWar.Control
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            //TODO: logic.moveselector meghívása!
             switch (e.Key)
             {
                 //1-es játékos
@@ -93,7 +91,6 @@ namespace FortressWar.Control
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            //TODO: mozgatás események meghívása.
             this.logic.MoveSoldier();
         }
     }
