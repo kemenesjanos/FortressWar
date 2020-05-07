@@ -131,5 +131,17 @@ namespace FortressWar.Logic
         /// Load the previous game state.
         /// </summary>
         void LoadGameState();
+
+        /// <summary>
+        /// Increase Player's Money.
+        /// </summary>
+        void IncreasePlayersMoney();
+
+        /// <summary>
+        /// Rename the players name.
+        /// </summary>
+        /// <param name="player1_name">The first player's name.</param>
+        /// <param name="player2_name">The second player's name.</param>
+        void SetPlayersName(string player1_name, string player2_name);
     }
 }

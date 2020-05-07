@@ -119,6 +119,8 @@ namespace FortressWar.Logic
             RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
 
+
+
         public void EndGame()
         {
             this.FinishedGame?.Invoke(
@@ -545,6 +547,27 @@ namespace FortressWar.Logic
 
             }
             RefreshScreen?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Increase players money.
+        /// </summary>
+        public void IncreasePlayersMoney()
+        {
+            this.model.Player_1.Money += Config.IncreaseMoney;
+            this.model.Player_2.Money += Config.IncreaseMoney;
+            this.RefreshScreen?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Set players name.
+        /// </summary>
+        /// <param name="player1_name">The first player's name.</param>
+        /// <param name="player2_name">The second player's name.</param>
+        public void SetPlayersName(string player1_name, string player2_name)
+        {
+            this.model.Player_1.Name = player1_name;
+            this.model.Player_2.Name = player2_name;
         }
 
         private Player OtherPlayer(Soldier soldier)
