@@ -25,9 +25,9 @@ namespace FortressWar.Model
             Random r = new Random();
             this.Bounty = r.Next(Config.MinCoin, Config.MaxCoin + 1);
             this.Life = 1;
-            this.Y_Tile = r.Next(1, 5);
+            this.Y_Tile = r.Next(0, 4);
             //this.CX = r.Next((-Config.FieldWidht / 2) - Config.CharacterTileWidth , Config.FieldWidht / 2);
-            this.CX = r.Next((-200), 200);
+            this.CX = r.Next((-200), 201);
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth * 0.75, Config.CharacterTileHeight));
         }
     }

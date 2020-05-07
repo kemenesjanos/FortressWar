@@ -21,6 +21,11 @@ namespace FortressWar.Model
         public const double StepDistance = 2;
 
         /// <summary>
+        /// The players money increase that much.
+        /// </summary>
+        public const int IncreaseMoney = 1;
+
+        /// <summary>
         /// Selector height.
         /// </summary>
         public const int SelectorHeight = 175;
