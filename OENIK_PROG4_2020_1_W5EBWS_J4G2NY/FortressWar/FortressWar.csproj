@@ -152,19 +152,5 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\grass.png" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Gifs\1deffortress.gif" />
-    <EmbeddedResource Include="Gifs\1fortress.gif" />
-    <EmbeddedResource Include="Gifs\1halffortress.gif" />
-    <EmbeddedResource Include="Gifs\1Horse.gif" />
-    <EmbeddedResource Include="Gifs\1Soldier.gif" />
-    <EmbeddedResource Include="Gifs\2deffortress.gif" />
-    <EmbeddedResource Include="Gifs\2fortress.gif" />
-    <EmbeddedResource Include="Gifs\2halffortress.gif" />
-    <EmbeddedResource Include="Gifs\2Horse.gif" />
-    <EmbeddedResource Include="Gifs\2Soldier.gif" />
-    <EmbeddedResource Include="Gifs\coin.gif" />
-    <EmbeddedResource Include="Gifs\potion.gif" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

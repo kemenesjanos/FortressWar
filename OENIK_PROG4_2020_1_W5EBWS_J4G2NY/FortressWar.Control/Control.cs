@@ -86,12 +86,22 @@ namespace FortressWar.Control
                 case Key.Down: this.logic.MoveSelector(this.model.Player_2, 1); break;
                 case Key.Enter: this.logic.SelectorSelect(this.model.Player_2); break;
             }
+
+            this.InvalidateVisual();
+
             //TODO: játék vége vizsgálat a várakra és azzal akár kiírás
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             this.logic.MoveSoldier();
+            if (this.model.Player_1.Fortress.Life == 0 || this.model.Player_2.Fortress.Life == 0)
+            {
+                this.logic.EndGame();
+                this.tickTimer.Stop();
+                string winner = this.model.Player_1.Fortress.Life == 0 ? this.model.Player_2.Name : this.model.Player_1.Name;
+                MessageBox.Show($"The winner is:\n {winner}!");
+            }
         }
     }
 }
