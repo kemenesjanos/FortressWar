@@ -1,7 +1,4 @@
-﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-namespace FortressWar
+﻿namespace FortressWar
 {
     using System;
     using System.Collections.Generic;
@@ -19,24 +16,16 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GamePage : Page
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// Initializes a new instance of the <see cref="GamePage"/> class.
         /// </summary>
-        public MainWindow()
+        public GamePage()
         {
             this.InitializeComponent();
-
-            this.Loaded += this.MainWindow_Loaded;
         }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.frame.NavigationService.Navigate(new MenuPage());
-        }
-
     }
 }

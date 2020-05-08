@@ -1,4 +1,4 @@
-﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+﻿// <copyright file="MenuPage.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar
@@ -19,23 +19,31 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MenuPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuPage : Page
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// Initializes a new instance of the <see cref="MenuPage"/> class.
         /// </summary>
-        public MainWindow()
+        public MenuPage()
         {
             this.InitializeComponent();
-
-            this.Loaded += this.MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.frame.NavigationService.Navigate(new MenuPage());
+            this.NavigationService.Navigate(new GamePage());
+        }
+
+        private void Button_Close(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Load(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
