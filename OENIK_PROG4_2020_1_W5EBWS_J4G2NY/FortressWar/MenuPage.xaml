@@ -9,8 +9,89 @@
       Title="MenuPage">
     <Grid Width="1600" Height="900" Background="#78503f">
         <Label x:Name="label" Content="FortressWar" HorizontalAlignment="Left" Margin="274,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="200" Height="300"/>
-        <Button Click="Button_Click" Width="300" Height="100" Margin="650,400" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">START</Button>
-        <Button Click="Button_Load" Width="300" Height="100" Margin="650,550,650,250" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">LOAD</Button>
-        <Button Click="Button_Close" Width="300" Height="100" Margin="650,700,650,100" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">EXIT</Button>
+        <Button Click="Button_Click" Content="START" Width="300" Height="100" Margin="650,400" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="LightBlue" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#c39269" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Click="Button_Load" Content="LOAD" Width="300" Height="100" Margin="650,550,650,250" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="LightBlue" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#c39269" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Click="Button_Close" Content="EXIT" Width="300" Height="100" Margin="650,700,650,100" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="LightBlue" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#c39269" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Click="Button_Help" Content="?" Width="100" Height="100" Margin="1446,750,54,50" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="LightBlue" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#c39269" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Page>
