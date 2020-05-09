@@ -72,7 +72,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Click="Button_Help" Content="?" Width="100" Height="100" Margin="1446,750,54,50" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
+        <Button Click="Button_Help" Content="?" Width="100" Height="100" Margin="1400,700,100,100" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="LightBlue" />
