@@ -92,6 +92,8 @@ namespace FortressWar.Renderer
 
         private FormattedText fortressWar;
 
+        private FormattedText escText;
+
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
         /// <summary>
@@ -743,6 +745,14 @@ namespace FortressWar.Renderer
                     100,
                     Config.DarkTextLineColour);
 
+            this.escText = new FormattedText(
+                    "ESC - Pause the game.",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Arial Bold"),
+                    20,
+                    Config.DarkTextLineColour);
+
             this.textFortress1 = new FormattedText(
                     this.model.Player_1.Fortress.Life.ToString(),
                     System.Globalization.CultureInfo.CurrentCulture,
@@ -797,7 +807,9 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textFortress1, new Point(260, 150));
             ctx.DrawText(this.textFortress2, new Point(Config.FullWidht - 260, 150));
 
-            ctx.DrawText(this.fortressWar, new Point(510, 20));
+            ctx.DrawText(this.escText, new Point(680, 120));
+
+            ctx.DrawText(this.fortressWar, new Point(510, 10));
         }
 
         private void GetBarricade(DrawingContext ctx)

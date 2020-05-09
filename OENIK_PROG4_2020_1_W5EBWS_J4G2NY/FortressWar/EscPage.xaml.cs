@@ -1,4 +1,4 @@
-﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+﻿// <copyright file="EscPage.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar
@@ -19,32 +19,26 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EscPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EscPage : Page
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// Initializes a new instance of the <see cref="EscPage"/> class.
         /// </summary>
-        public MainWindow()
+        public EscPage()
         {
             this.InitializeComponent();
-
-            this.Loaded += this.MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Resume(object sender, RoutedEventArgs e)
         {
-            this.frame.NavigationService.Navigate(new MenuPage());
-            this.KeyDown += this.MainWindow_KeyDown;
+            this.NavigationService.Navigate(new GamePage());
         }
 
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        private void Button_Menu(object sender, RoutedEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Escape: this.frame.NavigationService.Navigate(new EscPage()); break;
-            }
+            this.NavigationService.Navigate(new MenuPage());
         }
     }
 }
