@@ -171,6 +171,7 @@ namespace FortressWar.Renderer
 
                 bmp.BeginInit();
                 bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
+                if (bmp.StreamSource == null) throw new Exception("ResourceStream NotFound: " +fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);
@@ -202,6 +203,7 @@ namespace FortressWar.Renderer
 
                 bmp.BeginInit();
                 bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
+                if (bmp.StreamSource == null) throw new Exception("ResourceStream NotFound: " + fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);
@@ -220,7 +222,7 @@ namespace FortressWar.Renderer
         }
 
         /// <summary>
-        /// Gets make Knight1 brush.
+        /// Gets make grass brush.
         /// </summary>
         private Brush GetFieldBrush()
         {
@@ -746,12 +748,12 @@ namespace FortressWar.Renderer
                     Config.DarkTextLineColour);
 
             this.escText = new FormattedText(
-                    "ESC - Pause the game.",
+                    "ESC - Pause/ End the game.",
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Arial Bold"),
                     20,
-                    Config.DarkTextLineColour);
+                    Config.TextLineColour);
 
             this.textFortress1 = new FormattedText(
                     this.model.Player_1.Fortress.Life.ToString(),
@@ -799,7 +801,7 @@ namespace FortressWar.Renderer
             ctx.DrawText(this.textUpgrade1, new Point(30, 800));
             ctx.DrawText(this.textUpgrade2, new Point(Config.FullWidht - 30, 800));
 
-            ctx.DrawText(this.textUpgradePrice, new Point(600, Config.TopHeight - 50));
+            ctx.DrawText(this.textUpgradePrice, new Point(620, Config.TopHeight - 50));
 
             ctx.DrawText(this.textBack1, new Point(10 + Config.SideWidht + Config.FortressTileWidth - (Config.CharacterTileWidth * 2), 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));
             ctx.DrawText(this.textBack2, new Point(10 + Config.FullWidht - Config.SideWidht - Config.FortressTileWidth, 10 + (Config.TopHeight + (90 * 5) + (Config.CharacterTileHeight * 4))));

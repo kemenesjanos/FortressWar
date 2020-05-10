@@ -43,7 +43,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Minimum coin for the random bonus.
         /// </summary>
-        public const int MinCoin = 10;
+        public const int MinCoin = 200;
 
         /// <summary>
         /// Maximum coin for the random bonus.
@@ -53,7 +53,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base power of the knight.
         /// </summary>
-        public const int KnightBasePower = 20;
+        public const int KnightBasePower = 15;
 
         /// <summary>
         /// The knight get that much power when do a level up.
@@ -63,17 +63,17 @@ namespace FortressWar.Model
         /// <summary>
         /// The base power of the rider.
         /// </summary>
-        public const int RiderBasePower = 40;
+        public const int RiderBasePower = 20;
 
         /// <summary>
         /// The rider get that much power when do a level up.
         /// </summary>
-        public const int RiderLVLPower = 6;
+        public const int RiderLVLPower = 5;
 
         /// <summary>
         /// The base Speed of the knight.
         /// </summary>
-        public const int KnightBaseSpeed = 1;
+        public const int KnightBaseSpeed = 2;
 
         /// <summary>
         /// The knight get that much Speed when do a level up.
@@ -83,7 +83,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Speed of the rider.
         /// </summary>
-        public const int RiderBaseSpeed = 2;
+        public const int RiderBaseSpeed = 3;
 
         /// <summary>
         /// The rider get that much Speed when do a level up.
@@ -113,7 +113,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the Barricade.
         /// </summary>
-        public const int BarricadeBaseLife = 400;
+        public const int BarricadeBaseLife = 500;
 
         /// <summary>
         /// The Barricade get that much Life when do a level up.

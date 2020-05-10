@@ -17,6 +17,7 @@ namespace FortressWar
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using FortressWar.Control;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -41,9 +42,12 @@ namespace FortressWar
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
+
+            Control.Control control = new Control.Control();
             switch (e.Key)
             {
-                case Key.Escape: this.frame.NavigationService.Navigate(new EscPage()); break;
+                case Key.Escape:
+                        this.frame.NavigationService.Navigate(new EscPage()); break;
                     //TODO: talán az lenne a praktikusabb, ha a controlban is szerepelne egy Escape, ami meg menti (meghívja a SAVE-t) a játékot a lenyomásra
                     //TODO: ha Resume-t nyom a játékos, akkor lényegében egy LOAD történne
                     //TODO: nem biztos, hogy érdemes lenne piszkálni azzal a programot, hogy megállítgatjuk a TicTimer-t

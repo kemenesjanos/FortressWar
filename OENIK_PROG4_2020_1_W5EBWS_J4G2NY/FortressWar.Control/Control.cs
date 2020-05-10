@@ -25,6 +25,8 @@ namespace FortressWar.Control
         private Renderer renderer;
         private Model model;
 
+        public string winner = "";
+
         /// <summary>
         /// Responsible for moving items.
         /// </summary>
@@ -85,6 +87,8 @@ namespace FortressWar.Control
                 case Key.Up: this.logic.MoveSelector(this.model.Player_2, -1); break;
                 case Key.Down: this.logic.MoveSelector(this.model.Player_2, 1); break;
                 case Key.Enter: this.logic.SelectorSelect(this.model.Player_2); break;
+
+                case Key.Escape: ; break;
             }
 
             this.InvalidateVisual();
@@ -99,7 +103,7 @@ namespace FortressWar.Control
             {
                 this.logic.EndGame();
                 this.tickTimer.Stop();
-                string winner = this.model.Player_1.Fortress.Life == 0 ? this.model.Player_2.Name : this.model.Player_1.Name;
+                this.winner = this.model.Player_1.Fortress.Life == 0 ? this.model.Player_2.Name : this.model.Player_1.Name;
                 MessageBox.Show($"The winner is:\n {winner}!");
             }
         }
