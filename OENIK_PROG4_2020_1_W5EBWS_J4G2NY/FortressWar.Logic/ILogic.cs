@@ -16,9 +16,9 @@ namespace FortressWar.Logic
     public enum Characters
     {
         /// <summary>
-        /// Warrior.
+        /// Knight.
         /// </summary>
-        Warrior,
+        Knight,
 
         /// <summary>
         /// Rider.
@@ -29,27 +29,22 @@ namespace FortressWar.Logic
         /// Barricade.
         /// </summary>
         Barricade,
-
-        /// <summary>
-        /// Fortress.
-        /// </summary>
-        Fortress,
     }
 
     /// <summary>
-    /// The Players of the game.
+    /// Extras.
     /// </summary>
-    public enum Players
+    public enum Extras
     {
         /// <summary>
-        /// Player1.
+        /// Coin.
         /// </summary>
-        Player1,
+        Coin,
 
         /// <summary>
-        /// Player2.
+        /// Potion.
         /// </summary>
-        Player2,
+        Potion,
     }
 
     /// <summary>
@@ -57,16 +52,11 @@ namespace FortressWar.Logic
     /// </summary>
     public interface ILogic
     {
-        /// <summary>
-        /// RefreshScreen
-        /// </summary>
-        event EventHandler RefreshScreen;
 
         /// <summary>
         /// Move Soldier ahead.
         /// </summary>
-        /// <param name="soldier">The Soldier to move.</param>
-        void MoveSoldier(Soldier soldier);
+        void MoveSoldier();
 
         /// <summary>
         /// Decrease the character's life with a Demage.
@@ -79,8 +69,15 @@ namespace FortressWar.Logic
         /// <summary>
         /// Move the selector.
         /// </summary>
-        /// <param name="y">The y coord to move.</param>
-        void MoveSelector(int y);
+        /// <param name="player">The owner of the selector.</param>
+        /// <param name="dy">The y directon to move.</param>
+        void MoveSelector(Player player, int dy);
+
+        /// <summary>
+        /// Select the selector.
+        /// </summary>
+        /// <param name="player">The owner of the selector.</param>
+        void SelectorSelect(Player player);
 
         /// <summary>
         /// Create a new character.
@@ -88,7 +85,13 @@ namespace FortressWar.Logic
         /// <param name="character">The type of the character.</param>
         /// <param name="player">The owner of the new character.</param>
         /// <param name="y">The y coord.</param>
-        void NewCharacter(Characters character, Players player, int y);
+        void NewCharacter(Characters character, Player player, int y);
+
+        /// <summary>
+        /// Create new extra.
+        /// </summary>
+        /// <param name="extra">The type of the extra.</param>
+        void NewExtra(Extras extra);
 
         /// <summary>
         /// If the character is dead.
@@ -110,19 +113,14 @@ namespace FortressWar.Logic
         /// If a soldier get a bonus.
         /// </summary>
         /// <param name="soldier">The soldier who got the bonus.</param>
-        void GetBonus(Soldier soldier);
-
-        /// <summary>
-        /// The player get a coin.
-        /// </summary>
-        /// <param name="player">The player who get the coin.</param>
-        void GetCoin(Players player);
+        void GetPotion(Soldier soldier);
 
         /// <summary>
         /// Update a character type.
         /// </summary>
         /// <param name="character">The character type to update.</param>
-        void UpdateCharacter(Characters character);
+        /// <param name="player">The player.</param>
+        void UpdateCharacter(Characters character, Player player);
 
         /// <summary>
         /// Save the current state of the game.
@@ -133,5 +131,22 @@ namespace FortressWar.Logic
         /// Load the previous game state.
         /// </summary>
         void LoadGameState();
+
+        /// <summary>
+        /// Increase Player's Money.
+        /// </summary>
+        void IncreasePlayersMoney();
+
+        /// <summary>
+        /// Rename the players name.
+        /// </summary>
+        /// <param name="player1_name">The first player's name.</param>
+        /// <param name="player2_name">The second player's name.</param>
+        void SetPlayersName(string player1_name, string player2_name);
+
+        /// <summary>
+        /// Placing the extras if needed.
+        /// </summary>
+        void PlaceExtras();
     }
 }

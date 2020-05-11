@@ -15,6 +15,51 @@ namespace FortressWar.Model
     public interface IModel
     {
         /// <summary>
+        /// Gets or sets the Width of the game in pixels.
+        /// </summary>
+        double GameWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Height of the game in pixels.
+        /// </summary>
+        double GameHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tile width in pixels.
+        /// </summary>
+        double TileWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tile height in pixels.
+        /// </summary>
+        double TileHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of bonuses in the game.
+        /// </summary>
+        List<Potion> Potions { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of monies in the game.
+        /// </summary>
+        List<Coin> Coins { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first player.
+        /// </summary>
+        Player Player_1 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the second player.
+        /// </summary>
+        Player Player_2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selector.
+        /// </summary>
+        Selector Selector { get; set; }
+
+        /// <summary>
         /// Build the map.
         /// </summary>
         void MapBuild();

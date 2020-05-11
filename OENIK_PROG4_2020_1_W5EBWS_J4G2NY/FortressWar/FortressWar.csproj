@@ -57,6 +57,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DescriptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EndGamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EscPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,12 +81,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DescriptionPage.xaml.cs">
+      <DependentUpon>DescriptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EndGamePage.xaml.cs">
+      <DependentUpon>EndGamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EscPage.xaml.cs">
+      <DependentUpon>EscPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,6 +136,55 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FortressWar.Control\FortressWar.Control.csproj">
+      <Project>{66f4c6ef-1d69-47f9-ac82-3bed2464ae2d}</Project>
+      <Name>FortressWar.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FortressWar.Model\FortressWar.Model.csproj">
+      <Project>{63487f7d-d60b-4a68-bdc6-f59b1ebcc1c1}</Project>
+      <Name>FortressWar.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\1barricade.png" />
+    <EmbeddedResource Include="Images\1deffortress1.png" />
+    <EmbeddedResource Include="Images\1deffortress2.png" />
+    <EmbeddedResource Include="Images\1fortress1.png" />
+    <EmbeddedResource Include="Images\1fortress2.png" />
+    <EmbeddedResource Include="Images\1halffortress1.png" />
+    <EmbeddedResource Include="Images\1halffortress2.png" />
+    <EmbeddedResource Include="Images\1hwalk1.png" />
+    <EmbeddedResource Include="Images\1hwalk2.png" />
+    <EmbeddedResource Include="Images\1walk1.png" />
+    <EmbeddedResource Include="Images\1walk2.png" />
+    <EmbeddedResource Include="Images\2barricade.png" />
+    <EmbeddedResource Include="Images\2deffortress1.png" />
+    <EmbeddedResource Include="Images\2deffortress2.png" />
+    <EmbeddedResource Include="Images\2fortress1.png" />
+    <EmbeddedResource Include="Images\2fortress2.png" />
+    <EmbeddedResource Include="Images\2halffortress1.png" />
+    <EmbeddedResource Include="Images\2halffortress2.png" />
+    <EmbeddedResource Include="Images\2hwalk1.png" />
+    <EmbeddedResource Include="Images\2hwalk2.png" />
+    <EmbeddedResource Include="Images\2walk1.png" />
+    <EmbeddedResource Include="Images\1attack1.png" />
+    <EmbeddedResource Include="Images\1attack2.png" />
+    <EmbeddedResource Include="Images\1hattack1.png" />
+    <EmbeddedResource Include="Images\1hattack2.png" />
+    <EmbeddedResource Include="Images\2attack1.png" />
+    <EmbeddedResource Include="Images\2attack2.png" />
+    <EmbeddedResource Include="Images\2hattack1.png" />
+    <EmbeddedResource Include="Images\2hattack2.png" />
+    <EmbeddedResource Include="Images\2walk2.png" />
+    <EmbeddedResource Include="Images\coin1.png" />
+    <EmbeddedResource Include="Images\coin2.png" />
+    <EmbeddedResource Include="Images\potion1.png" />
+    <EmbeddedResource Include="Images\potion2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\grass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

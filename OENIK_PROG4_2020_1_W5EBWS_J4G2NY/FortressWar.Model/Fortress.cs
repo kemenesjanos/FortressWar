@@ -8,11 +8,28 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Describing the fortresses.
     /// </summary>
     public class Fortress : Character
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fortress"/> class.
+        /// Ctor.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="cx">Centered x coord.</param>
+        /// <param name="y">Tile y coord.</param>
+        public Fortress(Player owner, double cx)
+        {
+            this.CX = cx;
+            this.Y_Tile = 1;
+            this.Owner = owner;
+            this.Life = Config.FortressBaseLife;
+            this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.FortressTileWidth, Config.FortressTileHeight));
+        }
     }
 }
