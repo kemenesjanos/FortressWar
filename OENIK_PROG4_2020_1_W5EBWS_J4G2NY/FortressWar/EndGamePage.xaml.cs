@@ -29,6 +29,10 @@ namespace FortressWar
         public EndGamePage()
         {
             this.InitializeComponent();
+
+            Control.Control control = new Control.Control();
+
+            this.label_winner.Content = control.winner;
         }
 
         private void Button_Start(object sender, RoutedEventArgs e)

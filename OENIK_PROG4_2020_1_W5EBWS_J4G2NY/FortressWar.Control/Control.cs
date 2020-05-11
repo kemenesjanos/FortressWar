@@ -47,6 +47,8 @@ namespace FortressWar.Control
             this.logic = new Logic(this.model);
             this.renderer = new Renderer(this.model);
 
+            this.logic.FinishedGame += Logic_FinishedGame;
+
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -99,13 +101,12 @@ namespace FortressWar.Control
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             this.logic.MoveSoldier();
-            if (this.model.Player_1.Fortress.Life == 0 || this.model.Player_2.Fortress.Life == 0)
-            {
-                this.logic.EndGame();
-                this.tickTimer.Stop();
-                this.winner = this.model.Player_1.Fortress.Life == 0 ? this.model.Player_2.Name : this.model.Player_1.Name;
-                MessageBox.Show($"The winner is:\n {winner}!");
-            }
+        }
+
+        private void Logic_FinishedGame(object sender, EventArgs e)
+        {
+            this.tickTimer.Stop();
+            this.winner = (e as FinishedGameEventArgs).WinnerName;
         }
     }
 }
