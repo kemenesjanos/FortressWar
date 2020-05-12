@@ -29,6 +29,8 @@ namespace FortressWar.Logic
         {
             this.model = model;
             this.StartGame();
+            this.model.Player_1.Name = "Player1";
+            this.model.Player_2.Name = "Player2";
         }
 
         /// <summary>

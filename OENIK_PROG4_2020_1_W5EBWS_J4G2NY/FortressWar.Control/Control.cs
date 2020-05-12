@@ -25,6 +25,8 @@ namespace FortressWar.Control
         private Renderer renderer;
         private Model model;
 
+        public string winner = "";
+
         /// <summary>
         /// Responsible for moving items.
         /// </summary>
@@ -44,6 +46,8 @@ namespace FortressWar.Control
             this.model = new Model();
             this.logic = new Logic(this.model);
             this.renderer = new Renderer(this.model);
+
+            this.logic.FinishedGame += Logic_FinishedGame;
 
             Window win = Window.GetWindow(this);
             if (win != null)
@@ -85,13 +89,24 @@ namespace FortressWar.Control
                 case Key.Up: this.logic.MoveSelector(this.model.Player_2, -1); break;
                 case Key.Down: this.logic.MoveSelector(this.model.Player_2, 1); break;
                 case Key.Enter: this.logic.SelectorSelect(this.model.Player_2); break;
+
+                case Key.Escape: ; break;
             }
+
+            this.InvalidateVisual();
+
             //TODO: játék vége vizsgálat a várakra és azzal akár kiírás
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
             this.logic.MoveSoldier();
+        }
+
+        private void Logic_FinishedGame(object sender, EventArgs e)
+        {
+            this.tickTimer.Stop();
+            this.winner = (e as FinishedGameEventArgs).WinnerName;
         }
     }
 }

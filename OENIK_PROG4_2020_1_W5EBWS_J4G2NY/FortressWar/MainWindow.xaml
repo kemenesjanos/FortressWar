@@ -8,6 +8,6 @@
         xmlns:localModel="clr-namespace:FortressWar.Model;assembly=FortressWar.Model"
         mc:Ignorable="d"
         Title="MainWindow"
-        WindowState="Maximized" Background="Black">
-    <localControl:Control Width="1600" Height="900"/>
+        WindowState="Maximized" Background="Black" Height="900" Width="1600">
+    <Frame x:Name="frame" Content="frame" HorizontalAlignment="Center" NavigationUIVisibility="Hidden"></Frame>
 </Window>
