@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
+﻿// <copyright file="Player.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 namespace FortressWar.Model
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Player.
+    /// </summary>
     [XmlInclude(typeof(Knight))]
     [XmlInclude(typeof(Rider))]
     [XmlInclude(typeof(Barricade))]
     public class Player
     {
-
         /// <summary>
         /// Gets or sets the name of the player.
         /// </summary>
@@ -82,6 +87,10 @@ namespace FortressWar.Model
             get { return Config.BarricadeBasePrice + (this.BarricadeLVL * Config.BarricadeLVLPrice); }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Player"/> class.
+        /// Player ctor.
+        /// </summary>
         public Player()
         {
             this.Money = Config.PlayerBaseMoney;

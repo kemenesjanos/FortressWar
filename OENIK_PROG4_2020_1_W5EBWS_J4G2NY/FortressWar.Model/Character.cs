@@ -31,6 +31,9 @@ namespace FortressWar.Model
         [XmlIgnore]
         public Player Owner { get; set; }
 
+        /// <summary>
+        /// Gets or sets player ID.
+        /// </summary>
         public string playerID { get; set; }
     }
 }

@@ -15,6 +15,9 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the general game item.
     /// </summary>
+    [XmlInclude(typeof(TransformGroup))]
+    [XmlInclude(typeof(TranslateTransform))]
+    [XmlInclude(typeof(RotateTransform))]
     public abstract class GameItem
     {
         /// <summary>
@@ -58,7 +61,7 @@ namespace FortressWar.Model
                     + (Config.FieldHeight / 2) + (Config.CharacterTileHeight / 2) - 90;
                     }
                 }
-                else if(this is Fortress)
+                else if (this is Fortress)
                 {
                     return 150;
                 }

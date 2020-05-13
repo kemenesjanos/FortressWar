@@ -19,7 +19,7 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for EscPage.xaml
+    /// Interaction logic for EscPage.xaml.
     /// </summary>
     public partial class EscPage : Page
     {

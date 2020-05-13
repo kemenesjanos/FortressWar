@@ -32,7 +32,13 @@ namespace FortressWar.Model
             this.CountBasics();
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
-        public Rider() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rider"/> class.
+        /// </summary>
+        public Rider()
+        {
+        }
 
         /// <summary>
         /// Override LVLUp method.

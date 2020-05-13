@@ -93,12 +93,12 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Life of the knight.
         /// </summary>
-        public const int KnightBaseLife = 200;
+        public const int KnightBaseLife = 210;
 
         /// <summary>
         /// The knight get that much Life when do a level up.
         /// </summary>
-        public const int KnightLVLLife = 10;
+        public const int KnightLVLLife = 50;
 
         /// <summary>
         /// The base Life of the rider.
@@ -108,7 +108,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The rider get that much Life when do a level up.
         /// </summary>
-        public const int RiderLVLLife = 15;
+        public const int RiderLVLLife = 50;
 
         /// <summary>
         /// The base Life of the Barricade.
@@ -178,12 +178,12 @@ namespace FortressWar.Model
         /// <summary>
         /// The base bounty of the Knight.
         /// </summary>
-        public const int KnightBaseBounty = 20;
+        public const int KnightBaseBounty = 50;
 
         /// <summary>
         /// The base bounty of the Rider.
         /// </summary>
-        public const int RiderBaseBounty = 40;
+        public const int RiderBaseBounty = 100;
 
         /// <summary>
         /// The base bounty of the Barricade.
