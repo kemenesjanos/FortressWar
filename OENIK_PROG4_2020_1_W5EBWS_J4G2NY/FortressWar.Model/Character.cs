@@ -8,6 +8,7 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the general characters.
@@ -27,6 +28,9 @@ namespace FortressWar.Model
         /// <summary>
         /// Gets or sets the player who owns this character.
         /// </summary>
+        [XmlIgnore]
         public Player Owner { get; set; }
+
+        public string playerID { get; set; }
     }
 }

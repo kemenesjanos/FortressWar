@@ -22,7 +22,6 @@ namespace FortressWar.Model
         public List<Coin> Coins { get; set; }
         public Player Player_1 { get; set; }
         public Player Player_2 { get; set; }
-        public Selector Selector { get; set; }
 
         public void MapBuild()
         {

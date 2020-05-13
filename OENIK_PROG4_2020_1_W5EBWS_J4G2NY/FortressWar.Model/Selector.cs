@@ -10,10 +10,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the selector.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Selector : GameItem
     {
         /// <summary>
@@ -56,6 +58,7 @@ namespace FortressWar.Model
             this.CX = cx;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.SelectorWidth, Config.SelectorHeight));
         }
+        public Selector() { }
 
         /// <summary>
         /// Gets or sets a value indicating whether is the selector put a Character.
