@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FortressWar.Model
 {
+    [XmlInclude(typeof(Knight))]
+    [XmlInclude(typeof(Rider))]
+    [XmlInclude(typeof(Barricade))]
     public class Player
     {
+
         /// <summary>
         /// Gets or sets the name of the player.
         /// </summary>
@@ -79,7 +84,6 @@ namespace FortressWar.Model
 
         public Player()
         {
-            this.Name = "Player";
             this.Money = Config.PlayerBaseMoney;
             this.KnightLVL = 0;
             this.RiderLVL = 0;

@@ -10,10 +10,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the barricade.
     /// </summary>
+    [XmlInclude(typeof( RectangleGeometry))]
     public class Barricade : Character
     {
         /// <summary>
@@ -25,9 +27,11 @@ namespace FortressWar.Model
         {
             this.LVL = player.BarricadeLVL;
             this.Owner = player;
+            this.playerID = player.Name;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
             this.CountBasics();
         }
+        public Barricade() { }
 
         /// <summary>
         /// Gets or sets level.

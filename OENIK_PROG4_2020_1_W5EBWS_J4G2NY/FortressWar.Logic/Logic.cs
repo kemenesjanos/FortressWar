@@ -5,11 +5,13 @@ namespace FortressWar.Logic
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
     using FortressWar.Model;
 
     /// <summary>
@@ -31,6 +33,10 @@ namespace FortressWar.Logic
             this.StartGame();
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
+            this.NewCharacter(Characters.Knight, model.Player_1, 1);
+            //this.SaveGameState();
+            //this.LoadGameState();
+            ;
         }
 
         /// <summary>
@@ -135,7 +141,31 @@ namespace FortressWar.Logic
 
         public void LoadGameState()
         {
-            throw new NotImplementedException();
+            XmlSerializer xs = new XmlSerializer(typeof(Model));
+            using (var sr = new StreamReader("GameState.txt"))
+            {
+                this.model = (Model)xs.Deserialize(sr);
+                sr.Close();
+            }
+            foreach (Character item in this.model.Player_1.Barricades.Cast<Character>()
+                        .Concat(this.model.Player_1.Soldiers.Cast<Character>())
+                        .Concat(this.model.Player_2.Barricades.Cast<Character>()
+                        .Concat(this.model.Player_2.Soldiers.Cast<Character>())))
+            {
+                if (item.playerID == "Player1")
+                {
+                    item.Owner = this.model.Player_1;
+                }
+                else if(item.playerID == "Player2")
+                {
+                    item.Owner = this.model.Player_2;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            ;
         }
 
         /// <summary>
@@ -442,7 +472,10 @@ namespace FortressWar.Logic
 
         public void SaveGameState()
         {
-            throw new NotImplementedException();
+            XmlSerializer xs = new XmlSerializer(typeof(Model));
+            TextWriter tw = new StreamWriter("GameState.txt");
+            xs.Serialize(tw, this.model);
+            tw.Close();
         }
 
         /// <summary>

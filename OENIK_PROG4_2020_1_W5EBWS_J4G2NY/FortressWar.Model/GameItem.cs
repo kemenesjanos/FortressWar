@@ -10,6 +10,7 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the general game item.

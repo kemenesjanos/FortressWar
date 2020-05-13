@@ -11,10 +11,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Rider qualities.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Rider : Soldier
     {
         /// <summary>
@@ -26,9 +28,11 @@ namespace FortressWar.Model
         {
             this.LVL = player.RiderLVL;
             this.Owner = player;
+            this.playerID = player.Name;
             this.CountBasics();
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
+        public Rider() { }
 
         /// <summary>
         /// Override LVLUp method.

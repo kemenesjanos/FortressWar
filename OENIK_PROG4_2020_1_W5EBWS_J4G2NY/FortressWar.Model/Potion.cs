@@ -11,10 +11,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the star and the potion.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Potion : GameItem
     {
         /// <summary>

@@ -10,10 +10,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the fortresses.
     /// </summary>
+    [XmlInclude(typeof( RectangleGeometry))]
     public class Fortress : Character
     {
         /// <summary>
@@ -28,8 +30,11 @@ namespace FortressWar.Model
             this.CX = cx;
             this.Y_Tile = 1;
             this.Owner = owner;
+            this.playerID = owner.Name;
             this.Life = Config.FortressBaseLife;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.FortressTileWidth, Config.FortressTileHeight));
         }
+
+        public Fortress() { }
     }
 }

@@ -10,10 +10,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Knight qualities.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Knight : Soldier
     {
         /// <summary>
@@ -21,13 +23,15 @@ namespace FortressWar.Model
         /// Ctor.
         /// </summary>
         /// <param name="player">The owner.</param>
-        public Knight(Player player)
+        public Knight( Player player)
         {
             this.LVL = player.KnightLVL;
             this.Owner = player;
+            this.playerID = player.Name;
             this.CountBasics();
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
+        public Knight() { }
 
         /// <summary>
         /// Override LVLUp method.
