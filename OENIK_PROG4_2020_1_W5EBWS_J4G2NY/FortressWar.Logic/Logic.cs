@@ -33,7 +33,7 @@ namespace FortressWar.Logic
             this.StartGame();
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
-            //this.NewCharacter(Characters.Knight, model.Player_1, 1);
+            this.NewCharacter(Characters.Knight, model.Player_1, 1);
             this.SaveGameState();
             this.LoadGameState();
         }
@@ -107,7 +107,7 @@ namespace FortressWar.Logic
             {
                 this.GetBountry(character);
 
-                if (character.Owner == this.model.Player_1)
+                if (character.Owner.Name == this.model.Player_1.Name)
                 {
                     this.model.Player_1.Barricades.Remove(character as Barricade);
                 }
@@ -119,7 +119,7 @@ namespace FortressWar.Logic
             else if (character is Soldier)
             {
                 this.GetBountry(character);
-                if (character.Owner == this.model.Player_1)
+                if (character.Owner.Name == this.model.Player_1.Name)
                 {
                     this.model.Player_1.Soldiers.Remove(character as Soldier);
                 }
@@ -224,7 +224,6 @@ namespace FortressWar.Logic
                 {
                     switch (player.Selector.SelectedCharacter)
                     {
-                        //////////////////////
                         case Selector.SelectedCharacters.Knight:
                             this.NewCharacter(Characters.Knight, player, player.Selector.Y_Tile);
                             break;
@@ -338,7 +337,7 @@ namespace FortressWar.Logic
                 else
                 {
                     soldier.CX = (soldier.CX - (Config.FieldWidht / 2)) +
-                        (soldier.Owner == this.model.Player_1 ? soldier.Speed * Config.StepDistance : soldier.Speed * -1 * Config.StepDistance);
+                        (soldier.Owner.Name == this.model.Player_1.Name ? soldier.Speed * Config.StepDistance : soldier.Speed * -1 * Config.StepDistance);
                     foreach (Character item in this.OtherPlayer(soldier).Barricades.Cast<Character>()
                         .Concat(this.OtherPlayer(soldier).Soldiers.Cast<Character>())
                         .Concat(this.model.Coins.Cast<Character>()))
@@ -666,7 +665,7 @@ namespace FortressWar.Logic
 
         private void GetBountry(Character character)
         {
-            if (character.Owner == this.model.Player_1)
+            if (character.Owner.Name == this.model.Player_1.Name)
             {
                 this.model.Player_2.Money += character.Bounty;
             }
