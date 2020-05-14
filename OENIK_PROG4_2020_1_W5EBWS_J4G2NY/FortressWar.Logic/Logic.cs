@@ -19,7 +19,7 @@ namespace FortressWar.Logic
     /// </summary>
     public class Logic : ILogic
     {
-        private Model model;
+        public Model model;
         private Random rnd = new Random();
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace FortressWar.Logic
             this.StartGame();
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
-            this.NewCharacter(Characters.Knight, model.Player_1, 1);
-            this.SaveGameState();
-            this.LoadGameState();
+            //this.NewCharacter(Characters.Knight, model.Player_1, 1);
+            //this.SaveGameState();
+            //this.LoadGameState();
         }
 
         //TODO: Nézd meg, hogy a tesztek hisztiznek e erre a lépésemre (hogy van egy 2. ctor más beviteli elvárással, bár nem hiszem, elv nem kéne) - mivel nálam még mindig nem hajlandó tesztet nézni... xD
@@ -55,9 +55,9 @@ namespace FortressWar.Logic
             this.StartGame();
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
-            //this.NewCharacter(Characters.Knight, model.Player_1, 1);
-            //this.SaveGameState();
-            //this.LoadGameState();
+            this.NewCharacter(Characters.Knight, model.Player_1, 1);
+            this.SaveGameState();
+            this.LoadGameState();
         }
 
         /// <summary>
@@ -190,6 +190,22 @@ namespace FortressWar.Logic
                     throw new Exception();
                 }
             }
+
+            List<GameItem> items = this.model.Coins.ConvertAll<GameItem>(x => x);
+            items.AddRange(this.model.Potions.ConvertAll<GameItem>(x => x));
+            items.AddRange(this.model.Player_1.Barricades.ConvertAll<GameItem>(x => x));
+            items.Add(this.model.Player_1.Fortress);
+            items.Add(this.model.Player_1.Selector);
+            items.AddRange(this.model.Player_1.Soldiers.ConvertAll<GameItem>(x => x));
+            items.AddRange(this.model.Player_2.Barricades.ConvertAll<GameItem>(x => x));
+            items.Add(this.model.Player_2.Fortress);
+            items.Add(this.model.Player_2.Selector);
+            items.AddRange(this.model.Player_2.Soldiers.ConvertAll<GameItem>(x => x));
+            foreach (GameItem item in items)
+            {
+                item.CX -= Config.FieldWidht;
+            }
+
             return this.model;
         }
 
