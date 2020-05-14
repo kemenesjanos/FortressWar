@@ -34,8 +34,8 @@ namespace FortressWar.Logic
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
             //this.NewCharacter(Characters.Knight, model.Player_1, 1);
-            //this.SaveGameState();
-            //this.LoadGameState();
+            this.SaveGameState();
+            this.LoadGameState();
         }
 
         //TODO: Nézd meg, hogy a tesztek hisztiznek e erre a lépésemre (hogy van egy 2. ctor más beviteli elvárással, bár nem hiszem, elv nem kéne) - mivel nálam még mindig nem hajlandó tesztet nézni... xD
@@ -57,7 +57,7 @@ namespace FortressWar.Logic
             this.model.Player_2.Name = "Player2";
             //this.NewCharacter(Characters.Knight, model.Player_1, 1);
             //this.SaveGameState();
-            this.LoadGameState();
+            //this.LoadGameState();
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace FortressWar.Logic
         /// <summary>
         /// Load game state.
         /// </summary>
-        public void LoadGameState()
+        public Model LoadGameState()
         {
             XmlSerializer xs = new XmlSerializer(typeof(Model));
             using (var sr = new StreamReader("GameState.txt"))
@@ -190,6 +190,7 @@ namespace FortressWar.Logic
                     throw new Exception();
                 }
             }
+            return this.model;
         }
 
         /// <summary>
@@ -223,6 +224,7 @@ namespace FortressWar.Logic
                 {
                     switch (player.Selector.SelectedCharacter)
                     {
+                        //////////////////////
                         case Selector.SelectedCharacters.Knight:
                             this.NewCharacter(Characters.Knight, player, player.Selector.Y_Tile);
                             break;
@@ -239,7 +241,7 @@ namespace FortressWar.Logic
 
                 player.Selector.IsPutACharacter = false;
                 player.Selector.SelectedCharacter = Selector.SelectedCharacters.None;
-                player.Selector.CX = player == this.model.Player_1 ?
+                player.Selector.CX = player.Name == this.model.Player_1.Name ?
                     -(Config.FieldWidht / 2) : (Config.FieldWidht / 2) - (Config.SelectorWidth / 2);
                 player.Selector.Y_Tile = 1;
                 player.Selector.area =
@@ -275,7 +277,7 @@ namespace FortressWar.Logic
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Knight;
                         player.Selector.Y_Tile = 1;
-                        player.Selector.CX = player == this.model.Player_1 ?
+                        player.Selector.CX = player.Name == this.model.Player_1.Name ?
                                 -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
@@ -284,7 +286,7 @@ namespace FortressWar.Logic
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Rider;
                         player.Selector.Y_Tile = 1;
-                        player.Selector.CX = player == this.model.Player_1 ?
+                        player.Selector.CX = player.Name == this.model.Player_1.Name ?
                                 -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
@@ -293,7 +295,7 @@ namespace FortressWar.Logic
                         player.Selector.IsPutACharacter = true;
                         player.Selector.SelectedCharacter = Selector.SelectedCharacters.Barricade;
                         player.Selector.Y_Tile = 1;
-                        player.Selector.CX = player == this.model.Player_1 ?
+                        player.Selector.CX = player.Name == this.model.Player_1.Name ?
                                 -(Config.FieldWidht / 4) - Config.CharacterTileWidth : Config.FieldWidht / 4;
                         player.Selector.area = new RectangleGeometry(
                             new Rect(player.Selector.CX, player.Selector.CY, Config.CharacterTileWidth * 2, Config.CharacterTileHeight));
@@ -399,7 +401,7 @@ namespace FortressWar.Logic
                         player.Soldiers.Add(
                             new Knight(player)
                             {
-                                CX = player == this.model.Player_1 ?
+                                CX = player.Name == this.model.Player_1.Name ?
                                 (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2,
                                 Y_Tile = y,
                             });
@@ -414,7 +416,7 @@ namespace FortressWar.Logic
                         player.Soldiers.Add(
                             new Rider(player)
                             {
-                                CX = player == this.model.Player_1 ?
+                                CX = player.Name == this.model.Player_1.Name ?
                                 (-Config.FieldWidht / 2) - Config.CharacterTileWidth : Config.FieldWidht / 2,
                                 Y_Tile = y,
                             });
@@ -425,7 +427,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
-                        if (player == this.model.Player_1)
+                        if (player.Name == this.model.Player_1.Name)
                         {
                             int tX = -Config.FieldWidht / 2;
                             while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - (Config.FieldWidht / 2) == tX) != null)
@@ -528,7 +530,7 @@ namespace FortressWar.Logic
         /// <param name="player">The owner of the character.</param>
         public void UpdateCharacter(Characters character, Player player)
         {
-            if (player == this.model.Player_1)
+            if (player.Name == this.model.Player_1.Name)
             {
                 switch (character)
                 {
@@ -659,7 +661,7 @@ namespace FortressWar.Logic
 
         private Player OtherPlayer(Soldier soldier)
         {
-            return soldier.Owner == this.model.Player_1 ? this.model.Player_2 : this.model.Player_1;
+            return soldier.Owner.Name == this.model.Player_1.Name ? this.model.Player_2 : this.model.Player_1;
         }
 
         private void GetBountry(Character character)

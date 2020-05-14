@@ -129,7 +129,8 @@ namespace FortressWar.Logic
         /// <summary>
         /// Load the previous game state.
         /// </summary>
-        void LoadGameState();
+        /// <returns>The loaded game model.</returns>
+        Model LoadGameState();
 
         /// <summary>
         /// Increase Player's Money.
