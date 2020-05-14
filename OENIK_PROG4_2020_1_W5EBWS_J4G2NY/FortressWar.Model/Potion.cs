@@ -1,4 +1,4 @@
-﻿// <copyright file="Bonus.cs" company="PlaceholderCompany">
+﻿// <copyright file="Potion.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -28,7 +28,7 @@ namespace FortressWar.Model
             Random r = new Random();
             this.Y_Tile = r.Next(0, 4);
             //this.CX = r.Next((-Config.FieldWidht / 2) - Config.CharacterTileWidth, Config.FieldWidht / 2);
-            this.CX = r.Next((-200), 201);
+            this.CX = r.Next(-200, 201);
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth * 0.75, Config.CharacterTileHeight));
         }
     }

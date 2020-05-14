@@ -171,7 +171,6 @@ namespace FortressWar.Renderer
 
                 bmp.BeginInit();
                 bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
-                //if (bmp.StreamSource == null) throw new Exception("ResourceStream NotFound: " +fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);
@@ -203,7 +202,6 @@ namespace FortressWar.Renderer
 
                 bmp.BeginInit();
                 bmp.StreamSource = Assembly.GetEntryAssembly().GetManifestResourceStream(fname);
-                if (bmp.StreamSource == null) throw new Exception("ResourceStream NotFound: " + fname);
                 bmp.EndInit();
 
                 ImageBrush ib = new ImageBrush(bmp);

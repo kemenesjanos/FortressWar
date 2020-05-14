@@ -18,7 +18,7 @@
         <Label x:Name="label7" Content="A pályán folyamatosan jelen van véletlenszerűen egy arany és egy bájital bónusz, amit a harcos egységek felvehetnek:" HorizontalAlignment="Left" Margin="100,350,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
         <Label x:Name="label8" Content="Arany: A játékos véletlen mennyiségű aranyat kap." HorizontalAlignment="Left" Margin="150,390,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
         <Label x:Name="label9" Content="Bájital: Az adott harcos egység 1 szintnövekedést kap." HorizontalAlignment="Left" Margin="150,430,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
-        <Label x:Name="label10" Content="A játékosok a játék folyamán folyamatosan kapnak aranyat." HorizontalAlignment="Left" Margin="100,470,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
+        <Label x:Name="label10" Content="A játékosok a játék folyamán folyamatosan kapnak aranyat. Minden elesett harcos után aranyat kap az ellenséges játékos." HorizontalAlignment="Left" Margin="100,470,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
         <Label x:Name="label11" Content="A fejlesztés csak az azután lerakott harcos egységekre érvényesül, a pályán lévőkre nem." HorizontalAlignment="Left" Margin="100,510,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="106"/>
         <Button Click="Button_Click" Content="BACK" Width="300" Height="100" Margin="650,700,650,100" Background="#563020" Foreground="White" FontSize="50" BorderThickness="0">
             <Button.Style>

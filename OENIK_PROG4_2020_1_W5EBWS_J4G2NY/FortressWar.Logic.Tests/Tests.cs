@@ -4,13 +4,13 @@
 
 namespace FortressWar.Logic.Tests
 {
-    using FortressWar.Model;
-    using NUnit.Framework;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using FortressWar.Model;
+    using NUnit.Framework;
 
     /// <summary>
     /// Tests for the logic.
@@ -96,13 +96,17 @@ namespace FortressWar.Logic.Tests
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Test soldier move.
+        /// </summary>
         [Test]
         public void TestMoveSoldier()
         {
             this.logic.StartGame();
             this.model.Player_1.Soldiers.Clear();
             this.model.Player_2.Soldiers.Clear();
-            // Knight vs knight same line
+
+            // Knight vs knight same line.
             this.logic.NewCharacter(Characters.Knight, this.model.Player_1, 1);
             this.logic.NewCharacter(Characters.Knight, this.model.Player_2, 1);
             int z = 0;
@@ -188,6 +192,9 @@ namespace FortressWar.Logic.Tests
             Assert.That(z < 1500);
         }
 
+        /// <summary>
+        /// Test collision.
+        /// </summary>
         [Test]
         public void TestIsCollision()
         {

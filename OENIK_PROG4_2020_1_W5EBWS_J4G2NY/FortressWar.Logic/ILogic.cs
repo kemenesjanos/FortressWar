@@ -52,7 +52,6 @@ namespace FortressWar.Logic
     /// </summary>
     public interface ILogic
     {
-
         /// <summary>
         /// Move Soldier ahead.
         /// </summary>

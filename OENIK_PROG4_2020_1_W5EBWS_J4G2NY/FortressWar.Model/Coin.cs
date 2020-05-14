@@ -1,4 +1,4 @@
-﻿// <copyright file="Money.cs" company="PlaceholderCompany">
+﻿// <copyright file="Coin.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Model
@@ -15,7 +15,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the Money.
     /// </summary>
-    [XmlInclude(typeof( RectangleGeometry))]
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Coin : Character
     {
         /// <summary>
@@ -29,7 +29,7 @@ namespace FortressWar.Model
             this.Life = 1;
             this.Y_Tile = r.Next(0, 4);
             //this.CX = r.Next((-Config.FieldWidht / 2) - Config.CharacterTileWidth , Config.FieldWidht / 2);
-            this.CX = r.Next((-200), 201);
+            this.CX = r.Next(-200, 201);
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth * 0.75, Config.CharacterTileHeight));
         }
     }

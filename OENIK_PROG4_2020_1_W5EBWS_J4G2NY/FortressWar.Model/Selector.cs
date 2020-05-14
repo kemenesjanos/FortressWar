@@ -19,7 +19,7 @@ namespace FortressWar.Model
     public class Selector : GameItem
     {
         /// <summary>
-        /// Enum of the selected characters
+        /// Enum of the selected characters.
         /// </summary>
         public enum SelectedCharacters
         {
@@ -58,7 +58,13 @@ namespace FortressWar.Model
             this.CX = cx;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.SelectorWidth, Config.SelectorHeight));
         }
-        public Selector() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Selector"/> class.
+        /// </summary>
+        public Selector()
+        {
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether is the selector put a Character.

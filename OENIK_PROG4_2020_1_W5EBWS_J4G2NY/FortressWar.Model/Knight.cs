@@ -23,7 +23,7 @@ namespace FortressWar.Model
         /// Ctor.
         /// </summary>
         /// <param name="player">The owner.</param>
-        public Knight( Player player)
+        public Knight(Player player)
         {
             this.LVL = player.KnightLVL;
             this.Owner = player;
@@ -31,7 +31,13 @@ namespace FortressWar.Model
             this.CountBasics();
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
         }
-        public Knight() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Knight"/> class.
+        /// </summary>
+        public Knight()
+        {
+        }
 
         /// <summary>
         /// Override LVLUp method.

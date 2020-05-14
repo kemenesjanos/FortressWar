@@ -15,7 +15,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the barricade.
     /// </summary>
-    [XmlInclude(typeof( RectangleGeometry))]
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Barricade : Character
     {
         /// <summary>
@@ -31,7 +31,13 @@ namespace FortressWar.Model
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
             this.CountBasics();
         }
-        public Barricade() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Barricade"/> class.
+        /// </summary>
+        public Barricade()
+        {
+        }
 
         /// <summary>
         /// Gets or sets level.

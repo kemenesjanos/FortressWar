@@ -15,7 +15,7 @@ namespace FortressWar.Model
     /// <summary>
     /// Describing the fortresses.
     /// </summary>
-    [XmlInclude(typeof( RectangleGeometry))]
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Fortress : Character
     {
         /// <summary>
@@ -35,6 +35,11 @@ namespace FortressWar.Model
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.FortressTileWidth, Config.FortressTileHeight));
         }
 
-        public Fortress() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fortress"/> class.
+        /// </summary>
+        public Fortress()
+        {
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace FortressWar
+﻿// <copyright file="GamePage.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+namespace FortressWar
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +19,7 @@
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for GamePage.xaml
+    /// Interaction logic for GamePage.xaml.
     /// </summary>
     public partial class GamePage : Page
     {

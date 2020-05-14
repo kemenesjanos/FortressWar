@@ -1,4 +1,4 @@
-﻿// <copyright file="EscPage.xaml.cs" company="PlaceholderCompany">
+﻿// <copyright file="EndGamePage.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar
@@ -19,7 +19,7 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for EndGamePage.xaml
+    /// Interaction logic for EndGamePage.xaml.
     /// </summary>
     public partial class EndGamePage : Page
     {
@@ -31,8 +31,6 @@ namespace FortressWar
             this.InitializeComponent();
 
             Control.Control control = new Control.Control();
-
-            this.label_winner.Content = control.winner;
         }
 
         private void Button_Start(object sender, RoutedEventArgs e)
