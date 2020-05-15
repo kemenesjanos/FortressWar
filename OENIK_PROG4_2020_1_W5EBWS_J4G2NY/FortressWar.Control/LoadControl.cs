@@ -47,6 +47,12 @@ namespace FortressWar.Control
             this.logic = new Logic(this.model, true);
             this.renderer = new Renderer(this.model);
 
+            if (this.logic.model != this.renderer.model)
+            {
+                this.renderer.model = this.logic.model;
+                this.model = this.logic.model;
+            }
+
             this.logic.FinishedGame += this.Logic_FinishedGame;
 
             Window win = Window.GetWindow(this);
@@ -97,12 +103,6 @@ namespace FortressWar.Control
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            if (this.logic.model != this.renderer.model)
-            {
-                this.renderer.model = this.logic.model;
-                this.model = this.logic.model;
-            }
-
             this.logic.MoveSoldier();
         }
 
@@ -110,7 +110,7 @@ namespace FortressWar.Control
         {
             this.tickTimer.Stop();
             this.winner = (e as FinishedGameEventArgs).WinnerName;
-            MessageBox.Show($"The game is and!\n The winner is {this.winner}!");
+            MessageBox.Show($"The battle is over!\nThe winner is {this.winner}!");
         }
     }
 }

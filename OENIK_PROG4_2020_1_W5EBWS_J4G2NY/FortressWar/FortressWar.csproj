@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>oenik.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>fortressWar.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -192,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\grass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fortressWar.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

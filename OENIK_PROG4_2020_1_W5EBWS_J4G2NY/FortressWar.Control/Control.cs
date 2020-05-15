@@ -104,7 +104,7 @@ namespace FortressWar.Control
         {
             this.tickTimer.Stop();
             this.winner = (e as FinishedGameEventArgs).WinnerName;
-            MessageBox.Show($"The game is and!\n The winner is {this.winner}!");
+            MessageBox.Show($"The battle is over!\nThe winner is {this.winner}!");
         }
     }
 }
