@@ -46,7 +46,7 @@ namespace FortressWar
 
         private void Button_Load(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new GamePage());
+            this.NavigationService.Navigate(new LoadGamePage());
         }
 
         private void Button_Help(object sender, RoutedEventArgs e)

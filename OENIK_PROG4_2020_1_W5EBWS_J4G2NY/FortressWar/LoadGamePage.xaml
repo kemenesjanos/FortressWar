@@ -1,0 +1,13 @@
+﻿<Page x:Class="FortressWar.LoadGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FortressWar"
+      xmlns:localLoadControl="clr-namespace:FortressWar.Control;assembly=FortressWar.Control"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="LoadGamePage"
+      Background="Black">
+    <localLoadControl:LoadControl Width="1600" Height="900"/>
+</Page>

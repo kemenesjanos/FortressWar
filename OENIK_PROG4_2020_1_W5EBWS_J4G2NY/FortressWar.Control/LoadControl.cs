@@ -1,4 +1,4 @@
-﻿// <copyright file="Control.cs" company="PlaceholderCompany">
+﻿// <copyright file="LoadControl.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar.Control
@@ -17,9 +17,9 @@ namespace FortressWar.Control
     using FortressWar.Renderer;
 
     /// <summary>
-    /// Controls of the game.
+    /// Controls of the load game.
     /// </summary>
-    public class Control : FrameworkElement
+    public class LoadControl : FrameworkElement
     {
         private Logic logic;
         private Renderer renderer;
@@ -33,10 +33,10 @@ namespace FortressWar.Control
         private DispatcherTimer tickTimer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
+        /// Initializes a new instance of the <see cref="LoadControl"/> class.
         /// Contructor of the control class. Just use for the event.
         /// </summary>
-        public Control()
+        public LoadControl()
         {
             this.Loaded += this.Control_Loaded;
         }
@@ -44,7 +44,7 @@ namespace FortressWar.Control
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new Model();
-            this.logic = new Logic(this.model);
+            this.logic = new Logic(this.model, true);
             this.renderer = new Renderer(this.model);
 
             this.logic.FinishedGame += this.Logic_FinishedGame;
@@ -97,6 +97,12 @@ namespace FortressWar.Control
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
+            if (this.logic.model != this.renderer.model)
+            {
+                this.renderer.model = this.logic.model;
+                this.model = this.logic.model;
+            }
+
             this.logic.MoveSoldier();
         }
 

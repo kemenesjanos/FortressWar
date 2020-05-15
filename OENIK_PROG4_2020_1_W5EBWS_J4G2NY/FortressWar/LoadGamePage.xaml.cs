@@ -1,4 +1,4 @@
-﻿// <copyright file="EscPage.xaml.cs" company="PlaceholderCompany">
+﻿// <copyright file="LoadGamePage.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar
@@ -19,26 +19,16 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for EscPage.xaml.
+    /// Interaction logic for LoadGamePage.xaml.
     /// </summary>
-    public partial class EscPage : Page
+    public partial class LoadGamePage : Page
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EscPage"/> class.
+        /// Initializes a new instance of the <see cref="LoadGamePage"/> class.
         /// </summary>
-        public EscPage()
+        public LoadGamePage()
         {
             this.InitializeComponent();
-        }
-
-        private void Button_Resume(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new LoadGamePage());
-        }
-
-        private void Button_Menu(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new MenuPage());
         }
     }
 }
