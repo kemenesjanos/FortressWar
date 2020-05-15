@@ -22,7 +22,7 @@ namespace FortressWar.Renderer
     {
         private Stopwatch stw;
 
-        private Model model;
+        public Model model;
         private Rect backgroundRect;
         private Rect topBackgroundRect;
 
