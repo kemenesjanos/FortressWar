@@ -33,9 +33,9 @@ namespace FortressWar.Logic
             this.StartGame();
             this.model.Player_1.Name = "Player1";
             this.model.Player_2.Name = "Player2";
-            //this.NewCharacter(Characters.Knight, model.Player_1, 1);
-            //this.SaveGameState();
-            //this.LoadGameState();
+            this.NewCharacter(Characters.Knight, model.Player_1, 1);
+            this.SaveGameState();
+            this.LoadGameState();
         }
 
         //TODO: Nézd meg, hogy a tesztek hisztiznek e erre a lépésemre (hogy van egy 2. ctor más beviteli elvárással, bár nem hiszem, elv nem kéne) - mivel nálam még mindig nem hajlandó tesztet nézni... xD
@@ -49,16 +49,16 @@ namespace FortressWar.Logic
         /// Ctor.
         /// </summary>
         /// <param name="model">A model instance.</param>
-        public Logic(Model model, bool load)
-        {
-            this.model = model;
-            this.StartGame();
-            this.model.Player_1.Name = "Player1";
-            this.model.Player_2.Name = "Player2";
-            this.NewCharacter(Characters.Knight, model.Player_1, 1);
-            this.SaveGameState();
-            this.LoadGameState();
-        }
+        //public Logic(Model model, bool load)
+        //{
+        //    this.model = model;
+        //    this.StartGame();
+        //    this.model.Player_1.Name = "Player1";
+        //    this.model.Player_2.Name = "Player2";
+        //    this.NewCharacter(Characters.Knight, model.Player_1, 1);
+        //    this.SaveGameState();
+        //    this.LoadGameState();
+        //}
 
         /// <summary>
         /// The RefreshScreen event is called if the screen have to be Refreshed.
