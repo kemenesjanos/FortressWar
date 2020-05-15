@@ -97,11 +97,11 @@ namespace FortressWar.Control
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            //if (this.logic.model != this.renderer.model)
-            //{
-            //    this.renderer.model = this.logic.model;
-            //    this.model = this.logic.model;
-            //}
+            if (this.logic.model != this.renderer.model)
+            {
+                this.renderer.model = this.logic.model;
+                this.model = this.logic.model;
+            }
             this.logic.MoveSoldier();
         }
 
