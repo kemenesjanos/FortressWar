@@ -1,4 +1,4 @@
-﻿// <copyright file="MainWindow.xaml.cs" company="PlaceholderCompany">
+﻿// <copyright file="DescriptionPage.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace FortressWar
@@ -19,7 +19,7 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for DescriptionPage.xaml
+    /// Interaction logic for DescriptionPage.xaml.
     /// </summary>
     public partial class DescriptionPage : Page
     {

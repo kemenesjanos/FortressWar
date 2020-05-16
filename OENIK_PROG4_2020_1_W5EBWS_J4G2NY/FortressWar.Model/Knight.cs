@@ -10,10 +10,12 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Knight qualities.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Knight : Soldier
     {
         /// <summary>
@@ -25,8 +27,16 @@ namespace FortressWar.Model
         {
             this.LVL = player.KnightLVL;
             this.Owner = player;
+            this.playerID = player.Name;
             this.CountBasics();
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.CharacterTileWidth, Config.CharacterTileHeight));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Knight"/> class.
+        /// </summary>
+        public Knight()
+        {
         }
 
         /// <summary>

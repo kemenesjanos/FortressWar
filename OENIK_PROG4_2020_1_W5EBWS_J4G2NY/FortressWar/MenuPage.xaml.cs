@@ -17,12 +17,15 @@ namespace FortressWar
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using FortressWar.Control;
 
     /// <summary>
-    /// Interaction logic for MenuPage.xaml
+    /// Interaction logic for MenuPage.xaml.
     /// </summary>
     public partial class MenuPage : Page
     {
+        private Control.Control control = new Control.Control();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MenuPage"/> class.
         /// </summary>
@@ -43,7 +46,7 @@ namespace FortressWar
 
         private void Button_Load(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new LoadGamePage());
         }
 
         private void Button_Help(object sender, RoutedEventArgs e)

@@ -53,7 +53,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base power of the knight.
         /// </summary>
-        public const int KnightBasePower = 15;
+        public const int KnightBasePower = 20;
 
         /// <summary>
         /// The knight get that much power when do a level up.
@@ -63,12 +63,12 @@ namespace FortressWar.Model
         /// <summary>
         /// The base power of the rider.
         /// </summary>
-        public const int RiderBasePower = 20;
+        public const int RiderBasePower = 15;
 
         /// <summary>
         /// The rider get that much power when do a level up.
         /// </summary>
-        public const int RiderLVLPower = 5;
+        public const int RiderLVLPower = 6;
 
         /// <summary>
         /// The base Speed of the knight.
@@ -98,7 +98,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The knight get that much Life when do a level up.
         /// </summary>
-        public const int KnightLVLLife = 10;
+        public const int KnightLVLLife = 50;
 
         /// <summary>
         /// The base Life of the rider.
@@ -108,12 +108,12 @@ namespace FortressWar.Model
         /// <summary>
         /// The rider get that much Life when do a level up.
         /// </summary>
-        public const int RiderLVLLife = 15;
+        public const int RiderLVLLife = 50;
 
         /// <summary>
         /// The base Life of the Barricade.
         /// </summary>
-        public const int BarricadeBaseLife = 500;
+        public const int BarricadeBaseLife = 600;
 
         /// <summary>
         /// The Barricade get that much Life when do a level up.
@@ -143,7 +143,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The base Price of the rider.
         /// </summary>
-        public const int RiderBasePrice = 400;
+        public const int RiderBasePrice = 300;
 
         /// <summary>
         /// The rider costs that much Price when do a level up.
@@ -178,12 +178,12 @@ namespace FortressWar.Model
         /// <summary>
         /// The base bounty of the Knight.
         /// </summary>
-        public const int KnightBaseBounty = 20;
+        public const int KnightBaseBounty = 50;
 
         /// <summary>
         /// The base bounty of the Rider.
         /// </summary>
-        public const int RiderBaseBounty = 40;
+        public const int RiderBaseBounty = 100;
 
         /// <summary>
         /// The base bounty of the Barricade.

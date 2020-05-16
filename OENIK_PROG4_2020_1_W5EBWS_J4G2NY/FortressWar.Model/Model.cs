@@ -14,16 +14,31 @@ namespace FortressWar.Model
     /// </summary>
     public class Model : IModel
     {
+        /// <inheritdoc/>
         public double GameWidth { get; set; }
-        public double GameHeight { get; set; }
-        public double TileWidth { get; set; }
-        public double TileHeight { get; set; }
-        public List<Potion> Potions { get; set; }
-        public List<Coin> Coins { get; set; }
-        public Player Player_1 { get; set; }
-        public Player Player_2 { get; set; }
-        public Selector Selector { get; set; }
 
+        /// <inheritdoc/>
+        public double GameHeight { get; set; }
+
+        /// <inheritdoc/>
+        public double TileWidth { get; set; }
+
+        /// <inheritdoc/>
+        public double TileHeight { get; set; }
+
+        /// <inheritdoc/>
+        public List<Potion> Potions { get; set; }
+
+        /// <inheritdoc/>
+        public List<Coin> Coins { get; set; }
+
+        /// <inheritdoc/>
+        public Player Player_1 { get; set; }
+
+        /// <inheritdoc/>
+        public Player Player_2 { get; set; }
+
+        /// <inheritdoc/>
         public void MapBuild()
         {
             throw new NotImplementedException();
@@ -43,7 +58,6 @@ namespace FortressWar.Model
             this.Coins = new List<Coin>();
             this.Player_1 = new Player();
             this.Player_2 = new Player();
-
         }
     }
 }

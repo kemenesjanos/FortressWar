@@ -19,7 +19,7 @@ namespace FortressWar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for EscPage.xaml
+    /// Interaction logic for EscPage.xaml.
     /// </summary>
     public partial class EscPage : Page
     {
@@ -33,7 +33,7 @@ namespace FortressWar
 
         private void Button_Resume(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new GamePage());
+            this.NavigationService.Navigate(new LoadGamePage());
         }
 
         private void Button_Menu(object sender, RoutedEventArgs e)

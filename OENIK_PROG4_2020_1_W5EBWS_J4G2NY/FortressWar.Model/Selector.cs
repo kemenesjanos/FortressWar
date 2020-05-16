@@ -10,14 +10,16 @@ namespace FortressWar.Model
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the selector.
     /// </summary>
+    [XmlInclude(typeof(RectangleGeometry))]
     public class Selector : GameItem
     {
         /// <summary>
-        /// Enum of the selected characters
+        /// Enum of the selected characters.
         /// </summary>
         public enum SelectedCharacters
         {
@@ -55,6 +57,13 @@ namespace FortressWar.Model
             this.Y_Tile = 1;
             this.CX = cx;
             this.area = new RectangleGeometry(new Rect(this.CX, this.CY, Config.SelectorWidth, Config.SelectorHeight));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Selector"/> class.
+        /// </summary>
+        public Selector()
+        {
         }
 
         /// <summary>

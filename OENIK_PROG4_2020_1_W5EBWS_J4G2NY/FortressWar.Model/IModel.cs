@@ -55,11 +55,6 @@ namespace FortressWar.Model
         Player Player_2 { get; set; }
 
         /// <summary>
-        /// Gets or sets the selector.
-        /// </summary>
-        Selector Selector { get; set; }
-
-        /// <summary>
         /// Build the map.
         /// </summary>
         void MapBuild();
