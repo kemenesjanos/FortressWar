@@ -20,9 +20,10 @@ namespace FortressWar.Renderer
     /// </summary>
     public class Renderer
     {
+        public Model model;
+
         private Stopwatch stw;
 
-        public Model model;
         private Rect backgroundRect;
         private Rect topBackgroundRect;
 
