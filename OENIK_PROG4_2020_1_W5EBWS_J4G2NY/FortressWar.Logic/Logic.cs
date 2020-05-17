@@ -590,6 +590,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.KnightUpgradePrice;
                         if (this.model.Player_2.KnightLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.KnightLVL++;
@@ -602,6 +603,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.RiderUpgradePrice;
                         if (this.model.Player_2.RiderLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.RiderLVL++;
@@ -614,6 +616,7 @@ namespace FortressWar.Logic
                             break;
                         }
 
+                        player.Money -= Config.BarricadeUpgradePrice;
                         if (this.model.Player_2.BarricadeLVL < Config.MaxLVL)
                         {
                             this.model.Player_2.BarricadeLVL++;
