@@ -8,6 +8,7 @@ namespace FortressWar.Model
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Describing the Soldiers.
@@ -32,6 +33,7 @@ namespace FortressWar.Model
         /// <summary>
         /// Gets or sets the enemy to attack.
         /// </summary>
+        [XmlIgnore]
         public Character Enemy { get; set; }
 
         /// <summary>
