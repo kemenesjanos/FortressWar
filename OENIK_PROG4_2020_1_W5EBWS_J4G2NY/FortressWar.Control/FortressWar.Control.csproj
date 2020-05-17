@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>oenik.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\FortressWar.Control.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control.cs" />
+    <Compile Include="LoadControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="oenik.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
