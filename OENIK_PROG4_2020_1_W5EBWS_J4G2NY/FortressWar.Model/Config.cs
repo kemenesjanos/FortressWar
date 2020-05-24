@@ -16,6 +16,11 @@ namespace FortressWar.Model
     public static class Config
     {
         /// <summary>
+        /// Bountry in lvl.
+        /// </summary>
+        public const int BountryLVL = 10;
+
+        /// <summary>
         /// The movement distance.
         /// </summary>
         public const double StepDistance = 2;
@@ -23,7 +28,7 @@ namespace FortressWar.Model
         /// <summary>
         /// The players money increase that much.
         /// </summary>
-        public const int IncreaseMoney = 1;
+        public const int IncreaseMoney = 2;
 
         /// <summary>
         /// Selector height.

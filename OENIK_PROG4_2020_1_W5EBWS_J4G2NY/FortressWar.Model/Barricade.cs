@@ -46,7 +46,7 @@ namespace FortressWar.Model
 
         private void CountBasics()
         {
-            this.Bounty = this.LVL * Config.BarricadeBaseBounty;
+            this.Bounty = ((this.LVL + 1) * Config.BountryLVL) + Config.BarricadeBaseBounty;
             this.Life = Config.BarricadeBaseLife + (this.LVL * Config.BarricadeLVLLife);
         }
     }
