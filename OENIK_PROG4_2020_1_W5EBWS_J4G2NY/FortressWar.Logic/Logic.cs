@@ -434,7 +434,10 @@ namespace FortressWar.Logic
                         if (player.Name == this.model.Player_1.Name)
                         {
                             int tX = -Config.FieldWidht / 2;
-                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades.SingleOrDefault(x => x.CX - (Config.FieldWidht / 2) == tX) != null)
+                            while (tX < 0 - Config.CharacterTileWidth && this.model.Player_1.Barricades
+                                .SingleOrDefault(
+                                x => x.CX - (Config.FieldWidht / 2) == tX &&
+                                x.Y_Tile == y) != null)
                             {
                                 tX += Config.CharacterTileWidth;
                             }
@@ -453,7 +456,10 @@ namespace FortressWar.Logic
                         else
                         {
                             int tX1 = (Config.FieldWidht / 2) - Config.CharacterTileWidth;
-                            while (tX1 > 0 && this.model.Player_2.Barricades.SingleOrDefault(x => x.CX - (Config.FieldWidht / 2) == tX1) != null)
+                            while (tX1 > 0 && this.model.Player_2.Barricades
+                                .SingleOrDefault(
+                                x => x.CX - (Config.FieldWidht / 2) == tX1 &&
+                                x.Y_Tile == y) != null)
                             {
                                 tX1 -= Config.CharacterTileWidth;
                             }

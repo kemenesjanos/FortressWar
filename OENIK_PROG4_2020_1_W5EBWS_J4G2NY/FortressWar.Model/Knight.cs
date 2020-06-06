@@ -50,7 +50,7 @@ namespace FortressWar.Model
 
         private void CountBasics()
         {
-            this.Bounty = (this.LVL + 1) * Config.KnightBaseBounty;
+            this.Bounty = ((this.LVL + 1) * Config.BountryLVL) + Config.KnightBaseBounty;
             this.Life = Config.KnightBaseLife + (this.LVL * Config.KnightLVLLife);
             this.Power = Config.KnightBasePower + (this.LVL * Config.KnightLVLPower);
             this.Speed = Config.KnightBaseSpeed + (this.LVL * Config.KnightLVLSpeed);
